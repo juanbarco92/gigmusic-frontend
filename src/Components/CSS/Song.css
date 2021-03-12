@@ -1,9 +1,7 @@
-body{
-    background-color: whitegray;
-}
-#Letra{
+#Intro-title{
     font-family: Verdana;
-    color: rgb(20, 2, 17);
-    text-shadow: 1px;
-    font-size: 10px;
+    color: rgb(15, 1, 101);
+    text-shadow: 2px;
+    background-color: whitegray;
+    margin-left: 20%;
 }
