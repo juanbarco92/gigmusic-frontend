@@ -8,7 +8,7 @@ function Song() {
 	const {metadata, canción} = require('../JSongs/Andrés Cepeda-Canción Rota.json');
 	//const {metadata, canción} = require('../JSongs/andres_cepeda_cancion_rota.json');
 
-	document.title = 'song'
+	document.title = "Canción"
 
 	const estrofa = canción.map((item)=>({tipo: item.tipo, contenido: item.contenido}));
 	const [mostrar,setMostrar] = useState(false)
@@ -17,7 +17,6 @@ function Song() {
 	const mostrarDatos = () => {
 		setMostrar(!mostrar)
 	}
-
 
   return (
     <div className="fluid-container mt-4">
@@ -39,7 +38,6 @@ function Song() {
 				    		onClick={mostrarDatos}>
 				    		Ver
 				    	</button>
-
 				    	<ReactPlayer
 				          url='https://www.youtube.com/watch?v=xWmZhSf_a9c'
 				          className='react-player mt-5'
