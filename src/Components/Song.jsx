@@ -6,6 +6,8 @@ import ReactPlayer from 'react-player'
 
 function Song() {
 
+	
+	//const {metadata, canción} = require('../JSongs/Jarabe De Palo - La Flaca.json');
 	const {metadata, canción} = require('../JSongs/Andrés Cepeda-Canción Rota.json');
 	//const {metadata, canción} = require('../JSongs/andres_cepeda_cancion_rota.json');
 
