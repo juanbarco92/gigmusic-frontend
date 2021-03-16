@@ -3,16 +3,16 @@ import Notas from './Notas'
 import './CSS/Song.css'
 import ReactPlayer from 'react-player'
 
+
 function Song() {
 
 	const {metadata, canción} = require('../JSongs/Andrés Cepeda-Canción Rota.json');
 	//const {metadata, canción} = require('../JSongs/andres_cepeda_cancion_rota.json');
 
-	document.title = "Canción"
+	document.title = metadata.canción ? (metadata.canción):(metadata.cancion)
 
 	const estrofa = canción.map((item)=>({tipo: item.tipo, contenido: item.contenido}));
 	const [mostrar,setMostrar] = useState(false)
-
 
 	const mostrarDatos = () => {
 		setMostrar(!mostrar)
@@ -26,10 +26,10 @@ function Song() {
 					<div className='col-sm-2'></div>
 					<div className='col list-group-item'>
 			    		<h3 id='artist'>Artista: {metadata.artista}</h3>
-			    		<h4 id='song'>Canción: {metadata.canción}</h4>
-			    		<p id='details'>Genero: {metadata.genero}<br/>
-			    			Subgenero: {metadata.subgenero}<br/>
-			    			Album: {metadata.album}<br/>
+			    		<h4 id='song'>Canción: {metadata.canción ? (metadata.canción):(metadata.cancion)}</h4>
+			    		<p id='details'>Género: {metadata.genero ? (metadata.genero):(metadata.género)}<br/>
+			    			Subgénero: {metadata.subgenero ? (metadata.subgenero):(metadata.subgénero)}<br/>
+			    			Álbum: {metadata.album ? (metadata.album):(metadata.álbum)}<br/>
 			    			Año: {metadata.año}<br/>
 			    			Tonalidad: {metadata.tonalidad}<br/>
 			    			Capo: {metadata.capo}</p>
@@ -41,8 +41,8 @@ function Song() {
 				    	<ReactPlayer
 				          url='https://www.youtube.com/watch?v=xWmZhSf_a9c'
 				          className='react-player mt-5'
-				          playing
-				          controls='true'
+				          playing={false}
+				          controls={true}
 				          width='100%'
 				          height='100%'
 				        />

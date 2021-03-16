@@ -13,8 +13,10 @@ const Notas = (props) => {
     //Factor de conversion de espacios a milimetro aproximado: 1.026
 
     const hoverDymanic = (estado, notaIn) => {
-        setIsShown(estado)
-        setWhatNote(notaIn)
+        if (notaIn !== 'x2' && notaIn !== 'X2' && notaIn !== 'X3' && notaIn !== 'x3' && notaIn !== 'X4' && notaIn !== 'x4'){
+            setIsShown(estado)
+            setWhatNote(notaIn)
+        }
     }
 
   return (
