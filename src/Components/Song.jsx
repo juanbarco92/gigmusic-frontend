@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
-import Notas from './Notas'
-import './CSS/Song.css'
 import ReactPlayer from 'react-player'
+import Notas from './Notas'
+import Busqueda from './Busqueda'
+import './CSS/Song.css'
+
 
 
 function Song() {
@@ -11,7 +13,7 @@ function Song() {
 	const {metadata, canción} = require('../JSongs/Andrés Cepeda-Canción Rota.json');
 	//const {metadata, canción} = require('../JSongs/andres_cepeda_cancion_rota.json');
 
-	document.title = metadata.canción ? (metadata.canción):(metadata.cancion)
+	document.title = 'GIG - ' + (metadata.canción ? (metadata.canción):(metadata.cancion))
 
 	const estrofa = canción.map((item)=>({tipo: item.tipo, contenido: item.contenido}));
 	const [mostrar,setMostrar] = useState(false)
@@ -22,6 +24,9 @@ function Song() {
 
   return (
     <div className="fluid-container mt-4">
+    	<div className='row'>
+    		<Busqueda/>
+    	</div>
     	<div className='row'>
 	    	<div className='col-sm-4 bg-ligth mt-4'>
 				<div className='row'>

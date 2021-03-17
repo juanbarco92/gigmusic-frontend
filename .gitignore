@@ -23,5 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 #static
-/src/JSongs/.json
+src/JSongs/.json
 

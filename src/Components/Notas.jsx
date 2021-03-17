@@ -41,7 +41,7 @@ const Notas = (props) => {
                     {letra}
                 </div>
             </div>
-            <div className='col-sm-2'>
+            <div className='col-sm-4'>
                 {
                     isShown &&
                     (

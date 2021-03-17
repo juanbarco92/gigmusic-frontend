@@ -7,7 +7,7 @@ const Hover = (props) => {
 
   return (
       <div className='container' id='Hover-container'>
-          <h4>{nota}</h4>
+          <h4 className='text-center'>{nota}</h4>
       </div>
   );
 }
