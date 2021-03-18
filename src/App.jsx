@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './App.css';
 import Song from './Components/Song'
 import Inicio from './Components/Inicio'
+import Resultados from './Components/Resultados'
+import Busqueda from './Components/Busqueda'
 import{
     BrowserRouter as Router,
     Switch,
@@ -11,25 +13,27 @@ import{
 
 function App() {
 
+  const [searchData, setSearchData] = useState('Hhhh')
+
+  const datos = (dato) =>{
+    console.log(dato)
+    setSearchData(dato)
+  }
+
   return (
       <Router>
-          <div className='container-fluid'>
-              <div className='row'>
-                  <div className='col col-sm-2'>
-                      <ul className='list-group list-group-horizontal'>
-                          <li className='list-group-item list-group-item-info mt-3'>
-                              <Link to='/'>Inicio</Link>
-                          </li>
-                          <li className='list-group-item list-group-item-info mt-3'>
-                              <Link to='/song'>Canción</Link>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
+          <div className='container-fluid'>   
+              <Link to='/'><h2 className='h2 text-center'>Gig Music</h2> </Link>                  
+              <Busqueda datos={datos}/>
               <Switch>
-                  <Route path='/song'>
+                  <Route path='/song/'>
                        <div className='col'>
                            <Song/>
+                       </div>
+                  </Route>
+                  <Route path='/search/'>
+                       <div className='col'>
+                           <Resultados/>
                        </div>
                   </Route>
                   <Route exact path='/'>

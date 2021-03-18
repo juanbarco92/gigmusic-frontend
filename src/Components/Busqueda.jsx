@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
+import propTypes from 'prop-types'
 import './CSS/Busqueda.css';
+import{Link} from 'react-router-dom';
 
-const Busqueda = () => {
-
+const Busqueda = (props) => {
+	
+	const {datos} = props
 	const [search, setSearch] = useState('')
 
 	const onSearch = (e) => {
@@ -14,15 +17,19 @@ const Busqueda = () => {
 		<div className="input-group mb-3 mt-2" id='Buscar'>
 			<input type="search" 
 			className="form-control" 
+			value={search}
 			placeholder="canción o artista"
 			onChange={onSearch}/>
 			<div className="input-group-append">
-				<button className="btn btn-outline-primary" type="submit">Buscar</button>
+				<Link to='/search'><button className="btn btn-outline-primary" type="submit" onClick={() => datos(search)} >Buscar</button></Link>
 			</div>
 		</div>
-		{search}
       </div>
   );
+}
+
+Busqueda.propTypes = {
+	datos: propTypes.func.isRequired
 }
 
 export default Busqueda;

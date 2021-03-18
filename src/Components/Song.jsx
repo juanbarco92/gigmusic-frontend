@@ -1,13 +1,13 @@
 import React, {useState} from 'react'
 import ReactPlayer from 'react-player'
 import Notas from './Notas'
-import Busqueda from './Busqueda'
 import './CSS/Song.css'
 
 
+function Song(props) {
 
-function Song() {
-
+	const datoBus = props.datoBus
+	console.log(datoBus)
 	
 	//const {metadata, canción} = require('../JSongs/Jarabe De Palo - La Flaca.json');
 	const {metadata, canción} = require('../JSongs/Andrés Cepeda-Canción Rota.json');
@@ -25,13 +25,10 @@ function Song() {
   return (
     <div className="fluid-container mt-4">
     	<div className='row'>
-    		<Busqueda/>
-    	</div>
-    	<div className='row'>
 	    	<div className='col-sm-4 bg-ligth mt-4'>
 				<div className='row'>
 					<div className='col-sm-2'></div>
-					<div className='col list-group-item'>
+					<div className='col'>
 			    		<h3 id='artist'>Artista: {metadata.artista}</h3>
 			    		<h4 id='song'>Canción: {metadata.canción ? (metadata.canción):(metadata.cancion)}</h4>
 			    		<p id='details'>Género: {metadata.genero ? (metadata.genero):(metadata.género)}<br/>
