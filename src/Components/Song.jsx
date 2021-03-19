@@ -6,8 +6,6 @@ import './CSS/Song.css'
 
 function Song(props) {
 
-	const datoBus = props.datoBus
-	console.log(datoBus)
 	
 	//const {metadata, canción} = require('../JSongs/Jarabe De Palo - La Flaca.json');
 	const {metadata, canción} = require('../JSongs/Andrés Cepeda-Canción Rota.json');

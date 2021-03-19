@@ -4,6 +4,7 @@ import Song from './Components/Song'
 import Inicio from './Components/Inicio'
 import Resultados from './Components/Resultados'
 import Busqueda from './Components/Busqueda'
+import Error404 from './Components/Error404'
 import{
     BrowserRouter as Router,
     Switch,
@@ -13,11 +14,12 @@ import{
 
 function App() {
 
-  const [searchData, setSearchData] = useState('Hhhh')
+  const [searchData, setSearchData] = useState('')
+  const [searchResults, setSearchResults] = useState([])
 
   const datos = (dato) =>{
-    console.log(dato)
     setSearchData(dato)
+    setSearchResults([dato, 'Hola'])
   }
 
   return (
@@ -27,19 +29,16 @@ function App() {
               <Busqueda datos={datos}/>
               <Switch>
                   <Route path='/song/'>
-                       <div className='col'>
-                           <Song/>
-                       </div>
+                        <Song/>
                   </Route>
                   <Route path='/search/'>
-                       <div className='col'>
-                           <Resultados/>
-                       </div>
+                        <Resultados searchResults={searchResults}/>
                   </Route>
                   <Route exact path='/'>
-                       <div className='col'>
-                           <Inicio/>
-                       </div>
+                        <Inicio/>
+                  </Route>
+                  <Route path='*'>
+                        <Error404/>
                   </Route>
               </Switch>
           </div>

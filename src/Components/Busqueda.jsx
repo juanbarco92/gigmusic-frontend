@@ -14,16 +14,22 @@ const Busqueda = (props) => {
 
   return (
       <div className='container' id='Search-container'>
-		<div className="input-group mb-3 mt-2" id='Buscar'>
+		<form className="input-group mb-3 mt-2" id='Buscar'>
 			<input type="search" 
 			className="form-control" 
 			value={search}
 			placeholder="canción o artista"
 			onChange={onSearch}/>
 			<div className="input-group-append">
-				<Link to='/search'><button className="btn btn-outline-primary" type="submit" onClick={() => datos(search)} >Buscar</button></Link>
+				<Link to='/search'>
+					<button className="btn btn-outline-primary" 
+					type="submit" onClick={() => datos(search)} 
+					onSubmit={() => datos(search)}>
+						Buscar
+					</button>
+				</Link>
 			</div>
-		</div>
+		</form>
       </div>
   );
 }
