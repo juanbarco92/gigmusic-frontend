@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import ReactPlayer from 'react-player'
 import Notas from './Notas'
 import './CSS/Song.css'
@@ -6,7 +6,6 @@ import './CSS/Song.css'
 
 function Song(props) {
 
-	
 	//const {metadata, canción} = require('../JSongs/Jarabe De Palo - La Flaca.json');
 	const {metadata, canción} = require('../JSongs/Andrés Cepeda-Canción Rota.json');
 	//const {metadata, canción} = require('../JSongs/andres_cepeda_cancion_rota.json');
@@ -19,6 +18,12 @@ function Song(props) {
 	const mostrarDatos = () => {
 		setMostrar(!mostrar)
 	}
+
+	const finCancion = useRef(null)
+
+	const scrollToObject = () => window.scrollTo({ 
+		top: finCancion.current.offsetTop,
+		behavior: 'smooth'})
 
   return (
     <div className="fluid-container mt-4">
@@ -51,7 +56,7 @@ function Song(props) {
 					</div>
 				</div>
 	    	</div>
-	    	<div className='col mt-4'>
+	    	<div className='col mt-4 col-lg-6'>
 	    		<ul className='list-group' id='Cancion'>
 	    			{
 	    				mostrar ?
@@ -76,7 +81,28 @@ function Song(props) {
 	    					<span></span>
 	    				)
 	    			}
+	    			<li className='list-group' 
+	    			ref={finCancion} >
+	    			</li>
 	    		</ul>
+	    	</div>
+	    	<div className='col mt-4'>
+	    		{
+	    			mostrar ?
+	    			(
+			    		<div className='row'>
+			    			<button
+			    			className="btn btn-primary" 
+			    			onClick={scrollToObject}>
+			    				Scroll
+			    			</button>
+			    		</div>
+		    		)
+		    		:
+		    		(
+		    			<span></span>
+		    		)
+		    	}
 	    	</div>
 		</div>
     </div>
