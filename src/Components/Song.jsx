@@ -3,11 +3,12 @@ import ReactPlayer from 'react-player'
 import Notas from './Notas'
 import './CSS/Song.css'
 
+let timer
 
 function Song(props) {
 
-	//const {metadata, canción} = require('../JSongs/Jarabe De Palo - La Flaca.json');
-	const {metadata, canción} = require('../JSongs/Andrés Cepeda-Canción Rota.json');
+	const {metadata, canción} = require('../JSongs/Jarabe De Palo - La Flaca.json');
+	//const {metadata, canción} = require('../JSongs/Andrés Cepeda-Canción Rota.json');
 	//const {metadata, canción} = require('../JSongs/andres_cepeda_cancion_rota.json');
 
 	document.title = 'GIG - ' + (metadata.canción ? (metadata.canción):(metadata.cancion))
@@ -15,15 +16,38 @@ function Song(props) {
 	const estrofa = canción.map((item)=>({tipo: item.tipo, contenido: item.contenido}));
 	const [mostrar,setMostrar] = useState(false)
 
+	const [scroll,setScroll] = useState(false)
+	const [lineas,setLineas] = useState(0)
+	const [lineasRec,setLineasRec] = useState(0)
+	const finCancion = useRef(null)
+	const iniPag = useRef(null)
+
 	const mostrarDatos = () => {
 		setMostrar(!mostrar)
 	}
 
-	const finCancion = useRef(null)
+	const scrollObjects = () => {
+		setLineasRec(iniPag.current.offsetTop)
+		setScroll(!scroll)
+	}
 
-	const scrollToObject = () => window.scrollTo({ 
-		top: finCancion.current.offsetTop,
-		behavior: 'smooth'})
+	const nLineas = (lineasIn) => {
+		setLineas(lineasIn)
+	}
+
+	const logicScroll = () => {
+		if(lineasRec <= finCancion.current.offsetTop){
+			setLineasRec(lineasRec + (finCancion.current.offsetTop)/(lineas*2))
+			window.scrollTo({ 
+				top: lineasRec,
+				behavior: 'smooth'
+			})
+		}else{
+			clearTimeout(timer)
+			setScroll(false)
+			setLineasRec(iniPag.current.offsetTop)
+		}
+	}
 
   return (
     <div className="fluid-container mt-4">
@@ -56,19 +80,19 @@ function Song(props) {
 					</div>
 				</div>
 	    	</div>
-	    	<div className='col mt-4 col-lg-6'>
+	    	<div className='col mt-4 col-lg-6' ref={iniPag}>
 	    		<ul className='list-group' id='Cancion'>
 	    			{
 	    				mostrar ?
 	    				(
-	    					estrofa.map(item =>(
-	    						<li className='list-group' key={item.tipo}>
+	    					estrofa.map((item, index) =>(
+	    						<li className='list-group' key={index}>
 	    							<span className='h4' id='Intro-title'>{item.tipo} : </span><br/>
 	    							<ul className='list-group'>
 	    								{
 			    							item.contenido.map((item, index) => (
 			    								<li className='list-group list-group-item-ligth' key={index}>
-													<Notas notas={item.notas} espacio={item.espacio} letra={item.letra}/>
+													<Notas notas={item.notas} espacio={item.espacio} letra={item.letra} nLineas={nLineas}/>
 			    								</li>
 			    							))
 		    							}
@@ -90,12 +114,24 @@ function Song(props) {
 	    		{
 	    			mostrar ?
 	    			(
-			    		<div className='row'>
+			    		<div>
 			    			<button
 			    			className="btn btn-primary" 
-			    			onClick={scrollToObject}>
+			    			onClick={scrollObjects}>
 			    				Scroll
 			    			</button>
+			    			<div style={{display: 'none'}}>
+				    			{
+				    				scroll ?
+				    				(
+										timer = setTimeout(logicScroll, 1000)
+				    				)
+				    				:
+				    				(
+				    					<span />
+				    				)
+				    			}
+			    			</div>
 			    		</div>
 		    		)
 		    		:

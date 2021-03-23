@@ -19,7 +19,7 @@ function App() {
 
   const datos = (dato) =>{
     setSearchData(dato)
-    setSearchResults([dato, 'Hola'])
+    setSearchResults([dato, ...searchResults])
   }
 
   return (
