@@ -1,9 +1,11 @@
 import React, {useState, useRef} from 'react'
 import ReactPlayer from 'react-player'
+import { useWindowScroll } from 'react-use'
 import Notas from './Notas'
 import './CSS/Song.css'
 
 let timer
+let lineas
 
 function Song(props) {
 
@@ -17,27 +19,28 @@ function Song(props) {
 	const [mostrar,setMostrar] = useState(false)
 
 	const [scroll,setScroll] = useState(false)
-	const [lineas,setLineas] = useState(0)
 	const [lineasRec,setLineasRec] = useState(0)
 	const finCancion = useRef(null)
-	const iniPag = useRef(null)
+	const { y: pageYOffset } = useWindowScroll()
 
 	const mostrarDatos = () => {
 		setMostrar(!mostrar)
+		lineas = 0
+		estrofa.map(item => lineas += parseInt(item.contenido.length))
+		lineas += estrofa.length 
 	}
 
 	const scrollObjects = () => {
-		setLineasRec(iniPag.current.offsetTop)
+		setLineasRec(pageYOffset)
 		setScroll(!scroll)
 	}
 
-	const nLineas = (lineasIn) => {
-		setLineas(lineasIn)
-	}
-
 	const logicScroll = () => {
+		console.log(finCancion.current.offsetTop)
+		console.log(lineasRec)
+		console.log(lineas)
 		if(lineasRec <= finCancion.current.offsetTop){
-			setLineasRec(lineasRec + (finCancion.current.offsetTop)/(lineas*2))
+			setLineasRec(pageYOffset + (finCancion.current.offsetTop)/(lineas*50))
 			window.scrollTo({ 
 				top: lineasRec,
 				behavior: 'smooth'
@@ -45,7 +48,7 @@ function Song(props) {
 		}else{
 			clearTimeout(timer)
 			setScroll(false)
-			setLineasRec(iniPag.current.offsetTop)
+			setLineasRec(pageYOffset)
 		}
 	}
 
@@ -70,7 +73,7 @@ function Song(props) {
 				    		Ver
 				    	</button>
 				    	<ReactPlayer
-				          url='https://www.youtube.com/watch?v=xWmZhSf_a9c'
+				          url='https://www.youtube.com/watch?v=r2g0pM3PMNQ'
 				          className='react-player mt-5'
 				          playing={false}
 				          controls={true}
@@ -80,7 +83,7 @@ function Song(props) {
 					</div>
 				</div>
 	    	</div>
-	    	<div className='col mt-4 col-lg-6' ref={iniPag}>
+	    	<div className='col mt-4 col-lg-6'>
 	    		<ul className='list-group' id='Cancion'>
 	    			{
 	    				mostrar ?
@@ -92,7 +95,7 @@ function Song(props) {
 	    								{
 			    							item.contenido.map((item, index) => (
 			    								<li className='list-group list-group-item-ligth' key={index}>
-													<Notas notas={item.notas} espacio={item.espacio} letra={item.letra} nLineas={nLineas}/>
+													<Notas notas={item.notas} espacio={item.espacio} letra={item.letra}/>
 			    								</li>
 			    							))
 		    							}
@@ -105,9 +108,8 @@ function Song(props) {
 	    					<span></span>
 	    				)
 	    			}
-	    			<li className='list-group' 
-	    			ref={finCancion} >
-	    			</li>
+	    			<div ref={finCancion} >
+	    			</div>
 	    		</ul>
 	    	</div>
 	    	<div className='col mt-4'>
@@ -116,19 +118,21 @@ function Song(props) {
 	    			(
 			    		<div>
 			    			<button
-			    			className="btn btn-primary" 
-			    			onClick={scrollObjects}>
-			    				Scroll
+			    			className="cursor-pointer" 
+			    			onClick={scrollObjects}
+			    			id='scroll-btn'>
+			    				<i className="fas fa-angle-double-down">
+			    				</i>
 			    			</button>
 			    			<div style={{display: 'none'}}>
 				    			{
 				    				scroll ?
 				    				(
-										timer = setTimeout(logicScroll, 1000)
+										timer = setTimeout(logicScroll, 50)
 				    				)
 				    				:
 				    				(
-				    					<span />
+				    					clearTimeout(timer)
 				    				)
 				    			}
 			    			</div>

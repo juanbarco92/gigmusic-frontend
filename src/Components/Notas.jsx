@@ -1,13 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import './CSS/Notas.css';
 import Hover from './Hover'
 
-let lineas = 0
-
-
 const Notas = (props) => {
-    
-    const {nLineas} = props
 
     const [isShown, setIsShown] = useState(false)
     const [whatNote, setWhatNote] = useState('')
@@ -23,9 +18,6 @@ const Notas = (props) => {
             setWhatNote(notaIn)
         }
     }
-
-    
-    useEffect(() => nLineas(lineas += 1),[])
 
   return (
     <div className="container">
