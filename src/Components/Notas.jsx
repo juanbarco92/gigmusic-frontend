@@ -30,7 +30,8 @@ const Notas = (props) => {
                                 <button id='AcordeBt'
                                     style={{margin : '0mm 0mm 0mm '+item+'mm'}}
                                     onMouseEnter={() => hoverDymanic(true,notacion[index])}
-                                    onMouseLeave={() => hoverDymanic(false, '')}>
+                                    onMouseLeave={() => hoverDymanic(false, '')}
+                                    onClick={() => hoverDymanic(null, '')}>
                                     {notacion[index]}
                                 </button>
                             </pre>
@@ -41,7 +42,7 @@ const Notas = (props) => {
                     {letra}
                 </div>
             </div>
-            <div className='col-sm-4'>
+            <div className='col-sm-auto'>
                 {
                     isShown &&
                     (

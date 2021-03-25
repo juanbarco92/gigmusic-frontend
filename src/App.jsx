@@ -30,10 +30,9 @@ function App() {
   }
 
   return (
-      <div className='container' id='App'>
+      <div className='container-fluid' id='App'>
         <Router>
           <div className='row'>
-            <div className='col'>
               {
                 colapsar ?
                 (
@@ -44,7 +43,6 @@ function App() {
                   <NavExpand Colapse={Colapse}/>
                 )
               }
-            </div>
             <div className='col'>
               <Busqueda datos={datos}/>
               <Switch>

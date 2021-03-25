@@ -1,4 +1,5 @@
 import React from 'react'
+import GuitarChord from 'react-guitar-chords'
 import '../Static/CSS/Hover.css';
 
 const Hover = (props) => {
@@ -7,7 +8,7 @@ const Hover = (props) => {
 
   return (
       <div className='container' id='Hover-container'>
-          <h4 className='text-center'>{nota}</h4>
+          <GuitarChord chordName={nota} frets={['x', 3, 2, 0, 1, 0]}/>
       </div>
   );
 }

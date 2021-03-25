@@ -1,7 +1,6 @@
 #App {
   width: 1024px;
   height: 860px;
-  margin: 0 0 0 0px;
   background-color: #181818;
 }
 .gig-col-n{
@@ -24,11 +23,4 @@
 	width: 1024px;
 	height: 70px;
 }
-.row{
-	margin: 0 0 0 0;
-	padding: 0 0 0 0;
-}
-.col{
-	margin: 0 0 0 0;
-	padding: 0 0 0 0;
-}
+

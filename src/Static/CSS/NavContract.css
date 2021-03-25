@@ -5,11 +5,12 @@
  	padding: 23px 0px 23.1px 31px;
  	box-shadow: -5px -5px 12px 0 #181818;
  	background-color: #121212;
+ 	flex: 0 0 auto;
 }
 #LogoContract{
 	width: 40px;
  	height: 40px;
- 	margin: 23 0 33 11;
+ 	margin: 23px 0 33px 10px;
  	object-fit: contain;
 }
 #Inicio{
@@ -40,7 +41,7 @@
 #Expandir{
 	width: 21px;
 	height: 21px;
-	margin: 613px 44px 23.1px 11px;
+	margin: 557px 44px 23.1px 11px;
 	object-fit: contain;
 }
 #btn-exp{
@@ -56,11 +57,31 @@
 	border-radius: 16px;
 	background-color: #181818;
 }
-.row{
-	margin: 0 0 0 0;
+.link-react{
+	color: currentColor;
+}
+.link-react:link{
+	color: #f24405;
+	text-decoration: none;
+}
+.link-react:hover{
+	color: #f24405;
+}
+.link-react:active{
+	color: #f24405;
+}
+.reset-this {
+    all: initial;
+    * {
+        all: unset;
+    }
+}
+.container{
 	padding: 0 0 0 0;
 }
 .col{
-	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+.row{
 	padding: 0 0 0 0;
 }

@@ -1,11 +1,12 @@
 #NavExpand{
-	width: 239px;
+	width: 240px;
  	height: 860px;
- 	margin: 0 1px 0 0;
+ 	margin: 0 0px 0 0;
  	color: #b3b3b3;
  	font-family: Roboto;
  	padding: 28px 0px 27px 0;
  	background-color: #121212;
+ 	flex: 0 0 auto;
 }
 #LogoExpand{
 	width: 56px;
@@ -38,10 +39,26 @@
 	margin: 7px 0px 7px 48px;
 	object-fit: contain;
 }
+#facebook{
+	width: 19.5px;
+	height: 19px;
+	margin-left: 48px;
+	margin-top: 372px;
+}
+#youtube{
+	width: 27px;
+	height: 19px;
+	margin: 372px 38.5px 0 38.5px;
+}
+#instagram{
+	width: 20px;
+	height: 19px;
+	margin-top: 372px;
+}
 #Contraer{
 	width: 21px;
 	height: 21px;
-	margin: 551px 0px 27px 180px;
+	margin: 160px 0px 27px 180px;
 	object-fit: contain;
 }
 #btn-cont{
@@ -57,11 +74,32 @@
 	border-radius: 16px;
 	background-color: #181818;
 }
-.row{
-	margin: 0 0 0 0;
+.link-react{
+	color: currentColor;
+}
+.link-react:link{
+	color: #f24405;
+	text-decoration: none;
+}
+.link-react:hover{
+	color: #f24405;
+}
+.link-react:active{
+	color: #f24405;
+}
+.reset-this {
+    all: initial;
+    * {
+        all: unset;
+    }
+}
+.container{
 	padding: 0 0 0 0;
 }
+
 .col{
-	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+.row{
 	padding: 0 0 0 0;
 }

@@ -6,35 +6,42 @@ import descubrir from '../Static/Icons/px-24-grid-interface.svg'
 import catalogo from '../Static/Icons/album-24-px.svg'
 import ajustes from '../Static/Icons/px-24-settings-gear.svg'
 import expandir from '../Static/Icons/px-16-block-right-collapse.svg'
+import {NavLink} from 'react-router-dom';
 
 const NavContract = (props) => {
 
 	const { Colapse } = props
 
   return (
-    <div className='row' id='NavContract'>
-    	<div className='col'>
+    <div className='col' id='NavContract'>
 			<div>
 				<img src={logo} alt='Gig' id='LogoContract'/>
 			</div>
 			<div>
-				<img src={inicio} alt='Inicio' id='Inicio'/>
+				<NavLink to='/' className='link-react'>
+					<img src={inicio} alt='Inicio' id='Inicio'/>
+				</NavLink>
 			</div>
 			<div>
-				<img src={descubrir} alt='Descubrir' id='Descubrir'/>
+				<NavLink to='/' className='link-react'>
+					<img src={descubrir} alt='Descubrir' id='Descubrir'/>
+				</NavLink>
 			</div>
 			<div>
-				<img src={catalogo} alt='Catálogo' id='Catalogo'/>
+				<NavLink to='/' className='link-react'>
+					<img src={catalogo} alt='Catálogo' id='Catalogo'/>
+				</NavLink>
 			</div>
 			<div>
-				<img src={ajustes} alt='Ajustes' id='Ajustes'/>
+				<NavLink to='/' className='link-react'>
+					<img src={ajustes} alt='Ajustes' id='Ajustes'/>
+				</NavLink>
 			</div>
 			<div>
 				<button className='btn' onClick={Colapse} id='btn-exp'>
 					<img src={expandir} alt='Expandir' id='Expandir'/>
 				</button>
 			</div>
-		</div>
 	</div>  	
   );
 }

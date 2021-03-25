@@ -1,6 +1,6 @@
 #Acordes{
-    background-color: rgb(203, 194, 175);
-    background-color: lightgray;
+    color: #b3b3b3;
+    background-color: transparent;
 }
 #AcordeBt{
     color: rgb(14, 61, 131);
@@ -24,9 +24,9 @@
 }
 #Letra{
     font-family: Verdana;
-    color: rgb(20, 2, 17);
+    color: #b3b3b3;
+    background-color: transparent;
     text-shadow: 1px;
-    background-color: whitegray;
     margin-bottom: 5mm;
 }
 .row{

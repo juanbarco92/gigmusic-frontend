@@ -1,7 +1,9 @@
 #Search-container{
 	margin: 0 0 0 0px;
-	padding: 32px 0 0px 0px;
+	padding: 32px 0 10px 25px;
 	background-color: #181818;
+	color: #b3b3b3;
+	border-bottom: solid 1px #b3b3b3;
 }
 #icon-search{
 	width: 20px;
@@ -10,7 +12,18 @@
 	padding: 0 10px 0 0;
 	object-fit: contain;
 }
-
+#search-button{
+	display: none;
+}
+#search-bar{
+	background-color: transparent;
+	color: currentColor;
+	border: none;
+}
+.link-react{
+	color: currentColor;
+	cursor: default;
+}
 .row{
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
