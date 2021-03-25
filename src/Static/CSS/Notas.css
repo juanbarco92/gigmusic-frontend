@@ -29,3 +29,11 @@
     background-color: whitegray;
     margin-bottom: 5mm;
 }
+.row{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+.col{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}

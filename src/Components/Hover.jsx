@@ -1,5 +1,5 @@
 import React from 'react'
-import './CSS/Hover.css';
+import '../Static/CSS/Hover.css';
 
 const Hover = (props) => {
 

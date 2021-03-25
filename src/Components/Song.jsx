@@ -2,7 +2,7 @@ import React, {useState, useRef} from 'react'
 import ReactPlayer from 'react-player'
 import { useWindowScroll } from 'react-use'
 import Notas from './Notas'
-import './CSS/Song.css'
+import '../Static/CSS/Song.css'
 
 let timer
 let lineas
@@ -53,12 +53,10 @@ function Song(props) {
 	}
 
   return (
-    <div className="fluid-container mt-4">
     	<div className='row'>
-	    	<div className='col-sm-4 bg-ligth mt-4'>
+	    	<div className='col-sm-auto'>
 				<div className='row'>
-					<div className='col-sm-2'></div>
-					<div className='col'>
+					<div className='colsm-auto'>
 			    		<h3 id='artist'>Artista: {metadata.artista}</h3>
 			    		<h4 id='song'>Canción: {metadata.canción ? (metadata.canción):(metadata.cancion)}</h4>
 			    		<p id='details'>Género: {metadata.genero ? (metadata.genero):(metadata.género)}<br/>
@@ -83,7 +81,7 @@ function Song(props) {
 					</div>
 				</div>
 	    	</div>
-	    	<div className='col mt-4 col-lg-6'>
+	    	<div className='col-sm-auto'>
 	    		<ul className='list-group' id='Cancion'>
 	    			{
 	    				mostrar ?
@@ -112,16 +110,16 @@ function Song(props) {
 	    			</div>
 	    		</ul>
 	    	</div>
-	    	<div className='col mt-4'>
+	    	<div className='col'>
 	    		{
 	    			mostrar ?
 	    			(
 			    		<div>
 			    			<button
-			    			className="cursor-pointer" 
+			    			className="cursor-pointer text-center" 
 			    			onClick={scrollObjects}
 			    			id='scroll-btn'>
-			    				<i className="fas fa-angle-double-down">
+			    				<i className="fas fa-angle-double-down" id='icon-scroll'>
 			    				</i>
 			    			</button>
 			    			<div style={{display: 'none'}}>
@@ -145,7 +143,6 @@ function Song(props) {
 		    	}
 	    	</div>
 		</div>
-    </div>
   );
 }
 

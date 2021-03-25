@@ -5,17 +5,24 @@ import Inicio from './Components/Inicio'
 import Resultados from './Components/Resultados'
 import Busqueda from './Components/Busqueda'
 import Error404 from './Components/Error404'
+import NavExpand from './Components/NavExpand'
+import NavContract from './Components/NavContract'
 import{
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
 } from 'react-router-dom';
 
 function App() {
 
   const [searchData, setSearchData] = useState('')
   const [searchResults, setSearchResults] = useState([])
+  const [colapsar, setColapsar] = useState(false)
+
+  const Colapse = () => {
+    setColapsar(!colapsar)
+  }
+
 
   const datos = (dato) =>{
     setSearchData(dato)
@@ -23,26 +30,41 @@ function App() {
   }
 
   return (
-      <Router>
-          <div className='container-fluid'>   
-              <Link to='/'><h2 className='h2 text-center'>Gig Music</h2> </Link>                  
+      <div className='container' id='App'>
+        <Router>
+          <div className='row'>
+            <div className='col'>
+              {
+                colapsar ?
+                (
+                  <NavContract Colapse={Colapse}/>
+                )
+                :
+                (
+                  <NavExpand Colapse={Colapse}/>
+                )
+              }
+            </div>
+            <div className='col'>
               <Busqueda datos={datos}/>
               <Switch>
-                  <Route path='/song/'>
-                        <Song/>
-                  </Route>
-                  <Route path='/search/'>
-                        <Resultados searchResults={searchResults}/>
-                  </Route>
-                  <Route exact path='/'>
-                        <Inicio/>
-                  </Route>
-                  <Route path='*'>
-                        <Error404/>
-                  </Route>
+                <Route path='/song/'>
+                      <Song/>
+                </Route>
+                <Route path='/search/'>
+                      <Resultados searchResults={searchResults}/>
+                </Route>
+                <Route exact path='/'>
+                      <Inicio/>
+                </Route>
+                <Route path='*'>
+                      <Error404/>
+                </Route>
               </Switch>
+            </div>
           </div>
-      </Router>
+        </Router>
+      </div>   
   );
 }
 

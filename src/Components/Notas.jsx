@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './CSS/Notas.css';
+import '../Static/CSS/Notas.css';
 import Hover from './Hover'
 
 const Notas = (props) => {

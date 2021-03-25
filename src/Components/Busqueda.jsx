@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import propTypes from 'prop-types'
-import './CSS/Busqueda.css';
 import{Link} from 'react-router-dom';
+import '../Static/CSS/Busqueda.css';
+import buscador from '../Static/Icons/search-icon.svg'
 
 const Busqueda = (props) => {
 	
@@ -19,25 +20,27 @@ const Busqueda = (props) => {
 	}
 
   return (
-      <div className='container' id='Search-container'>
-		<form className="input-group mb-3 mt-2" id='Buscar'>
-			<input type="search" 
-			className="form-control" 
-			value={search}
-			required='required' 
-			placeholder="canción o artista"
-			onChange={onSearch}/>
-			<div className="input-group-append">
+      <div className='row' id='Search-container'>
+      	<div className='col-xl-auto'>
+			<form className="input-group" id='Buscar'>
 				<Link to='/search'>
-					<button className="btn btn-outline-primary" 
-					type="submit" onClick={() => submit(search)} 
+					<button className="btn" 
+					type="submit" id='search-button'
+					onClick={() => submit(search)}
 					onSubmit={() => submit(search)}>
-						<i className="fas fa-search"></i>
-						<span className='ml-2'>Buscar</span>
+						<img src={buscador} alt='lupa' id='icon-search'/>
 					</button>
 				</Link>
-			</div>
-		</form>
+				<div className="input-group-append">
+					<input type="search" 
+					className="form-control" 
+					value={search}
+					required='required' 
+					placeholder="canción o artista"
+					onChange={onSearch}/>
+				</div>
+			</form>
+		</div>
       </div>
   );
 }
