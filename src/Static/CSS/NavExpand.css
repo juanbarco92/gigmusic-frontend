@@ -1,12 +1,10 @@
 #NavExpand{
-	width: 240px;
- 	height: 860px;
+	max-width: 240px;
  	margin: 0 0px 0 0;
  	color: #b3b3b3;
  	font-family: Roboto;
  	padding: 28px 0px 27px 0;
  	background-color: #121212;
- 	flex: 0 0 auto;
 }
 #LogoExpand{
 	width: 56px;
@@ -92,14 +90,4 @@
     * {
         all: unset;
     }
-}
-.container{
-	padding: 0 0 0 0;
-}
-
-.col{
-	padding: 0 0 0 0;
-}
-.row{
-	padding: 0 0 0 0;
 }

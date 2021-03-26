@@ -22,8 +22,8 @@ const Busqueda = (props) => {
 	const bar = {
 		backgroundImage: `url(${buscador})`,
 		backgroundRepeat: 'no-repeat',
-		backgroundPosition: 'left center',
-		paddingLeft: '30px'
+		backgroundPosition: '10px 10px',
+		paddingLeft: '40px'
 	}
 
   return (

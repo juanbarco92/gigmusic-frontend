@@ -1,26 +1,9 @@
 #App {
-  width: 1024px;
-  height: 860px;
+  width: 100%;
+  height: 100%;
   background-color: #181818;
+  margin: 0 0 0 0;
+  position: absolute;
 }
-.gig-col-n{
-	margin-left: 30px;
-	width: 55px;
-	height: 790px;
-}
-.gig-col-i{
-	margin-left: 15px;
-	width: 55px;
-	height: 790px;
-}
-.gig-col-r{
-	margin-left: 30px;
-	width: 55px;
-	margin-right: 15px;
-	height: 790px;
-}
-.gig-enc{
-	width: 1024px;
-	height: 70px;
-}
+
 

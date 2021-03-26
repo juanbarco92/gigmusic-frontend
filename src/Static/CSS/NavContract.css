@@ -1,11 +1,9 @@
 #NavContract{
-	width: 103px;
- 	height: 860px;
+	max-width: 103px;
  	margin: 0 1px 0 0;
  	padding: 23px 0px 23.1px 31px;
  	box-shadow: -5px -5px 12px 0 #181818;
  	background-color: #121212;
- 	flex: 0 0 auto;
 }
 #LogoContract{
 	width: 40px;
@@ -75,13 +73,4 @@
     * {
         all: unset;
     }
-}
-.container{
-	padding: 0 0 0 0;
-}
-.col{
-	padding: 0 0 0 0;
-}
-.row{
-	padding: 0 0 0 0;
 }

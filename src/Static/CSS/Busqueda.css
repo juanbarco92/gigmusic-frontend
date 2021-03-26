@@ -1,7 +1,7 @@
 #Search-container{
 	margin: 0 0 0 0px;
-	padding: 32px 0 10px 25px;
-	background-color: #181818;
+	padding: 15px 0 10px 25px;
+	background-color: transparent;
 	color: #b3b3b3;
 	border-bottom: solid 1px #b3b3b3;
 }
@@ -19,16 +19,17 @@
 	background-color: transparent;
 	color: currentColor;
 	border: none;
+	border-radius: 100px;
+}
+#searc-bar: focus{
+	background-color: transparent;
+	color: currentColor;
+}
+#searc-bar: active{
+	background-color: transparent;
+	color: currentColor;
 }
 .link-react{
 	color: currentColor;
 	cursor: default;
-}
-.row{
-	margin: 0 0 0 0;
-	padding: 0 0 0 0;
-}
-.col{
-	margin: 0 0 0 0;
-	padding: 0 0 0 0;
 }

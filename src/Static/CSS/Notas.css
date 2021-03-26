@@ -1,26 +1,7 @@
 #Acordes{
-    color: #b3b3b3;
+    color: #f24405;
     background-color: transparent;
-}
-#AcordeBt{
-    color: rgb(14, 61, 131);
-    background-color: transparent;
-    font-family: Verdana;
-    border: none;
-    padding: 0;
-    outline: none;
-    margin: 0;
-    cursor: default;
-    padding-top: 10px;
-    text-align: center;
-}
-#AcordeBt:focus{
-    outline: none;
-    background: transparent;
-    background-color: whitegray;
-}
-#AcordeBt:Hover{
-    background-color: rgb(226, 154, 46);
+    overflow-x: hidden;
 }
 #Letra{
     font-family: Verdana;
@@ -29,11 +10,4 @@
     text-shadow: 1px;
     margin-bottom: 5mm;
 }
-.row{
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-}
-.col{
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-}
+
