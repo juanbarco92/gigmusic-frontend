@@ -1,9 +1,10 @@
 #NavExpand{
 	max-width: 240px;
- 	margin: 0 0px 0 0;
+	height: 100vh;
+ 	margin: 0 0 0 0;
  	color: #b3b3b3;
  	font-family: Roboto;
- 	padding: 28px 0px 27px 0;
+ 	padding: 28px 0px 27px 0px;
  	background-color: #121212;
 }
 #LogoExpand{

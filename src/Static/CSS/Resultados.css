@@ -1,12 +1,24 @@
 #Resultados-container{
 	color: #b3b3b3;
-    background-color: transparent;
+    background-color: #181818;
 }
-.row{
-	margin: 0 0 0 0;
-	padding: 0 0 0 0;
+.link-react{
+	color: currentColor;
+	background-color: transparent;
 }
-.col{
-	margin: 0 0 0 0;
-	padding: 0 0 0 0;
+.link-react:link{
+	color: #f24405;
+	text-decoration: none;
+}
+.link-react:hover{
+	color: #f24405;
+}
+.link-react:active{
+	color: #f24405;
+}
+.list-search{
+	width: 100%;
+	display: block;
+	background-color: transparent;
+	color: currentColor;
 }

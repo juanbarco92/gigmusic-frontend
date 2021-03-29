@@ -1,0 +1,38 @@
+#MusicNav-Container{
+	max-width: 210px;
+	height: 100vh;
+ 	margin: 0 0px 0 0;
+ 	font-family: Roboto;
+ 	padding: 28px 0px 27px 0;
+ 	float: right;
+}
+#scroll-btn{
+	float: right;
+}
+#acordes-btn{
+	float: right;
+}
+.custom-control-input:focus ~ .custom-control-label::before {
+	border-color: #f24405 !important;
+	box-shadow:	0 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+	border-color: #f24405 !important;
+	background-color: #f24405 !important;
+}
+.custom-control-input:not(:checked) ~ .custom-control-label::before {
+	border-color: #b3b3b3 !important;
+	background-color: #404040 !important;
+}
+.custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
+	border-color: #b3b3b3 !important;
+	background-color: #404040;
+}
+.custom-control-input:checked ~ .custom-control-label::after {
+	border-color: #f24405 !important;
+	background-color: #181818 !important;
+}
+.custom-control-input:not(:checked) ~ .custom-control-label::after {
+	border-color: #b3b3b3 !important;
+	background-color: #b3b3b3 !important;
+}

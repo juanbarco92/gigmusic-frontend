@@ -7,6 +7,7 @@ import Busqueda from './Components/Busqueda'
 import Error404 from './Components/Error404'
 import NavExpand from './Components/NavExpand'
 import NavContract from './Components/NavContract'
+import MusicNav from './Components/MusicNav'
 import{
     BrowserRouter as Router,
     Switch,
@@ -18,9 +19,24 @@ function App() {
   const [searchData, setSearchData] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [colapsar, setColapsar] = useState(false)
+  const [scroll,setScroll] = useState(false)
+  const [acordes,setAcordes] = useState(false)
+
+  const styles = {
+    maxWidth : window.screen.width,
+    maxHeight : window.screen.height
+  }
 
   const Colapse = () => {
     setColapsar(!colapsar)
+  }
+
+  const Scrolling = () => {
+    setScroll(!scroll)
+  }
+
+  const MostrarAcordes = () => {
+    setAcordes(!acordes)
   }
 
 
@@ -30,33 +46,47 @@ function App() {
   }
 
   return (
-      <div className='container-fluid' id='App'>
+      <div className='container-fluid' id='App' style={styles}>
         <Router>
           <div className='row'>
-              {
-                colapsar ?
-                (
-                  <NavContract Colapse={Colapse}/>
-                )
-                :
-                (
-                  <NavExpand Colapse={Colapse}/>
-                )
-              }
+            {
+              colapsar ?
+              (
+                <NavContract Colapse={Colapse}/>
+              )
+              :
+              (
+                <NavExpand Colapse={Colapse}/>
+              )
+            }
             <div className='col'>
-              <Busqueda datos={datos}/>
               <Switch>
                 <Route path='/song/'>
-                      <Song/>
+                  <div className='row'>
+                    <div className='col'>
+                      <Busqueda datos={datos}/>
+                      <Song scroll={scroll} 
+                      acordes={acordes} 
+                      Scrolling={Scrolling} />
+                    </div>
+                    <div className='col' id='MusicNav'>
+                      <MusicNav scroll={scroll} 
+                      MostrarAcordes={MostrarAcordes}
+                      Scrolling={Scrolling} />
+                    </div>
+                  </div>
                 </Route>
                 <Route path='/search/'>
-                      <Resultados searchResults={searchResults}/>
+                  <Busqueda datos={datos}/>
+                  <Resultados searchResults={searchResults}/>
                 </Route>
                 <Route exact path='/'>
-                      <Inicio/>
+                  <Busqueda datos={datos}/>
+                  <Inicio/>
                 </Route>
                 <Route path='*'>
-                      <Error404/>
+                  <Busqueda datos={datos}/>
+                  <Error404/>
                 </Route>
               </Switch>
             </div>

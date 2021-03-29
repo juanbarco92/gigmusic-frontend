@@ -9,24 +9,23 @@ let hOff = 0
 
 function Song(props) {
 
+	const { scroll, Scrolling, acordes } = props
+
 	const {metadata, canción} = require('../JSongs/Jarabe De Palo - La Flaca.json');
 	//const {metadata, canción} = require('../JSongs/Andrés Cepeda-Canción Rota.json');
 	//const {metadata, canción} = require('../JSongs/andres_cepeda_cancion_rota.json');
 
 	document.title = 'GIG - ' + (metadata.canción ? (metadata.canción):(metadata.cancion))
+	const styles = {
+		maxHeight : window.screen.height
+	}
 
 	const estrofa = canción.map((item)=>({tipo: item.tipo, contenido: item.contenido}));
 
-	const [scroll,setScroll] = useState(false)
 	const [lineasRec,setLineasRec] = useState(0)
 	const [yOff,setYOff] = useState(0)
 	const finCancion = useRef(null)
 	const contenSong = useRef(null)
-
-	const scrollObjects = () => {
-		setLineasRec(yOff)
-		setScroll(!scroll)
-	}
 
 	const logicScroll = () => {
 		if(lineasRec + hOff <= finCancion.current.offsetTop){
@@ -37,7 +36,7 @@ function Song(props) {
 			})
 		}else{
 			clearTimeout(timer)
-			setScroll(false)
+			Scrolling()
 			setLineasRec(yOff)
 		}
 	}
@@ -45,7 +44,7 @@ function Song(props) {
 	const onScroll = () => {
 	    setYOff(contenSong.current.scrollTop)
 	    hOff = contenSong.current.offsetHeight
-  }
+  	}
 
 	useEffect(() => {
 		lineas = 0
@@ -54,12 +53,20 @@ function Song(props) {
 	},[estrofa])
 
   return (
-	  <div>
+	  <div style={styles}>
 	    	<div className='row' id='Song-Container'>
-
-	    		<div className='col mt-2' id='Chord-Container'>
-	    			<GuitarChord chordName='nota' frets={['x', 3, 0, 0, 1, 1]}/>
-	    		</div>
+	    		{
+	    			acordes ?
+	    			(
+	    				<div className='col mt-2' id='Chord-Container'>
+			    			<GuitarChord chordName='nota' frets={['x', 3, 0, 0, 1, 1]}/>
+			    		</div>
+	    			)
+	    			:
+	    			(
+	    				<span></span>
+	    			)
+	    		}
 
 		    	<div className='col mt-2' id='Cancion-Container'
 		    	ref={contenSong}
@@ -77,11 +84,13 @@ function Song(props) {
 		    			{
 	    					estrofa.map((item, index) =>(
 	    						<li className='list-group' key={index}>
-	    							<span className='h4 text-center' id='Intro-title'>{item.tipo}</span><br/>
+		    						<div id='Intro-title'>
+		    							<span className='h4 text-center'>{item.tipo}</span><br/>
+	    							</div>
 	    							<ul className='list-group'>
 	    								{
 			    							item.contenido.map((item, index) => (
-			    								<li className='list-group list-group-item-ligth' key={index}>
+			    								<li className='list-group' key={index}>
 													<Notas notas={item.notas} espacio={item.espacio} letra={item.letra}/>
 			    								</li>
 			    							))
@@ -94,33 +103,18 @@ function Song(props) {
 		    			</div>
 		    		</ul>
 		    	</div>
-
-		    	<div className='col'>
-		    		{
-			    		<div>
-			    			<button
-			    			className="cursor-pointer text-center" 
-			    			onClick={scrollObjects}
-			    			id='scroll-btn'>
-			    				<i className="fas fa-angle-double-down" id='icon-scroll'>
-			    				</i>
-			    			</button>
-			    			<div style={{display: 'none'}}>
-				    			{
-				    				scroll ?
-				    				(
-										timer = setTimeout(logicScroll, 20)
-				    				)
-				    				:
-				    				(
-				    					clearTimeout(timer)
-				    				)
-				    			}
-			    			</div>
-			    		</div>
-			    	}
-		    	</div>
-		    	
+    			<div style={{display: 'none'}}>
+	    			{
+	    				scroll ?
+	    				(
+							timer = setTimeout(logicScroll, 20)
+	    				)
+	    				:
+	    				(
+	    					clearTimeout(timer)
+	    				)
+	    			}
+    			</div>
 			</div>
 			<div className='row'>
 			</div>

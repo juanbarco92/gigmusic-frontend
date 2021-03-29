@@ -13,7 +13,7 @@ const Notas = (props) => {
   return (
     <div className='row'>
         <div className='col'>
-            <div className='row'>
+            <div className='row mt-3'>
                 <pre id='Acordes'>
                     {spacedNotes}
                 </pre>

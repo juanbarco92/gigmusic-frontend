@@ -1,6 +1,6 @@
 import React from 'react'
 import '../Static/CSS/Resultados.css'
-import{Link} from 'react-router-dom';
+import{NavLink} from 'react-router-dom';
 
 const Resultados = (props) => {
 
@@ -14,8 +14,8 @@ const Resultados = (props) => {
         	<ul className='list-group'>
         		{
         			searchResults.map((item, index )=> (
-        				<li className='list-group-item mt-3' key={index}>
-    	            		<Link to='/song'>{item}</Link>
+        				<li className='list-search mt-3' key={index}>
+    	            		<NavLink className='link-react' to='/song'>{item}</NavLink>
     	            	</li>
         			))	
                 }
