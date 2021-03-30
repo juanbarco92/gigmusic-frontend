@@ -52,38 +52,47 @@ function App() {
             {
               colapsar ?
               (
-                <NavContract Colapse={Colapse}/>
+                <div className='col-1 py-0' id='NavContract'>
+                  <NavContract Colapse={Colapse}/>
+                </div>
               )
               :
               (
-                <NavExpand Colapse={Colapse}/>
+                <div className='col-3 py-0' id='NavExpand'>
+                  <NavExpand Colapse={Colapse}/>
+                </div>
               )
             }
             <div className='col'>
               <Switch>
                 <Route path='/song/'>
                   <div className='row'>
+
                     <div className='col'>
                       <Busqueda datos={datos}/>
                       <Song scroll={scroll} 
                       acordes={acordes} 
                       Scrolling={Scrolling} />
                     </div>
-                    <div className='col' id='MusicNav'>
+
+                    <div className='col-3' id='MusicNav'>
                       <MusicNav scroll={scroll} 
                       MostrarAcordes={MostrarAcordes}
                       Scrolling={Scrolling} />
                     </div>
                   </div>
+
                 </Route>
                 <Route path='/search/'>
                   <Busqueda datos={datos}/>
                   <Resultados searchResults={searchResults}/>
                 </Route>
+
                 <Route exact path='/'>
                   <Busqueda datos={datos}/>
                   <Inicio/>
                 </Route>
+
                 <Route path='*'>
                   <Busqueda datos={datos}/>
                   <Error404/>

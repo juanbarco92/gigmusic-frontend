@@ -54,11 +54,11 @@ function Song(props) {
 
   return (
 	  <div style={styles}>
-	    	<div className='row' id='Song-Container'>
+	    	<div className='row justify-content-center' id='Song-Container'>
 	    		{
 	    			acordes ?
 	    			(
-	    				<div className='col mt-2' id='Chord-Container'>
+	    				<div className='col-5 col-auto mt-2' id='Chord-Container'>
 			    			<GuitarChord chordName='nota' frets={['x', 3, 0, 0, 1, 1]}/>
 			    		</div>
 	    			)
@@ -68,7 +68,7 @@ function Song(props) {
 	    			)
 	    		}
 
-		    	<div className='col mt-2' id='Cancion-Container'
+		    	<div className='col-5 col-auto mt-2' id='Cancion-Container'
 		    	ref={contenSong}
 		    	onScroll={onScroll}>
 
@@ -84,8 +84,10 @@ function Song(props) {
 		    			{
 	    					estrofa.map((item, index) =>(
 	    						<li className='list-group' key={index}>
-		    						<div id='Intro-title'>
-		    							<span className='h4 text-center'>{item.tipo}</span><br/>
+	    							<div className='row offset-1'>
+			    						<div className='col col-auto' id='Intro-title'>
+			    							<h4 className='text-center'>{item.tipo}</h4>
+		    							</div>
 	    							</div>
 	    							<ul className='list-group'>
 	    								{
@@ -117,6 +119,9 @@ function Song(props) {
     			</div>
 			</div>
 			<div className='row'>
+				<div className='col'>
+					hola
+				</div>
 			</div>
 		</div>
   );

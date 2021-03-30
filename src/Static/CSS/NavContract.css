@@ -1,10 +1,9 @@
 #NavContract{
-	max-width: 103px;
+	max-width: 104px;
 	height: 100vh;
- 	margin: 0 1px 0 0;
- 	padding: 23px 0px 23.1px 31px;
- 	box-shadow: -5px -5px 12px 0 #181818;
- 	background-color: #121212;
+ 	margin: 0 0 0 0;
+ 	padding: 23px 0px 23.1px 0px;
+ 	float: left;
 }
 #LogoContract{
 	width: 40px;
@@ -16,7 +15,6 @@
 	width: 24px;
 	height: 24px;
 	margin: 7px 42px 7px 11px;
-	fill: #b3b3b3;
 	object-fit: contain;
 }
 #Descubrir{
@@ -40,34 +38,8 @@
 #Expandir{
 	width: 21px;
 	height: 21px;
-	margin: 557px 44px 23.1px 11px;
+	margin: 62.5vh auto 10px auto;
 	object-fit: contain;
-}
-#btn-exp{
-	width: 21px;
-	height: 21px;
-}
-.gig-sel-nav{
-	width: 104px;
-	height: 38px;
-	margin: 0 0 0.8px;
-	padding: 7px 42px 7px 38px;
-	opacity: 0.5;
-	border-radius: 16px;
-	background-color: #181818;
-}
-.link-react{
-	color: currentColor;
-}
-.link-react:link{
-	color: #f24405;
-	text-decoration: none;
-}
-.link-react:hover{
-	color: #f24405;
-}
-.link-react:active{
-	color: #f24405;
 }
 .reset-this {
     all: initial;

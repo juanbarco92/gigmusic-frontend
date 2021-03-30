@@ -2,23 +2,28 @@
 	color: #b3b3b3;
     background-color: #181818;
 }
-.link-react{
+.link-react-results{
 	color: currentColor;
 	background-color: transparent;
 }
-.link-react:link{
+.link-react-results:link{
 	color: #f24405;
 	text-decoration: none;
+	background-color: #121212;
 }
-.link-react:hover{
+.link-react-results:hover{
 	color: #f24405;
+	background-color: #121212;
 }
-.link-react:active{
+.link-react-results:active{
 	color: #f24405;
+	background-color: #121212;
 }
 .list-search{
 	width: 100%;
 	display: block;
-	background-color: transparent;
+	opacity: 0.5;
+	border-radius: 16px;
 	color: currentColor;
+	border: 0.5px solid #f24405;
 }

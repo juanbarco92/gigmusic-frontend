@@ -17,36 +17,52 @@ const NavContract = (props) => {
   	}
 
   return (
-    <div className='col' id='NavContract' style={styles}>
-			<div>
-				<img src={logo} alt='Gig' id='LogoContract'/>
+  	<div style={styles}>
+	  	<div className='row' id='NavContract'>
+	    	<div className='col'>
+				<div className='row'>
+				<div className='col'>
+					<img src={logo} alt='Gig' id='LogoContract'/>
+				</div>
+				</div>
+				<div className='row'>
+					<div className='col link-react-nav'>
+						<NavLink to='/' className='link-react' >
+							<Inicio id='Inicio'/>
+						</NavLink>
+					</div>
+				</div>
+				<div className='row'>
+					<div className='col link-react-nav'>
+						<NavLink to='/' className='link-react' >
+							<Descubrir id='Descubrir'/>
+						</NavLink>
+					</div>
+				</div>
+				<div className='row'>
+					<div className='col link-react-nav'>
+						<NavLink to='/' className='link-react'>
+							<Catalogo id='Catalogo'/>
+						</NavLink>
+					</div>
+				</div>
+				<div className='row'>
+					<div className='col link-react-nav'>
+						<NavLink to='/' className='link-react'>
+							<Ajustes id='Ajustes'/>
+						</NavLink>
+					</div>
+				</div>
+				<div className='row' id='Expandir'>
+					<div className='col'>
+						<button className='btn' onClick={Colapse}>
+							<Expandir/>
+						</button>
+					</div>
+				</div>
 			</div>
-			<div>
-				<NavLink to='/' className='link-react' >
-					<Inicio style={{fillColor: '#f24405'}} id='Inicio'/>
-				</NavLink>
-			</div>
-			<div>
-				<NavLink to='/' className='link-react' >
-					<Descubrir id='Descubrir'/>
-				</NavLink>
-			</div>
-			<div>
-				<NavLink to='/' className='link-react'>
-					<Catalogo id='Catalogo'/>
-				</NavLink>
-			</div>
-			<div>
-				<NavLink to='/' className='link-react'>
-					<Ajustes id='Ajustes'/>
-				</NavLink>
-			</div>
-			<div>
-				<button className='btn' onClick={Colapse} id='btn-exp'>
-					<Expandir id='Expandir'/>
-				</button>
-			</div>
-	</div>  	
+		</div> 
+	</div>   	
   );
 }
 

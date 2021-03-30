@@ -14,8 +14,12 @@ const Resultados = (props) => {
         	<ul className='list-group'>
         		{
         			searchResults.map((item, index )=> (
-        				<li className='list-search mt-3' key={index}>
-    	            		<NavLink className='link-react' to='/song'>{item}</NavLink>
+        				<li className='list-search link-react-results mt-3' key={index}>
+    	            		<NavLink className='link-react' to='/song'>
+                                <p className='text-center'>
+                                    {item}
+                                </p>
+                            </NavLink>
     	            	</li>
         			))	
                 }

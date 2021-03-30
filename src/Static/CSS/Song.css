@@ -7,7 +7,7 @@
 }
 #Cancion-Container{
 	overflow-y: scroll;
-	max-height: 800px;/*800px*/
+	max-height: 80vh;/*800px*/
 }
 #Cancion-Container::-webkit-scrollbar {
     width: 0;
@@ -16,7 +16,6 @@
 #Intro-title{
     font-family: Verdana;
     color: #4ed0e5;
-    max-width: 100px;
     background-color: transparent;
     border: solid 1px #4ed0e5;
     border-radius: 100px;

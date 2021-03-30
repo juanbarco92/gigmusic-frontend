@@ -8,8 +8,8 @@
 #icon-search{
 	width: 20px;
 	height: 20px;
-	margin: 0 24px 27px 49px;
-	padding: 0 10px 0 0;
+	padding: 0 0 0 0;
+	margin-right: 20px;
 	object-fit: contain;
 }
 #search-button{
@@ -19,17 +19,31 @@
 	background-color: transparent;
 	color: currentColor;
 	border: none;
-	border-radius: 100px;
+	box-shadow: 0 0 0 0;
 }
 #searc-bar: focus{
 	background-color: transparent;
 	color: currentColor;
+	border: none;
+	box-shadow: 0 0 0 0;
 }
 #searc-bar: active{
 	background-color: transparent;
 	color: currentColor;
+	border: none;
+	box-shadow: 0 0 0 0;
 }
-.link-react{
-	color: currentColor;
-	cursor: default;
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+{
+	-webkit-text-fill-color: #b3b3b3 !important;
+	transition: background-color 5000s ease-in-out 0s;
 }
+/*
+	background-image: url('/home/gig-01/Documents/gigmusic/src/Static/Icons/search-icon.svg');
+	background-repeat: no-repeat;
+	background-position: 10px 10px;
+	padding-left: 40px;
+	background-size: 20px 20px;
+*/

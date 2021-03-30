@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import propTypes from 'prop-types'
 import {NavLink} from 'react-router-dom';
 import '../Static/CSS/Busqueda.css';
-import buscador from '../Static/Icons/search-icon.svg'
+import {ReactComponent as Buscador} from '../Static/Icons/search-icon.svg'
 
 const Busqueda = (props) => {
 	
@@ -19,23 +19,19 @@ const Busqueda = (props) => {
 		}
 	}
 
-	const bar = {
-		backgroundImage: `url(${buscador})`,
-		backgroundRepeat: 'no-repeat',
-		backgroundPosition: '10px 10px',
-		paddingLeft: '40px'
-	}
+
 
   return (
       <div className='row' id='Search-container'>
+      	<div className='col'>
 			<form className="input-group" id='Buscar'>
+				<Buscador className='align-self-center' id='icon-search'/>
 				<input type="search" 
-					className="form-control"
-					style={bar}
+					className="form-control align-self-center"
 					id='search-bar' 
 					value={search}
 					required='required' 
-					placeholder="Seacrh"
+					placeholder="Search"
 					onChange={onSearch}
 					onSubmit={() => submit(search)}/>
 				<div className="input-group-append">
@@ -46,7 +42,7 @@ const Busqueda = (props) => {
 					</NavLink>
 				</div>
 			</form>
-		
+		</div>
       </div>
   );
 }

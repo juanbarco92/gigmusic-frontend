@@ -20,44 +20,66 @@ const NavExpand = (props) => {
   	}
 
   return (
-	<div className='col' id='NavExpand' style={styles}>
-			<div>
-				<img src={logo} alt='Gig' id='LogoExpand'/>
+  	<div style={styles}>
+		<div className='row' id='NavExpand'>
+			<div className='col'>
+				<div className='row'>
+					<div className='col'>
+						<img src={logo} alt='Gig' id='LogoExpand'/>
+					</div>
+				</div>
+				<div className='row'>
+					<div className='col link-react-nav'>
+						<NavLink to='/' className='link-react' >
+							<Inicio id='Inicio'/>
+							<span>Inicio</span>
+						</NavLink>
+					</div>
+				</div>
+				<div className='row'>
+					<div className='col link-react-nav'>
+						<NavLink to='/' className='link-react' >
+							<Descubrir id='Descubrir'/>
+							<span>Descubrir</span>
+						</NavLink>
+					</div>
+				</div>
+				<div className='row'>
+					<div className='col link-react-nav'>
+						<NavLink to='/' className='link-react'>
+							<Catalogo id='Catalogo'/>
+							<span>Catálogo</span>
+						</NavLink>
+					</div>
+				</div>
+				<div className='row'>
+					<div className='col link-react-nav'>
+						<NavLink to='/' className='link-react'>
+							<Ajustes id='Ajustes'/>
+							<span>Ajustes</span>
+						</NavLink>
+					</div>
+				</div>
+				<div className='row align-items-center justify-content-around'>
+					<div className='col-4 text-center'>
+						<Facebook id='facebook'/>
+					</div>
+					<div className='col-4 text-center'>
+						<Youtube id='youtube'/>
+					</div>
+					<div className='col-4 text-center'>
+						<Instagram id='instagram'/>
+					</div>
+				</div>
+				<div className='row'>
+					<div className='col' id='Contraer'>
+					<button className='btn' onClick={Colapse}>
+						<Contraer/>
+					</button>
+					</div>
+				</div>
 			</div>
-			<div>
-				<NavLink to='/' className='link-react' >
-					<Inicio style={{fillColor: '#f24405'}} id='Inicio'/>
-					Inicio
-				</NavLink>
-			</div>
-			<div>
-				<NavLink to='/' className='link-react' >
-					<Descubrir id='Descubrir'/>
-					Descubrir
-				</NavLink>
-			</div>
-			<div>
-				<NavLink to='/' className='link-react'>
-					<Catalogo id='Catalogo'/>
-					Catálogo
-				</NavLink>
-			</div>
-			<div>
-				<NavLink to='/' className='link-react'>
-					<Ajustes id='Ajustes'/>
-					Ajustes
-				</NavLink>
-			</div>
-			<div>
-				<Facebook id='facebook'/>
-				<Youtube id='youtube'/>
-				<Instagram id='instagram'/>
-			</div>
-			<div>
-				<button className='btn' onClick={Colapse} id='btn-cont'>
-					<Contraer id='Contraer'/>
-				</button>
-			</div>
+		</div> 
 	</div>  	
   );
 }

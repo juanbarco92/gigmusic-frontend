@@ -1,16 +1,30 @@
 #MusicNav-Container{
 	max-width: 210px;
 	height: 100vh;
- 	margin: 0 0px 0 0;
+ 	margin: 0 0 0 0;
  	font-family: Roboto;
- 	padding: 28px 0px 27px 0;
  	float: right;
 }
-#scroll-btn{
-	float: right;
+.tono{
+	color: #b3b3b3 !important;
+	background-color: transparent;
+	border: 0.5px;
+	border-color: #b3b3b3 !important;
+	box-shadow: 0 0 0 0 !important;
 }
-#acordes-btn{
-	float: right;
+.tono:hover{
+	color: #f24405;
+	border-color: #b3b3b3;
+	border: 0.5px;
+	background-color: #f24405;
+	box-shadow: 0 0 0 0 !important;
+}
+.tono:active{
+	color: #f24405;
+	border-color: #b3b3b3;
+	border: 0.5px;
+	background-color: #f24405;
+	box-shadow: 0 0 0 0 !important;
 }
 .custom-control-input:focus ~ .custom-control-label::before {
 	border-color: #f24405 !important;
