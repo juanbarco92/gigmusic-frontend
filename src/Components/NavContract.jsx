@@ -18,8 +18,8 @@ const NavContract = (props) => {
 
   return (
   	<div style={styles}>
-	  	<div className='row' id='NavContract'>
-	    	<div className='col'>
+	  	<div className='row justify-content-center w-100' id='NavContract'>
+	    	<div className='col-6'>
 				<div className='row'>
 				<div className='col'>
 					<img src={logo} alt='Gig' id='LogoContract'/>
@@ -53,7 +53,7 @@ const NavContract = (props) => {
 						</NavLink>
 					</div>
 				</div>
-				<div className='row' id='Expandir'>
+				<div className='row justify-content-center' id='Expandir'>
 					<div className='col'>
 						<button className='btn' onClick={Colapse}>
 							<Expandir/>

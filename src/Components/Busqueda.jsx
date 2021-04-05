@@ -25,7 +25,9 @@ const Busqueda = (props) => {
       <div className='row' id='Search-container'>
       	<div className='col'>
 			<form className="input-group" id='Buscar'>
-				<Buscador className='align-self-center' id='icon-search'/>
+				<div className='input-group-prepend'>
+					<Buscador className='align-self-center input-group-text' id='icon-search'/>
+				</div>
 				<input type="search" 
 					className="form-control align-self-center"
 					id='search-bar' 

@@ -6,6 +6,7 @@
 	color: #4ed0e5;
 }
 #Cancion-Container{
+    scrollbar-width: none;
 	overflow-y: scroll;
 	max-height: 80vh;/*800px*/
 }

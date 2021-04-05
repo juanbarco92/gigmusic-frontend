@@ -9,7 +9,8 @@
 	width: 20px;
 	height: 20px;
 	padding: 0 0 0 0;
-	margin-right: 20px;
+	background-color: transparent;
+	border: none;
 	object-fit: contain;
 }
 #search-button{
@@ -17,19 +18,19 @@
 }
 #search-bar{
 	background-color: transparent;
-	color: currentColor;
+	color: currentColor !important;
 	border: none;
 	box-shadow: 0 0 0 0;
 }
 #searc-bar: focus{
 	background-color: transparent;
-	color: currentColor;
+	color: currentColor !important;
 	border: none;
 	box-shadow: 0 0 0 0;
 }
 #searc-bar: active{
 	background-color: transparent;
-	color: currentColor;
+	color: currentColor !important;
 	border: none;
 	box-shadow: 0 0 0 0;
 }
@@ -39,6 +40,10 @@ input:-webkit-autofill:focus
 {
 	-webkit-text-fill-color: #b3b3b3 !important;
 	transition: background-color 5000s ease-in-out 0s;
+	caret-color: #b3b3b3 !important;
+}
+input[type="search"]::-webkit-search-cancel-button {
+	-webkit-appearance: none;
 }
 /*
 	background-image: url('/home/gig-01/Documents/gigmusic/src/Static/Icons/search-icon.svg');

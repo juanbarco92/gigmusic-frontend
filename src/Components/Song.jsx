@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react'
 import GuitarChord from 'react-guitar-chords'
 import Notas from './Notas'
+import Reproductor from './Reproductor'
 import '../Static/CSS/Song.css'
 
 let timer
@@ -9,23 +10,25 @@ let hOff = 0
 
 function Song(props) {
 
-	const { scroll, Scrolling, acordes } = props
+	const { scroll, Scrolling, acordes, songUrl, songInfo } = props
 
-	const {metadata, canción} = require('../JSongs/Jarabe De Palo - La Flaca.json');
+	const can = require('../JSongs/Jarabe De Palo - La Flaca.json')
 	//const {metadata, canción} = require('../JSongs/Andrés Cepeda-Canción Rota.json');
-	//const {metadata, canción} = require('../JSongs/andres_cepeda_cancion_rota.json');
-
-	document.title = 'GIG - ' + (metadata.canción ? (metadata.canción):(metadata.cancion))
-	const styles = {
-		maxHeight : window.screen.height
-	}
-
-	const estrofa = canción.map((item)=>({tipo: item.tipo, contenido: item.contenido}));
+  	//const {metadata, canción} = require('../JSongs/andres_cepeda_cancion_rota.json');
 
 	const [lineasRec,setLineasRec] = useState(0)
 	const [yOff,setYOff] = useState(0)
 	const finCancion = useRef(null)
 	const contenSong = useRef(null)
+
+	const styles = {
+		maxHeight : window.screen.height
+	}
+	const {metadata, canción} = can
+
+	document.title = 'GIG - ' + (metadata.canción ? (metadata.canción):(metadata.cancion))
+	const estrofa = canción.map((item)=>({tipo: item.tipo, contenido: item.contenido}));
+
 
 	const logicScroll = () => {
 		if(lineasRec + hOff <= finCancion.current.offsetTop){
@@ -50,7 +53,7 @@ function Song(props) {
 		lineas = 0
 		estrofa.map(item => lineas += parseInt(item.contenido.length))
 		lineas += estrofa.length 
-	},[estrofa])
+	},[estrofa, songInfo])
 
   return (
 	  <div style={styles}>
@@ -118,9 +121,9 @@ function Song(props) {
 	    			}
     			</div>
 			</div>
-			<div className='row'>
+			<div className='row mt-3'>
 				<div className='col'>
-					hola
+					<Reproductor />
 				</div>
 			</div>
 		</div>

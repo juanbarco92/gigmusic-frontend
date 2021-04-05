@@ -21,8 +21,8 @@ const NavExpand = (props) => {
 
   return (
   	<div style={styles}>
-		<div className='row' id='NavExpand'>
-			<div className='col'>
+		<div className='row justify-content-center w-100' id='NavExpand'>
+			<div className='col-8'>
 				<div className='row'>
 					<div className='col'>
 						<img src={logo} alt='Gig' id='LogoExpand'/>
@@ -32,7 +32,7 @@ const NavExpand = (props) => {
 					<div className='col link-react-nav'>
 						<NavLink to='/' className='link-react' >
 							<Inicio id='Inicio'/>
-							<span>Inicio</span>
+							<span className='ml-3'>Inicio</span>
 						</NavLink>
 					</div>
 				</div>
@@ -40,7 +40,7 @@ const NavExpand = (props) => {
 					<div className='col link-react-nav'>
 						<NavLink to='/' className='link-react' >
 							<Descubrir id='Descubrir'/>
-							<span>Descubrir</span>
+							<span className='ml-3'>Descubrir</span>
 						</NavLink>
 					</div>
 				</div>
@@ -48,7 +48,7 @@ const NavExpand = (props) => {
 					<div className='col link-react-nav'>
 						<NavLink to='/' className='link-react'>
 							<Catalogo id='Catalogo'/>
-							<span>Catálogo</span>
+							<span className='ml-3'>Catálogo</span>
 						</NavLink>
 					</div>
 				</div>
@@ -56,7 +56,7 @@ const NavExpand = (props) => {
 					<div className='col link-react-nav'>
 						<NavLink to='/' className='link-react'>
 							<Ajustes id='Ajustes'/>
-							<span>Ajustes</span>
+							<span className='ml-3'>Ajustes</span>
 						</NavLink>
 					</div>
 				</div>
@@ -71,8 +71,8 @@ const NavExpand = (props) => {
 						<Instagram id='instagram'/>
 					</div>
 				</div>
-				<div className='row'>
-					<div className='col' id='Contraer'>
+				<div className='row justify-content-end'>
+					<div className='col-4' id='Contraer'>
 					<button className='btn' onClick={Colapse}>
 						<Contraer/>
 					</button>

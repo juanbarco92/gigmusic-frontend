@@ -21,6 +21,10 @@ function App() {
   const [colapsar, setColapsar] = useState(false)
   const [scroll,setScroll] = useState(false)
   const [acordes,setAcordes] = useState(false)
+  const [songUrl,setSongUrl] = useState('')
+  const [songInfo,setSongInfo] = useState(null)
+
+  //const can = require('./JSongs/Jarabe De Palo - La Flaca.json')
 
   const styles = {
     maxWidth : window.screen.width,
@@ -39,10 +43,11 @@ function App() {
     setAcordes(!acordes)
   }
 
-
   const datos = (dato) =>{
     setSearchData(dato)
-    setSearchResults([dato, ...searchResults])
+    setSearchResults([dato, searchData, ...searchResults])
+    setSongUrl('')
+    setSongInfo(dato)
   }
 
   return (
@@ -72,6 +77,8 @@ function App() {
                       <Busqueda datos={datos}/>
                       <Song scroll={scroll} 
                       acordes={acordes} 
+                      songUrl={songUrl}
+                      songInfo={songInfo}
                       Scrolling={Scrolling} />
                     </div>
 
