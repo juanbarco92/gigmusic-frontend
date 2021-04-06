@@ -26,28 +26,28 @@ const NavContract = (props) => {
 				</div>
 				</div>
 				<div className='row'>
-					<div className='col link-react-nav'>
+					<div className='col link-react-nav inicio-nav'>
 						<NavLink to='/' className='link-react' >
 							<Inicio id='Inicio'/>
 						</NavLink>
 					</div>
 				</div>
 				<div className='row'>
-					<div className='col link-react-nav'>
+					<div className='col link-react-nav descubrir-nav'>
 						<NavLink to='/' className='link-react' >
 							<Descubrir id='Descubrir'/>
 						</NavLink>
 					</div>
 				</div>
 				<div className='row'>
-					<div className='col link-react-nav'>
+					<div className='col link-react-nav catalogo-nav'>
 						<NavLink to='/' className='link-react'>
 							<Catalogo id='Catalogo'/>
 						</NavLink>
 					</div>
 				</div>
 				<div className='row'>
-					<div className='col link-react-nav'>
+					<div className='col link-react-nav ajustes-nav'>
 						<NavLink to='/' className='link-react'>
 							<Ajustes id='Ajustes'/>
 						</NavLink>

@@ -57,13 +57,13 @@ input[type=range] {
   width: 100%;
   margin-bottom: 10px;
   border-radius: 8px;
-  background: #b3b3b3;
+  background: #f24405;
   transition: background 0.2s ease;
   cursor: pointer;
 }
 input[type='range']::-webkit-slider-runnable-track {
   -webkit-appearance: none;
-  color: #f24405;
+  color: #ffffff;
 }
 
 input[type='range']::-webkit-slider-thumb {
@@ -71,5 +71,12 @@ input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   border-radius: 100%;
   height: 10px;
-  background: #f24405;
+  background: #ffffff;
+}
+.vol{
+  width: 20px;
+  height: 20px;
+}
+.vol path{
+  fill: #b3b3b3;
 }

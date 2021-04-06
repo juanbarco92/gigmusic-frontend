@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import AudioControls from './AudioControls'
-import Backdrop from './Backdrop'
+import { ReactComponent as VolOn } from '../Static/Icons/Reproductor/volume-on.svg';
+import { ReactComponent as VolOff } from '../Static/Icons/Reproductor/volume-off.svg';
 import '../Static/CSS/Reproductor.css'
 
 const Reproductor = (props) => {
@@ -11,17 +12,16 @@ const Reproductor = (props) => {
       {
         title: 'La Flaca',
         artist: 'Jarabe de palo',
-        audioSrc: 'http://developer.mozilla.org/@api/deki/files/2926/=AudioTest_(1).ogg',
-        image: 'https://i.musicaimg.com/discos/200/25553.jpg',
-        color: '#0000FF',
+        audioSrc: 'https://actions.google.com/sounds/v1/science_fiction/robot_code.ogg',
       },
     ]
 
     const [trackIndex, setTrackIndex] = useState(0)
     const [trackProgress, setTrackProgress] = useState(0)
     const [isPlaying, setIsPlaying] = useState(false)
+    const [isVolZero, setIsVolZero] = useState(false)
 
-    const { title, artist, color, image, audioSrc } = tracks[trackIndex]
+    const { title, artist, audioSrc } = tracks[trackIndex]
 
 
     // Refs
@@ -34,7 +34,10 @@ const Reproductor = (props) => {
 
     const currentPercentage = duration ? `${(trackProgress / duration) * 100}%` : '0%'
     const trackStyling = `
-    -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #fff), color-stop(${currentPercentage}, #777))`
+    -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #f24405), color-stop(${currentPercentage}, #404040))`
+
+    const volumeStyling = `
+    -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${audioRef.current.volume}, #f24405), color-stop(${audioRef.current.volume}, #404040))`
 
   const toPrevTrack = () => {
     if (trackIndex - 1 < 0) {
@@ -74,6 +77,11 @@ const onScrub = (value) => {
 
 const onVolume = (value) => {
   audioRef.current.volume = value
+  if (value == 0){
+    setIsVolZero(true)
+  }else{
+    setIsVolZero(false)
+  }
 }
 
 const onScrubEnd = () => {
@@ -120,46 +128,46 @@ useEffect(() => {
   return (
     <div className='Audio-container'>
       <div className="audio-player">
-      <div className="track-info">
-        <img
-          className="artwork"
-          src={image}
-          alt={`track artwork for ${title} by ${artist}`}
+        <div className="track-info">
+          <h2 className="title">{title}</h2>
+          <h3 className="artist">{artist}</h3>
+          <AudioControls
+            isPlaying={isPlaying}
+            onPrevClick={toPrevTrack}
+            onNextClick={toNextTrack}
+            onPlayPauseClick={setIsPlaying}
+          />
+           <input
+          type="range"
+          value={trackProgress}
+          step="1"
+          min="0"
+          max={duration ? duration : `${duration}`}
+          className="progress"
+          onChange={(e) => onScrub(e.target.value)}
+          onMouseUp={onScrubEnd}
+          onKeyUp={onScrubEnd}
+          style={{ background: trackStyling }}
         />
-        <h2 className="title">{title}</h2>
-        <h3 className="artist">{artist}</h3>
-        <AudioControls
-          isPlaying={isPlaying}
-          onPrevClick={toPrevTrack}
-          onNextClick={toNextTrack}
-          onPlayPauseClick={setIsPlaying}
-        />
-         <input
-        type="range"
-        value={trackProgress}
-        step="1"
-        min="0"
-        max={duration ? duration : `${duration}`}
-        className="progress"
-        onChange={(e) => onScrub(e.target.value)}
-        onMouseUp={onScrubEnd}
-        onKeyUp={onScrubEnd}
-        style={{ background: trackStyling }}
-      />
-        <input 
-        type="range"
-        step="0.1"
-        min="0"
-        max='1'
-        className="volume"
-        onChange={(e) => onVolume(e.target.value)}
-        />
-      </div>
-      <Backdrop
-        trackIndex={trackIndex}
-        activeColor={color}
-        isPlaying={isPlaying}
-      />
+          <div className='row'>
+            <div className='col-auto'>
+            {
+              isVolZero ? <VolOff className='vol' /> : <VolOn className='vol' /> 
+            }
+            </div>
+            <div className='col'>
+              <input 
+              type="range"
+              step="0.1"
+              min="0"
+              max='1'
+              className="volume"
+              onChange={(e) => onVolume(e.target.value)}
+              style={{ background: volumeStyling }}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

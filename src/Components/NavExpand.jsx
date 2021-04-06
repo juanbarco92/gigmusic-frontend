@@ -29,7 +29,7 @@ const NavExpand = (props) => {
 					</div>
 				</div>
 				<div className='row'>
-					<div className='col link-react-nav'>
+					<div className='col link-react-nav inicio-nav'>
 						<NavLink to='/' className='link-react' >
 							<Inicio id='Inicio'/>
 							<span className='ml-3'>Inicio</span>
@@ -37,7 +37,7 @@ const NavExpand = (props) => {
 					</div>
 				</div>
 				<div className='row'>
-					<div className='col link-react-nav'>
+					<div className='col link-react-nav descubrir-nav'>
 						<NavLink to='/' className='link-react' >
 							<Descubrir id='Descubrir'/>
 							<span className='ml-3'>Descubrir</span>
@@ -45,15 +45,15 @@ const NavExpand = (props) => {
 					</div>
 				</div>
 				<div className='row'>
-					<div className='col link-react-nav'>
-						<NavLink to='/' className='link-react'>
+					<div className='col link-react-nav catalogo-nav'>
+						<NavLink to='/' className='link-react InicioNav'>
 							<Catalogo id='Catalogo'/>
 							<span className='ml-3'>Catálogo</span>
 						</NavLink>
 					</div>
 				</div>
 				<div className='row'>
-					<div className='col link-react-nav'>
+					<div className='col link-react-nav ajustes-nav'>
 						<NavLink to='/' className='link-react'>
 							<Ajustes id='Ajustes'/>
 							<span className='ml-3'>Ajustes</span>

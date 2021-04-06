@@ -94,3 +94,25 @@
 	color: #f24405;
 	background-color: transparent;
 }
+.inicio-nav:hover path:nth-of-type(2){
+	fill: #f24405;
+}
+.descubrir-nav:hover g{
+	fill: #f24405;
+	stroke: #f24405;
+}
+.catalogo-nav:hover path:nth-of-type(1){
+	fill: #f24405;
+}
+.ajustes-nav:hover g:nth-of-type(1){
+	stroke: #f24405;
+}
+#instagram:hover path{
+	fill: #dd2b7b;
+}
+#facebook:hover path{
+	fill: #3b5998;
+}
+#youtube:hover path{
+	fill: #c4302b;
+}
