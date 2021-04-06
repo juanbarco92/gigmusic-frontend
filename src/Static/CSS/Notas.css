@@ -1,0 +1,13 @@
+#Acordes{
+    color: #f24405;
+    background-color: transparent;
+    overflow-x: hidden;
+}
+#Letra{
+    font-family: Verdana;
+    color: #b3b3b3;
+    background-color: transparent;
+    text-shadow: 1px;
+    margin-bottom: 5mm;
+}
+

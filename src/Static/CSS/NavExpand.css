@@ -1,0 +1,118 @@
+#NavExpand{
+	max-width: 240px;
+	height: 100vh;
+ 	margin: 0 0 0 0;
+ 	font-family: Roboto;
+ 	padding: 28px 0px 27px 0px;
+ 	float: left;
+}
+#LogoExpand{
+	width: 56px;
+ 	height: 40px;
+ 	margin: 28px 0px 28px 0px;
+ 	object-fit: contain;
+}
+#Inicio{
+	width: 24px;
+	height: 24px;
+	margin: 7px 0px 7px 0px;
+	color: #b3b3b3;
+	object-fit: contain;
+}
+#Descubrir{
+	width: 16px;
+	height: 16px;
+	margin: 7px 0px 7px 0px;
+	object-fit: contain;
+}
+#Catalogo{
+	width: 20px;
+	height: 20px;
+	margin: 7px 0px 7px 0px;
+	object-fit: contain;
+}
+#Ajustes{
+	width: 18px;
+	height: 18px;
+	margin: 7px 0px 7px 0px;
+	object-fit: contain;
+}
+#facebook{
+	width: 19.5px;
+	height: 19px;
+	margin-top: 40vh;
+}
+#youtube{
+	width: 27px;
+	height: 19px;
+	margin-top: 40vh;
+}
+#instagram{
+	width: 20px;
+	height: 19px;
+	margin-top: 40vh;
+}
+#Contraer{
+	width: 21px;
+	height: 21px;
+	margin: 20vh 0px 10px 9vw;
+	object-fit: contain;
+}
+.link-react{
+	color: currentColor;
+	background-color: transparent;
+}
+.link-react:link{
+	color: #f24405;
+	text-decoration: none;
+	background-color: transparent;
+}
+.link-react:hover{
+	color: #f24405;
+	background-color: transparent;
+}
+.link-react:active{
+	color: #f24405;
+	background-color: transparent;
+}
+.link-react-nav{
+	color: currentColor;
+	background-color: transparent;
+}
+.link-react-nav:link{
+	color: #f24405;
+	text-decoration: none;
+	background-color: transparent;
+}
+.link-react-nav:hover{
+	color: #f24405;
+	background-color: #181818;
+	border-radius: 16px;
+	border: 0.5px solid #f24405;
+}
+.link-react-nav:active{
+	color: #f24405;
+	background-color: transparent;
+}
+.inicio-nav:hover path:nth-of-type(2){
+	fill: #f24405;
+}
+.descubrir-nav:hover g{
+	fill: #f24405;
+	stroke: #f24405;
+}
+.catalogo-nav:hover path:nth-of-type(1){
+	fill: #f24405;
+}
+.ajustes-nav:hover g:nth-of-type(1){
+	stroke: #f24405;
+}
+#instagram:hover path{
+	fill: #dd2b7b;
+}
+#facebook:hover path{
+	fill: #3b5998;
+}
+#youtube:hover path{
+	fill: #c4302b;
+}

@@ -1,0 +1,49 @@
+#NavContract{
+	max-width: 104px;
+	height: 100vh;
+ 	margin: 0 0 0 0;
+ 	padding: 23px 0px 23.1px 0px;
+ 	float: left;
+}
+#LogoContract{
+	width: 40px;
+ 	height: 40px;
+ 	margin: 23px 0 33px 0px;
+ 	object-fit: contain;
+}
+#Inicio{
+	width: 24px;
+	height: 24px;
+	margin: 7px 0px 7px 0px;
+	object-fit: contain;
+}
+#Descubrir{
+	width: 16px;
+	height: 16px;
+	margin: 7px 0px 7px 0px;
+	object-fit: contain;
+}
+#Catalogo{
+	width: 20px;
+	height: 20px;
+	margin: 7px 0px 7px 0px;
+	object-fit: contain;
+}
+#Ajustes{
+	width: 18px;
+	height: 18px;
+	margin: 7px 0px 7px 0px;
+	object-fit: contain;
+}
+#Expandir{
+	width: 21px;
+	height: 21px;
+	margin: 62.5vh 0 10px 0;
+	object-fit: contain;
+}
+.reset-this {
+    all: initial;
+    * {
+        all: unset;
+    }
+}

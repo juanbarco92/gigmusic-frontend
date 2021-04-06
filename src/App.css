@@ -1,0 +1,22 @@
+#App {
+	background-color: #181818;
+	position: absolute;
+}
+#MusicNav{
+	max-width: 210px;
+ 	float: right;
+ 	color: #b3b3b3;
+ 	background-color: #121212;
+}
+#NavContract{
+	max-width: 103px;
+	float: left;
+	color: #b3b3b3;
+	background-color: #121212;
+}
+#NavExpand{
+	max-width: 240px;
+	float: left;
+	color: #b3b3b3;
+	background-color: #121212;
+}
