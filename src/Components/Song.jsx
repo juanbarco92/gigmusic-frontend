@@ -52,7 +52,12 @@ function Song(props) {
 	useEffect(() => {
 		lineas = 0
 		estrofa.map(item => lineas += parseInt(item.contenido.length))
-		lineas += estrofa.length 
+		lineas += estrofa.length
+		if (scroll){
+			timer = setTimeout(logicScroll, 20)
+		}else{
+			clearTimeout(timer)
+		}
 	},[estrofa, songInfo])
 
   return (
@@ -62,7 +67,7 @@ function Song(props) {
 	    			acordes ?
 	    			(
 	    				<div className='col-5 col-auto mt-2' id='Chord-Container'>
-			    			<GuitarChord chordName='nota' frets={['x', 3, 0, 0, 1, 1]}/>
+			    			<GuitarChord className='acordes-svg' chordName='nota' frets={['x', 3, 0, 0, 1, 1]}/>
 			    		</div>
 	    			)
 	    			:
@@ -108,18 +113,6 @@ function Song(props) {
 		    			</div>
 		    		</ul>
 		    	</div>
-    			<div style={{display: 'none'}}>
-	    			{
-	    				scroll ?
-	    				(
-							timer = setTimeout(logicScroll, 20)
-	    				)
-	    				:
-	    				(
-	    					clearTimeout(timer)
-	    				)
-	    			}
-    			</div>
 			</div>
 			<div className='row mt-3'>
 				<div className='col'>

@@ -3,12 +3,12 @@
 	color: #b3b3b3;
 }
 #Chord-Container{
-	color: #4ed0e5;
+	color: #b3b3b3;
 }
 #Cancion-Container{
     scrollbar-width: none;
 	overflow-y: scroll;
-	max-height: 65vh;/*800px*/
+	max-height: 72vh;/*800px*/
 }
 #Cancion-Container::-webkit-scrollbar {
     width: 0;
@@ -21,4 +21,19 @@
     border: solid 1px #4ed0e5;
     border-radius: 100px;
     text-align: center;
+}
+#Chord-Container svg line{
+    stroke: #a9a9a9 !important;
+    fill: #a9a9a9 !important;
+}
+#Chord-Container svg circle{
+    fill: #f24405 !important;
+    stroke: #a9a9a9 !important;
+}
+#Chord-Container svg text{
+    fill: #f24405 !important;
+    stroke: #f24405 !important;
+}
+#Chord-Container button{
+    color: #a9a9a9 !important;
 }

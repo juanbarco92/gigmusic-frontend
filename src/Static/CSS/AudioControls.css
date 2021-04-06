@@ -1,20 +1,22 @@
 .audio-controls {
   display: flex;
   justify-content: space-between;
-  width:  75%;
+  width:  50%;
   margin: 0 auto 15px;
 }
 
 .audio-controls .prev svg,
 .audio-controls .next svg {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
+  margin: auto !important;
 }
 
 .audio-controls .play svg,
 .audio-controls .pause svg {
   height: 40px;
   width: 40px;
+  margin: 0 5% 0 5% !important; 
 }
 
 .audio-controls path {

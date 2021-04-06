@@ -1,16 +1,5 @@
-:root {
-  --white: #fff;
-  --active-color: #00aeb0;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 html {
   font-family: Arial, Helvetica, sans-serif;
-  height: 100%;
-  background: var(--active-color);
   transition: background 0.4s ease;
 }
 
@@ -20,20 +9,11 @@ button {
   cursor: pointer;
 }
 .audio-player {
-  max-width: 350px;
+  max-width: 100%;
   border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
   margin: auto;
-  color: var(--white);
-}
-
-.artwork {
-  border-radius: 120px;
-  display: block;
-  margin: auto;
-  height: 200px;
-  width: 200px;
+  color: #b3b3b3;
 }
 
 .track-info {
@@ -51,7 +31,7 @@ button {
   font-weight: 300;
   margin-top: 0;
 }
-input[type=range] {
+input[type='range'] {
   height: 5px;
   -webkit-appearance: none;
   width: 100%;
