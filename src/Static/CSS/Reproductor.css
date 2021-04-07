@@ -10,10 +10,10 @@ button {
 }
 .audio-player {
   max-width: 100%;
-  border-radius: 20px;
   padding: 24px;
   margin: auto;
   color: #b3b3b3;
+  background: #282828;
 }
 
 .track-info {
@@ -29,7 +29,6 @@ button {
 
 .artist {
   font-weight: 300;
-  margin-top: 0;
 }
 input[type='range'] {
   height: 5px;

@@ -50,7 +50,18 @@ const Reproductor = (props) => {
       }
     }
 
-    const startTimer = () => {
+    const toNextTrack = React.useCallback(() => {
+      audioRef.current.currentTime = '0'
+      if (trackIndex < tracks.length - 1) {
+        setTrackIndex(trackIndex + 1)
+        setIsPlaying(true)
+      } else {
+        setTrackIndex(0)
+        setIsPlaying(false)
+      }
+    },[trackIndex, tracks.length])
+
+    const startTimer = React.useCallback(() => {
       // Clear any timers already running
       clearInterval(intervalRef.current)
       intervalRef.current = setInterval(() => {
@@ -60,18 +71,7 @@ const Reproductor = (props) => {
           setTrackProgress(audioRef.current.currentTime);
         }
       }, [1000])
-    }
-
-    const toNextTrack = () => {
-      audioRef.current.currentTime = '0'
-      if (trackIndex < tracks.length - 1) {
-        setTrackIndex(trackIndex + 1)
-        setIsPlaying(true)
-      } else {
-        setTrackIndex(0)
-        setIsPlaying(false)
-      }
-    }
+    },[toNextTrack])
 
     const onScrub = (value) => {
       // Clear any timers already running
@@ -116,7 +116,7 @@ const Reproductor = (props) => {
       } else {
         audioRef.current.pause()
       }
-    }, [isPlaying])
+    }, [isPlaying, startTimer])
 
     useEffect(() => {
       // Pause and clean up on unmount
@@ -140,7 +140,7 @@ const Reproductor = (props) => {
         // Set the isReady ref as true for the next pass
         isReady.current = true
       }
-    }, [trackIndex, audioSrc])
+    }, [trackIndex, audioSrc, startTimer])
 
   return (
     <div className='audio-player'>

@@ -30,7 +30,7 @@ function Song(props) {
 	const estrofa = canción.map((item)=>({tipo: item.tipo, contenido: item.contenido}));
 
 
-	const logicScroll = () => {
+	const logicScroll = React.useCallback(() => {
 		if(lineasRec + hOff <= finCancion.current.offsetTop){
 			setLineasRec(yOff + (finCancion.current.offsetTop)/(lineas*50))
 			document.getElementById('Cancion-Container').scrollTo({ 
@@ -42,10 +42,16 @@ function Song(props) {
 			Scrolling()
 			setLineasRec(yOff)
 		}
-	}
+	},[Scrolling, yOff, lineasRec])
 
 	const onScroll = () => {
 	    setYOff(contenSong.current.scrollTop)
+	    hOff = contenSong.current.offsetHeight
+  	}
+
+  	const onWheel = (e) => {
+  		clearTimeout(timer)
+  		setYOff(contenSong.current.scrollTop + e.deltaY)
 	    hOff = contenSong.current.offsetHeight
   	}
 
@@ -58,27 +64,16 @@ function Song(props) {
 		}else{
 			clearTimeout(timer)
 		}
-	},[estrofa, songInfo])
+	},[estrofa, songInfo, scroll, logicScroll])
 
   return (
 	  <div style={styles}>
 	    	<div className='row justify-content-center' id='Song-Container'>
-	    		{
-	    			acordes ?
-	    			(
-	    				<div className='col-5 col-auto mt-2' id='Chord-Container'>
-			    			<GuitarChord className='acordes-svg' chordName='nota' frets={['x', 3, 0, 0, 1, 1]}/>
-			    		</div>
-	    			)
-	    			:
-	    			(
-	    				<span></span>
-	    			)
-	    		}
 
 		    	<div className='col-5 col-auto mt-2' id='Cancion-Container'
 		    	ref={contenSong}
-		    	onScroll={onScroll}>
+		    	onScroll={onScroll}
+		    	onWheel={(e) => onWheel(e)}>
 
 		    		<h3 id='artist'>Artista: {metadata.artista}</h3>
 		    		<h4 id='song'>Canción: {metadata.canción ? (metadata.canción):(metadata.cancion)}</h4>
@@ -113,9 +108,21 @@ function Song(props) {
 		    			</div>
 		    		</ul>
 		    	</div>
+		    	{
+	    			acordes ?
+	    			(
+	    				<div className='col-5 col-auto mt-2' id='Chord-Container'>
+			    			<GuitarChord className='acordes-svg' chordName='nota' frets={['x', 3, 0, 0, 1, 1]}/>
+			    		</div>
+	    			)
+	    			:
+	    			(
+	    				<span></span>
+	    			)
+	    		}
 			</div>
-			<div className='row mt-3'>
-				<div className='col'>
+			<div className='row mt-3' >
+				<div className='col' id='Reproductor-Container'>
 					<Reproductor />
 				</div>
 			</div>

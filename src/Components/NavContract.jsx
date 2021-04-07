@@ -26,37 +26,37 @@ const NavContract = (props) => {
 				</div>
 				</div>
 				<div className='row'>
-					<div className='col link-react-nav inicio-nav'>
-						<NavLink to='/' className='link-react' >
+					<NavLink to='/' className='link-react link-react-nav w-100' >
+						<div className='col-10 align-self-center inicio-nav'>
 							<Inicio id='Inicio'/>
-						</NavLink>
-					</div>
+						</div>
+					</NavLink>
 				</div>
 				<div className='row'>
-					<div className='col link-react-nav descubrir-nav'>
-						<NavLink to='/' className='link-react' >
+					<NavLink to='/' className='link-react link-react-nav w-100' >
+						<div className='col descubrir-nav'>
 							<Descubrir id='Descubrir'/>
-						</NavLink>
-					</div>
+						</div>
+					</NavLink>
 				</div>
 				<div className='row'>
-					<div className='col link-react-nav catalogo-nav'>
-						<NavLink to='/' className='link-react'>
+					<NavLink to='/' className='link-react link-react-nav w-100' >
+						<div className='col catalogo-nav'>
 							<Catalogo id='Catalogo'/>
-						</NavLink>
-					</div>
+						</div>
+					</NavLink>
 				</div>
 				<div className='row'>
-					<div className='col link-react-nav ajustes-nav'>
-						<NavLink to='/' className='link-react'>
+					<NavLink to='/' className='link-react link-react-nav w-100' >
+						<div className='col ajustes-nav'>
 							<Ajustes id='Ajustes'/>
-						</NavLink>
-					</div>
+						</div>
+					</NavLink>
 				</div>
-				<div className='row justify-content-center' id='Expandir'>
+				<div className='row justify-content-end' id='Expandir'>
 					<div className='col'>
 						<button className='btn' onClick={Colapse}>
-							<Expandir/>
+							<Expandir className='con-exp'/>
 						</button>
 					</div>
 				</div>

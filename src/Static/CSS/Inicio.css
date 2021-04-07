@@ -1,6 +1,26 @@
 #Inicio-container{
     color: #b3b3b3;
-    background-color: transparent;
-    max-height: 90%;
+    background: transparent;
+    max-height: 20vh;
 }
-
+.control-dots{
+	margin: 0 !important;
+	position: absolute !important;
+	top: 50% !important;
+}
+.control-dots:hover {
+	box-shadow: 2px 2px 3px #f24405 !important;
+}
+.control-dots:active {
+	box-shadow: 2px 2px 3px #f24405 !important;
+}
+.legend:hover {
+	background: #181818 !important;
+}
+.legend:active {
+	background: #181818 !important;
+}
+.legend {
+	background: #181818 !important;
+	color: #b3b3b3 !important;
+}

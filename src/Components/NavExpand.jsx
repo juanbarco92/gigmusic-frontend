@@ -24,41 +24,41 @@ const NavExpand = (props) => {
 		<div className='row justify-content-center w-100' id='NavExpand'>
 			<div className='col-8'>
 				<div className='row'>
-					<div className='col'>
+					<div className='col-10 align-self-center'>
 						<img src={logo} alt='Gig' id='LogoExpand'/>
 					</div>
 				</div>
-				<div className='row'>
-					<div className='col link-react-nav inicio-nav'>
-						<NavLink to='/' className='link-react' >
+				<div className='row justify-content-center'>
+					<NavLink to='/' className='link-react link-react-nav w-100' >
+						<div className='col-10 align-self-center inicio-nav'>
 							<Inicio id='Inicio'/>
 							<span className='ml-3'>Inicio</span>
-						</NavLink>
-					</div>
+						</div>
+					</NavLink>
 				</div>
-				<div className='row'>
-					<div className='col link-react-nav descubrir-nav'>
-						<NavLink to='/' className='link-react' >
+				<div className='row justify-content-center'>
+					<NavLink to='/' className='link-react link-react-nav w-100' >
+						<div className='col-10 align-self-center descubrir-nav'>
 							<Descubrir id='Descubrir'/>
 							<span className='ml-3'>Descubrir</span>
-						</NavLink>
-					</div>
+						</div>
+					</NavLink>
 				</div>
-				<div className='row'>
-					<div className='col link-react-nav catalogo-nav'>
-						<NavLink to='/' className='link-react InicioNav'>
+				<div className='row justify-content-center'>
+					<NavLink to='/' className='link-react link-react-nav w-100' >
+						<div className='col-10 align-self-center catalogo-nav'>
 							<Catalogo id='Catalogo'/>
 							<span className='ml-3'>Catálogo</span>
-						</NavLink>
-					</div>
+						</div>
+					</NavLink>
 				</div>
-				<div className='row'>
-					<div className='col link-react-nav ajustes-nav'>
-						<NavLink to='/' className='link-react'>
+				<div className='row justify-content-center'>
+					<NavLink to='/' className='link-react link-react-nav w-100' >
+						<div className='col-10 align-self-center ajustes-nav'>
 							<Ajustes id='Ajustes'/>
 							<span className='ml-3'>Ajustes</span>
-						</NavLink>
-					</div>
+						</div>
+					</NavLink>
 				</div>
 				<div className='row align-items-center justify-content-around'>
 					<div className='col-4 text-center'>
@@ -74,7 +74,7 @@ const NavExpand = (props) => {
 				<div className='row justify-content-end'>
 					<div className='col-4' id='Contraer'>
 					<button className='btn' onClick={Colapse}>
-						<Contraer/>
+						<Contraer className='con-exp'/>
 					</button>
 					</div>
 				</div>
