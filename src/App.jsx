@@ -8,6 +8,7 @@ import Error404 from './Components/Error404'
 import NavExpand from './Components/NavExpand'
 import NavContract from './Components/NavContract'
 import MusicNav from './Components/MusicNav'
+import Artist from './Components/Artist'
 import{
     BrowserRouter as Router,
     Switch,
@@ -93,6 +94,11 @@ function App() {
                 <Route path='/search/'>
                   <Busqueda datos={datos}/>
                   <Resultados searchResults={searchResults}/>
+                </Route>
+
+                <Route path='/artist/'>
+                  <Busqueda datos={datos}/>
+                  <Artist />
                 </Route>
 
                 <Route exact path='/'>

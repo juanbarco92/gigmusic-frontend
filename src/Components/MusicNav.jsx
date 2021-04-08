@@ -10,8 +10,8 @@ const MusicNav = (props) => {
 	}
 
   return (
-  	<div style={styles} >
-  		<div className='row' id='MusicNav-Container'>
+  	<div style={styles}>
+  		<div className='row' id='MusicNav-Container' >
   			<div className='col'>
 	  			<p className='h4 text-center'>ACORDES PARA</p>
 			    <div className="row justify-content-between" >

@@ -1,0 +1,55 @@
+#Artist-Container{
+	background-color: transparent;
+	color: #b3b3b3;
+	overflow-x: hidden;
+	overflow-y: scroll !important;
+	max-height: 92vh !important;
+}
+.accent{
+	background: #121212;
+	opacity: 0.5;
+}
+.artist-photo{
+	height: 8rem !important;
+	border-radius: 100px;
+}
+.artist-description{
+	color: #ffffff;
+}
+.btn-artist-sound{
+	color: #ffffff !important;
+	cursor: pointer !important;
+	display: inline-block !important;
+	border-radius: 16px !important;
+	background: #f24405 !important;
+}
+.btn-artist-follow{
+	color: #f24405 !important;
+	background: #121212 !important;
+	cursor: pointer !important;
+	display: inline-block !important;
+	border: 1px solid #ffffff !important;
+	border-radius: 16px !important;
+}
+.btn:focus{
+	box-shadow:	0 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+.navbar {
+	background: rgb(255,255,255) !important;
+	background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(24,24,24,1) 100%) !important;
+	margin-bottom: 0 !important;
+}
+.nav-link{
+	color: #b3b3b3 !important;
+}
+.nav-link:hover {
+	color: #ffffff !important;
+}
+.nav-link:focus {
+	color: #ffffff !important;
+	border-bottom: 1px solid #f24405 !important;
+}
+.activado {
+	color: #ffffff !important;
+	border-bottom: 1px solid #f24405 !important;
+}

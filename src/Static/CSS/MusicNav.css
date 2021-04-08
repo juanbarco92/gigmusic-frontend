@@ -4,6 +4,7 @@
  	margin: 0 0 0 0;
  	font-family: Roboto;
  	float: right;
+ 	z-index: 2;
 }
 .tono{
 	color: #b3b3b3 !important;

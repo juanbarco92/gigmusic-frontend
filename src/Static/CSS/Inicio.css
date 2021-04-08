@@ -1,26 +1,63 @@
 #Inicio-container{
     color: #b3b3b3;
     background: transparent;
-    max-height: 20vh;
+    overflow-x: hidden;
+	overflow-y: scroll !important;
+	max-height: 92vh !important;
+}
+#Inicio-container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 .control-dots{
 	margin: 0 !important;
 	position: absolute !important;
 	top: 50% !important;
 }
-.control-dots:hover {
-	box-shadow: 2px 2px 3px #f24405 !important;
+.p-dots{
+	background: '#181818' !important;
+    border: '1px solid #fafbfe' !important;
+    border-radius: '100px' !important;
 }
-.control-dots:active {
-	box-shadow: 2px 2px 3px #f24405 !important;
-}
-.legend:hover {
-	background: #181818 !important;
-}
-.legend:active {
-	background: #181818 !important;
+.p-dots:hover {
+	border: 1px solid #f24405 !important;
+	border-radius: '100px' !important;
 }
 .legend {
-	background: #181818 !important;
+	background: transparent !important;
+	width: 100% !important;
 	color: #b3b3b3 !important;
+	position: absolute !important;
+	top: 50% !important;
+	margin-left: -45% !important;
+	text-align: start !important;
+	text-decoration: inherit !important;
+	font-size: inherit !important;
+}
+.header-carousel{
+}
+.body-carousel{
+}
+.btn-carousel{
+	-webkit-appearance: inherit !important;
+	appearance: inherit !important;
+	color: #b3b3b3 !important;
+	cursor: pointer !important;
+	display: inline-block !important;
+	border-radius: 16px !important;
+	background: #f24405 !important;
+}
+.card{
+	background: #222222 !important;
+	color: #b3b3b3 !important;
+	border-radius: 8px !important;
+}
+.ultimo{
+	column-count: 2 !important;
+}
+.populares{
+	column-count: 4 !important;
+}
+.populares .card, .populares .card img{
+	border-radius: 15px !important;
 }

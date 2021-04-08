@@ -33,14 +33,14 @@ const NavContract = (props) => {
 					</NavLink>
 				</div>
 				<div className='row'>
-					<NavLink to='/' className='link-react link-react-nav w-100' >
+					<NavLink to='/artist' className='link-react link-react-nav w-100' >
 						<div className='col descubrir-nav'>
 							<Descubrir id='Descubrir'/>
 						</div>
 					</NavLink>
 				</div>
 				<div className='row'>
-					<NavLink to='/' className='link-react link-react-nav w-100' >
+					<NavLink to='/song' className='link-react link-react-nav w-100' >
 						<div className='col catalogo-nav'>
 							<Catalogo id='Catalogo'/>
 						</div>

@@ -19,10 +19,8 @@ const Busqueda = (props) => {
 		}
 	}
 
-
-
   return (
-      <div className='row' id='Search-container'>
+      <div className='row sticky-top w-100' id='Search-container'>
       	<div className='col'>
 			<form className="input-group" id='Buscar'>
 				<div className='input-group-prepend'>
