@@ -5,6 +5,10 @@
 	overflow-y: scroll !important;
 	max-height: 92vh !important;
 }
+#Artist-Container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
 .accent{
 	background: #121212;
 	opacity: 0.5;
