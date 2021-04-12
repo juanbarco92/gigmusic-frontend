@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './App.css';
 import Song from './Components/Song'
 import Inicio from './Components/Inicio'
@@ -13,7 +13,8 @@ import{
     BrowserRouter as Router,
     Switch,
     Route
-} from 'react-router-dom';
+} from 'react-router-dom'
+import axios from 'axios'
 
 function App() {
 
@@ -24,8 +25,21 @@ function App() {
   const [acordes,setAcordes] = useState(false)
   const [songUrl,setSongUrl] = useState('')
   const [songInfo,setSongInfo] = useState(null)
+  const [artistas, setArtistas] = useState([])
+  const [canciones, setCanciones] = useState([])
 
   //const can = require('./JSongs/Jarabe De Palo - La Flaca.json')
+
+  const getArtist = async () => {
+      const {data} = await axios.get('/api/artists')
+      const nuevoArray = data.map(item => (item))
+      setArtistas(nuevoArray)
+  }
+  const getSong = async () => {
+      const {data} = await axios.get('/api/songs')
+      const nuevoArray = data.map(item => (item))
+      setCanciones(nuevoArray)
+  }
 
   const styles = {
     maxWidth : window.screen.width,
@@ -50,6 +64,11 @@ function App() {
     setSongUrl('')
     setSongInfo(dato)
   }
+
+  useEffect(()=> {
+    getArtist()
+    getSong()
+  },[])
 
   return (
       <div className='container-fluid' id='App' style={styles}>
@@ -109,6 +128,28 @@ function App() {
                 <Route path='*'>
                   <Busqueda datos={datos}/>
                   <Error404/>
+                  <div>
+                  <ul>
+                    {
+                      artistas.map((item, index) => (
+                        <li key={index}>
+                          <span className='h4'>{item.nombre}</span>
+                        </li>
+                      ))
+                    }
+                  </ul>
+                  </div>
+                  <div>
+                  <ul>
+                    {
+                      canciones.map((item, index) => (
+                        <li key={index}>
+                                <span className='h4'>{JSON.parse(item.metadata).artista}</span>
+                        </li>
+                      ))
+                    }
+                  </ul>
+                  </div>
                 </Route>
               </Switch>
             </div>
