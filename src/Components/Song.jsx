@@ -10,7 +10,7 @@ let hOff = 0
 
 function Song(props) {
 
-	const { scroll, Scrolling, acordes, songUrl, songInfo } = props
+	const { scroll, Scrolling, acordes } = props
 
 	const can = require('../JSongs/Jarabe De Palo - La Flaca.json')
 	//const {metadata, canción} = require('../JSongs/Andrés Cepeda-Canción Rota.json');
@@ -64,7 +64,7 @@ function Song(props) {
 		}else{
 			clearTimeout(timer)
 		}
-	},[estrofa, songInfo, scroll, logicScroll])
+	},[estrofa, scroll, logicScroll])
 
   return (
 	  <div style={styles}>

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import './App.css';
 import Song from './Components/Song'
 import Inicio from './Components/Inicio'
@@ -18,26 +18,27 @@ import axios from 'axios'
 
 function App() {
 
-  const [searchData, setSearchData] = useState('')
-  const [searchResults, setSearchResults] = useState([])
+  const [searchData, setSearchData] = useState(null)
   const [colapsar, setColapsar] = useState(false)
   const [scroll,setScroll] = useState(false)
   const [acordes,setAcordes] = useState(false)
-  const [songUrl,setSongUrl] = useState('')
-  const [songInfo,setSongInfo] = useState(null)
   const [artistas, setArtistas] = useState([])
   const [canciones, setCanciones] = useState([])
 
   //const can = require('./JSongs/Jarabe De Palo - La Flaca.json')
 
-  const getArtist = async () => {
-      const {data} = await axios.get('/api/artists')
+  const getArtist = async (search?, bus=false) => {
+      console.log(search)
+      const {data} = bus ? (await axios.get(`/api/artists/?search=${search}`)):(await axios.get(`/api/artists/`))
+      console.log(data)
       const nuevoArray = data.map(item => (item))
       setArtistas(nuevoArray)
   }
-  const getSong = async () => {
-      const {data} = await axios.get('/api/songs')
+  const getSong = async (search=null, bus=false) => {
+      console.log(search)
+      const {data} = bus ? (await axios.get(`/api/songs/?search=${search}`)):(await axios.get(`/api/songs/`))
       const nuevoArray = data.map(item => (item))
+      console.log(data)
       setCanciones(nuevoArray)
   }
 
@@ -60,15 +61,10 @@ function App() {
 
   const datos = (dato) =>{
     setSearchData(dato)
-    setSearchResults([dato, searchData, ...searchResults])
-    setSongUrl('')
-    setSongInfo(dato)
+    //setSearchResults([dato, searchData, ...searchResults])
+    //setSongUrl('')
+    //setSongInfo(dato)
   }
-
-  useEffect(()=> {
-    getArtist()
-    getSong()
-  },[])
 
   return (
       <div className='container-fluid' id='App' style={styles}>
@@ -94,11 +90,9 @@ function App() {
                   <div className='row'>
 
                     <div className='col'>
-                      <Busqueda datos={datos}/>
+                      <Busqueda getSong={getSong} getArtist={getArtist} />
                       <Song scroll={scroll} 
                       acordes={acordes} 
-                      songUrl={songUrl}
-                      songInfo={songInfo}
                       Scrolling={Scrolling} />
                     </div>
 
@@ -111,22 +105,22 @@ function App() {
 
                 </Route>
                 <Route path='/search/'>
-                  <Busqueda datos={datos}/>
-                  <Resultados searchResults={searchResults}/>
+                  <Busqueda getSong={getSong} getArtist={getArtist} />
+                  <Resultados artistas={artistas} canciones={canciones} />
                 </Route>
 
                 <Route path='/artist/'>
-                  <Busqueda datos={datos}/>
+                  <Busqueda getSong={getSong} getArtist={getArtist} />
                   <Artist />
                 </Route>
 
                 <Route exact path='/'>
-                  <Busqueda datos={datos}/>
+                  <Busqueda getSong={getSong} getArtist={getArtist} />
                   <Inicio/>
                 </Route>
 
                 <Route path='*'>
-                  <Busqueda datos={datos}/>
+                  <Busqueda getSong={getSong} getArtist={getArtist} />
                   <Error404/>
                   <div>
                   <ul>

@@ -6,7 +6,7 @@ import {ReactComponent as Buscador} from '../Static/Icons/search-icon.svg'
 
 const Busqueda = (props) => {
 	
-	const {datos} = props
+	const {getArtist, getSong} = props
 	const [search, setSearch] = useState('')
 
 	const onSearch = (e) => {
@@ -15,7 +15,8 @@ const Busqueda = (props) => {
 
 	const submit = (busqueda) => {
 		if(busqueda !== ''){
-			datos(busqueda)
+			getArtist(busqueda, true)
+    		getSong(busqueda, true)
 		}
 	}
 
@@ -45,10 +46,6 @@ const Busqueda = (props) => {
 		</div>
       </div>
   );
-}
-
-Busqueda.propTypes = {
-	datos: propTypes.func.isRequired
 }
 
 export default Busqueda;
