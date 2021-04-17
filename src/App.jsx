@@ -18,27 +18,34 @@ import axios from 'axios'
 
 function App() {
 
-  const [searchData, setSearchData] = useState(null)
   const [colapsar, setColapsar] = useState(false)
   const [scroll,setScroll] = useState(false)
   const [acordes,setAcordes] = useState(false)
   const [artistas, setArtistas] = useState([])
   const [canciones, setCanciones] = useState([])
 
+  var config = {
+       headers: {
+            'Content-type': 'application/json; charset=utf-8',
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Methods': '*',
+            'Access-Control-Allow-Headers':'*',
+            'cache-control': 'no-cache'
+          }
+    }
+
   //const can = require('./JSongs/Jarabe De Palo - La Flaca.json')
 
-  const getArtist = async (search?, bus=false) => {
+  const getArtist = async (search?) => {
       console.log(search)
-      const {data} = bus ? (await axios.get(`/api/artists/?search=${search}`)):(await axios.get(`/api/artists/`))
-      console.log(data)
+      const {data} = await axios.get(`/api/artist/?buscar=nombre&busqueda=${search}&num_registros=5`, config)
       const nuevoArray = data.map(item => (item))
       setArtistas(nuevoArray)
   }
-  const getSong = async (search=null, bus=false) => {
+  const getSong = async (search=null) => {
       console.log(search)
-      const {data} = bus ? (await axios.get(`/api/songs/?search=${search}`)):(await axios.get(`/api/songs/`))
+      const {data} = await axios.get(`/api/song/?buscar=artista&busqueda=${search}&num_registros=5`, config)
       const nuevoArray = data.map(item => (item))
-      console.log(data)
       setCanciones(nuevoArray)
   }
 
@@ -57,13 +64,6 @@ function App() {
 
   const MostrarAcordes = () => {
     setAcordes(!acordes)
-  }
-
-  const datos = (dato) =>{
-    setSearchData(dato)
-    //setSearchResults([dato, searchData, ...searchResults])
-    //setSongUrl('')
-    //setSongInfo(dato)
   }
 
   return (
@@ -138,7 +138,7 @@ function App() {
                     {
                       canciones.map((item, index) => (
                         <li key={index}>
-                                <span className='h4'>{JSON.parse(item.metadata).artista}</span>
+                                <span className='h4'>{item.metadata.artista}</span>
                         </li>
                       ))
                     }

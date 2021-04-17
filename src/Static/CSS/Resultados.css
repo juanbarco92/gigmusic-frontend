@@ -3,20 +3,20 @@
     background-color: #181818;
 }
 .link-react-results{
-	color: currentColor;
+	color: currentColor !important;
 	background-color: transparent;
 }
 .link-react-results:link{
-	color: #f24405;
-	text-decoration: none;
+	color: currentColor !important;
+	text-decoration: none !important;
 	background-color: #121212;
 }
 .link-react-results:hover{
-	color: #f24405;
+	color: #f24405 !important;
 	background-color: #121212;
 }
 .link-react-results:active{
-	color: #f24405;
+	color: #f24405 !important;
 	background-color: #121212;
 }
 .list-search{

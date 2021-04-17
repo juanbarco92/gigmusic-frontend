@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import propTypes from 'prop-types'
+//import propTypes from 'prop-types'
 import {NavLink} from 'react-router-dom';
 import '../Static/CSS/Busqueda.css';
 import {ReactComponent as Buscador} from '../Static/Icons/search-icon.svg'
@@ -15,8 +15,8 @@ const Busqueda = (props) => {
 
 	const submit = (busqueda) => {
 		if(busqueda !== ''){
-			getArtist(busqueda, true)
-    		getSong(busqueda, true)
+			getArtist(busqueda)
+    		getSong(busqueda)
 		}
 	}
 

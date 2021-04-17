@@ -18,10 +18,10 @@ const Resultados = (props) => {
         				<li className='list-search link-react-results mt-3' key={index}>
     	            		<NavLink className='link-react' to={{
                             pathname: '/artist/',
-                            search: `?ref=${item._id}`,
+                            search: `?ref=${item.id}`,
                             }}>
                                 <p className='text-center'>
-                                    {item.nombre+' - '+item.genero}
+                                    {item.nombre + ' - ' + item.genero}
                                 </p>
                             </NavLink>
     	            	</li>
@@ -35,10 +35,10 @@ const Resultados = (props) => {
                         <li className='list-search link-react-results mt-3' key={index}>
                             <NavLink className='link-react' to={{
                             pathname: '/song/',
-                            search: `?ref=${item._id}`,
+                            search: `?ref=${item.id}`,
                             }}>
                                 <p className='text-center'>
-                                    {JSON.parse(item.metadata).artista + ' - ' + JSON.parse(item.metadata).cancion}
+                                    {item.metadata.artista + ' - ' + item.metadata.cancion}
                                 </p>
                             </NavLink>
                         </li>

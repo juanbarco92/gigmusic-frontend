@@ -5,8 +5,6 @@ import { ReactComponent as VolOff } from '../Static/Icons/Reproductor/volume-off
 import '../Static/CSS/Reproductor.css'
 
 const Reproductor = (props) => {
-  	
-  	const {songUrl} = props
 
     const tracks = [
       {
