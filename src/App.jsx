@@ -23,7 +23,9 @@ function App() {
   const [acordes,setAcordes] = useState(false)
   const [artistas, setArtistas] = useState([])
   const [canciones, setCanciones] = useState([])
+  const [elegida, setElegida] = useState({})
 
+// ----- Configuracion de axios headers
   var config = {
        headers: {
             'Content-type': 'application/json; charset=utf-8',
@@ -34,26 +36,37 @@ function App() {
           }
     }
 
-  //const can = require('./JSongs/Jarabe De Palo - La Flaca.json')
-
-  const getArtist = async (search?) => {
-      console.log(search)
-      const {data} = await axios.get(`/api/artist/?buscar=nombre&busqueda=${search}&num_registros=5`, config)
-      const nuevoArray = data.map(item => (item))
-      setArtistas(nuevoArray)
-  }
-  const getSong = async (search=null) => {
-      console.log(search)
-      const {data} = await axios.get(`/api/song/?buscar=artista&busqueda=${search}&num_registros=5`, config)
-      const nuevoArray = data.map(item => (item))
-      setCanciones(nuevoArray)
-  }
-
+// ----- Estilos adicionales de adaptacion
   const styles = {
     maxWidth : window.screen.width,
     maxHeight : window.screen.height
   }
 
+// ----- Obtencion de canciones y artistas
+  const getArtist = async (search?) => {
+      console.log(search)
+      const {data} = await axios.get(`/api/artist/?busqueda=${search}&num_registros=5`, config)
+      const nuevoArray = data.map(item => (item))
+      setArtistas(nuevoArray)
+  }
+  const getSong = async (search=null) => {
+      console.log(search)
+      const {data} = await axios.get(`/api/song/?busqueda=${search}&num_registros=5`, config)
+      const nuevoArray = data.map(item => (item))
+      setCanciones(nuevoArray)
+  }
+
+// ----- Obtencion de artista o cancion especifica
+  const CAElegida = (item, canOArt) => {
+    if(canOArt === true){
+      setElegida(item)
+    }
+    else{
+      setElegida(item)
+    }
+  }
+
+// ----- Helpers para collapse, scrolling y acordes
   const Colapse = () => {
     setColapsar(!colapsar)
   }
@@ -93,7 +106,8 @@ function App() {
                       <Busqueda getSong={getSong} getArtist={getArtist} />
                       <Song scroll={scroll} 
                       acordes={acordes} 
-                      Scrolling={Scrolling} />
+                      Scrolling={Scrolling} 
+                      elegida={elegida} />
                     </div>
 
                     <div className='col-3' id='MusicNav'>
@@ -106,12 +120,13 @@ function App() {
                 </Route>
                 <Route path='/search/'>
                   <Busqueda getSong={getSong} getArtist={getArtist} />
-                  <Resultados artistas={artistas} canciones={canciones} />
+                  <Resultados artistas={artistas} canciones={canciones} 
+                  CAElegida={CAElegida} />
                 </Route>
 
                 <Route path='/artist/'>
                   <Busqueda getSong={getSong} getArtist={getArtist} />
-                  <Artist />
+                  <Artist elegida={elegida} />
                 </Route>
 
                 <Route exact path='/'>
@@ -122,28 +137,6 @@ function App() {
                 <Route path='*'>
                   <Busqueda getSong={getSong} getArtist={getArtist} />
                   <Error404/>
-                  <div>
-                  <ul>
-                    {
-                      artistas.map((item, index) => (
-                        <li key={index}>
-                          <span className='h4'>{item.nombre}</span>
-                        </li>
-                      ))
-                    }
-                  </ul>
-                  </div>
-                  <div>
-                  <ul>
-                    {
-                      canciones.map((item, index) => (
-                        <li key={index}>
-                                <span className='h4'>{item.metadata.artista}</span>
-                        </li>
-                      ))
-                    }
-                  </ul>
-                  </div>
                 </Route>
               </Switch>
             </div>

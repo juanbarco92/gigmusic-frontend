@@ -4,9 +4,13 @@ import{NavLink} from 'react-router-dom';
 
 const Resultados = (props) => {
 
-	const { artistas, canciones} = props
+	const { artistas, canciones, CAElegida } = props
 
 	document.title = 'GIG - Resultados de busqueda'
+
+    const Elegida = (item, estado) => {
+        CAElegida(item, estado)
+    }
 
   return (
     <div className="row" id='Resultados-container'>
@@ -18,9 +22,9 @@ const Resultados = (props) => {
         				<li className='list-search link-react-results mt-3' key={index}>
     	            		<NavLink className='link-react' to={{
                             pathname: '/artist/',
-                            search: `?ref=${item.id}`,
+                            search: `id=${item.id}`,
                             }}>
-                                <p className='text-center'>
+                                <p onClick={Elegida(item, false)} className='text-center'>
                                     {item.nombre + ' - ' + item.genero}
                                 </p>
                             </NavLink>
@@ -35,9 +39,9 @@ const Resultados = (props) => {
                         <li className='list-search link-react-results mt-3' key={index}>
                             <NavLink className='link-react' to={{
                             pathname: '/song/',
-                            search: `?ref=${item.id}`,
+                            search: `id=${item.id}`,
                             }}>
-                                <p className='text-center'>
+                                <p onClick={Elegida(item, true)} className='text-center'>
                                     {item.metadata.artista + ' - ' + item.metadata.cancion}
                                 </p>
                             </NavLink>

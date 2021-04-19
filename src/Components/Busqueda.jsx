@@ -36,7 +36,10 @@ const Busqueda = (props) => {
 					onChange={onSearch}
 					onSubmit={() => submit(search)}/>
 				<div className="input-group-append">
-					<NavLink to='/search' className='link-react'>
+					<NavLink className='link-react' to={{
+                            pathname: '/search/',
+                            search: `?q=${search}`,
+                            }}>
 						<button
 						type="submit" id='search-button'
 						onClick={() => submit(search)}/>

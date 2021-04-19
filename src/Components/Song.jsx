@@ -1,4 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react'
+import axios from 'axios'
 import GuitarChord from 'react-guitar-chords'
 import Notas from './Notas'
 import Reproductor from './Reproductor'
@@ -7,14 +8,14 @@ import '../Static/CSS/Song.css'
 let timer
 let lineas = 0
 let hOff = 0
+let elegida
 
 function Song(props) {
 
-	const { scroll, Scrolling, acordes } = props
-
-	const can = require('../JSongs/Jarabe De Palo - La Flaca.json')
-	//const {metadata, canción} = require('../JSongs/Andrés Cepeda-Canción Rota.json');
-  	//const {metadata, canción} = require('../JSongs/andres_cepeda_cancion_rota.json');
+	const { scroll, Scrolling, acordes, elegida } = props
+	
+	//const can = require('../JSongs/Jarabe De Palo - La Flaca.json')
+	const can = elegida
 
 	const [lineasRec,setLineasRec] = useState(0)
 	const [yOff,setYOff] = useState(0)
@@ -121,7 +122,7 @@ function Song(props) {
 	    			)
 	    		}
 			</div>
-			<div className='row mt-3' >
+			<div className='row sticky-bottom mt-3' >
 				<div className='col' id='Reproductor-Container'>
 					<Reproductor />
 				</div>

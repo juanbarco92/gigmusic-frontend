@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import '../Static/CSS/Artist.css'
 
-const Artist = () => {
+const Artist = (props) => {
 
-    document.title = "GIG - Artist"
+	const {elegida} = props
+
+    document.title = 'GIG - ' + elegida.nombre
 
     const [navsClass, setNavClass] = useState(['nav-link activado','nav-link','nav-link','nav-link'])
 

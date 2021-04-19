@@ -67,7 +67,7 @@
 	background-color: transparent;
 }
 .link-react:link{
-	color: #f24405;
+	color: currentColor;
 	text-decoration: none;
 	background-color: transparent;
 }
