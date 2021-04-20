@@ -1,16 +1,26 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import '../Static/CSS/Resultados.css'
-import{NavLink} from 'react-router-dom';
+import{NavLink} from 'react-router-dom'
+
+let urlAnt = null
 
 const Resultados = (props) => {
 
-	const { artistas, canciones, CAElegida } = props
+    // ----- Obtencion de variables de entrada
+	const { artistas, canciones, getArtist, getSong } = props
+    let url = window.location.search
 
+    // ----- Setea titulo de la pagina
 	document.title = 'GIG - Resultados de busqueda'
 
-    const Elegida = (item, estado) => {
-        CAElegida(item, estado)
-    }
+    // ----- Peticion de lista de canciones despues de reload
+    useEffect(() => {
+        if(url !== urlAnt){
+            getArtist(url)
+            getSong(url)
+            urlAnt = url
+        }
+    },[getArtist, getSong, url])
 
   return (
     <div className="row" id='Resultados-container'>
@@ -24,7 +34,7 @@ const Resultados = (props) => {
                             pathname: '/artist/',
                             search: `id=${item.id}`,
                             }}>
-                                <p onClick={Elegida(item, false)} className='text-center'>
+                                <p className='text-center'>
                                     {item.nombre + ' - ' + item.genero}
                                 </p>
                             </NavLink>
@@ -41,7 +51,7 @@ const Resultados = (props) => {
                             pathname: '/song/',
                             search: `id=${item.id}`,
                             }}>
-                                <p onClick={Elegida(item, true)} className='text-center'>
+                                <p className='text-center'>
                                     {item.metadata.artista + ' - ' + item.metadata.cancion}
                                 </p>
                             </NavLink>

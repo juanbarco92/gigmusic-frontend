@@ -4,13 +4,15 @@ import { Carousel } from 'react-responsive-carousel'
 import '../Static/CSS/Inicio.css'
 
 const Inicio = () => {
-
+    
+    // ----- Definicion titulo del documento
     document.title = "GIG - Inicio"
 
     const styles = {
       maxHeight : window.screen.height
     }
 
+    // ----- Modificaciones a libreria carousel
     const indicatorStyles: CSSProperties = {
         background: '#181818',
         border: '1px solid #fafbfe',
@@ -19,10 +21,6 @@ const Inicio = () => {
         borderRadius: '100px',
         display: 'inline-flex',
         margin: '5px',
-    }
-
-    const click = () => {
-      console.log('click')
     }
 
     const renderIndicator = (onClickHandler, isSelected, index, label) => {
@@ -53,6 +51,11 @@ const Inicio = () => {
                   </ul>
                 );
             }
+
+    // ----- Control del banner
+    const click = () => {
+      console.log('click')
+    }
 
   return (
     <div style={styles} id='Inicio-container'>

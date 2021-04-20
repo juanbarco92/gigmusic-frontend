@@ -3,6 +3,7 @@ import '../Static/CSS/MusicNav.css'
 
 const MusicNav = (props) => {
   	
+  	// ----- Obtencion de variables y funciones de entrada
 	const { Scrolling, scroll, MostrarAcordes } = props
 
 	const styles = {

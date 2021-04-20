@@ -18,12 +18,14 @@ import axios from 'axios'
 
 function App() {
 
+// ----- Variables de estado
   const [colapsar, setColapsar] = useState(false)
   const [scroll,setScroll] = useState(false)
   const [acordes,setAcordes] = useState(false)
   const [artistas, setArtistas] = useState([])
   const [canciones, setCanciones] = useState([])
-  const [elegida, setElegida] = useState({})
+  const [cancionElegida, setCancionElegida] = useState({})
+  const [artistaElegido, setArtistaElegido] = useState({})
 
 // ----- Configuracion de axios headers
   var config = {
@@ -44,25 +46,25 @@ function App() {
 
 // ----- Obtencion de canciones y artistas
   const getArtist = async (search?) => {
-      console.log(search)
-      const {data} = await axios.get(`/api/artist/?busqueda=${search}&num_registros=5`, config)
+      const {data} = await axios.get(`/api/artist/${search}&num_registros=5`, config)
       const nuevoArray = data.map(item => (item))
       setArtistas(nuevoArray)
   }
   const getSong = async (search=null) => {
-      console.log(search)
-      const {data} = await axios.get(`/api/song/?busqueda=${search}&num_registros=5`, config)
+      const {data} = await axios.get(`/api/song/${search}&num_registros=5`, config)
       const nuevoArray = data.map(item => (item))
       setCanciones(nuevoArray)
   }
 
 // ----- Obtencion de artista o cancion especifica
-  const CAElegida = (item, canOArt) => {
-    if(canOArt === true){
-      setElegida(item)
+  const Eleccion = async (path, id?) => {
+    if(path === '/song/'){
+      const {data} = await axios.get(`/api/song/one${id}`, config)
+      setCancionElegida(data)
     }
-    else{
-      setElegida(item)
+    else if(path === '/artist/'){
+      const {data} = await axios.get(`/api/artist/one${id}`, config)
+      setArtistaElegido(data)
     }
   }
 
@@ -104,10 +106,11 @@ function App() {
 
                     <div className='col'>
                       <Busqueda getSong={getSong} getArtist={getArtist} />
-                      <Song scroll={scroll} 
+                      <Song Eleccion={Eleccion} 
+                      scroll={scroll} 
                       acordes={acordes} 
                       Scrolling={Scrolling} 
-                      elegida={elegida} />
+                      elegida={cancionElegida} />
                     </div>
 
                     <div className='col-3' id='MusicNav'>
@@ -120,13 +123,13 @@ function App() {
                 </Route>
                 <Route path='/search/'>
                   <Busqueda getSong={getSong} getArtist={getArtist} />
-                  <Resultados artistas={artistas} canciones={canciones} 
-                  CAElegida={CAElegida} />
+                  <Resultados artistas={artistas} canciones={canciones}
+                  getSong={getSong} getArtist={getArtist} />
                 </Route>
 
                 <Route path='/artist/'>
                   <Busqueda getSong={getSong} getArtist={getArtist} />
-                  <Artist elegida={elegida} />
+                  <Artist Eleccion={Eleccion} elegida={artistaElegido} />
                 </Route>
 
                 <Route exact path='/'>

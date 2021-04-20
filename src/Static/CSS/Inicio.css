@@ -10,9 +10,11 @@
     height: 0;
 }
 .control-dots{
+	max-width: 10% !important;
 	margin: 0 !important;
 	position: absolute !important;
 	top: 50% !important;
+	right: 0% !important;
 }
 .p-dots{
 	background: '#181818' !important;

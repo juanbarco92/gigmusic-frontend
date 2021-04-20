@@ -13,6 +13,7 @@ import {ReactComponent as Youtube} from '../Static/Icons/youtube.svg'
 
 const NavExpand = (props) => {
 	
+	// ----- obtencion de funcion de entrada
 	const { Colapse } = props
 
 	const styles = {

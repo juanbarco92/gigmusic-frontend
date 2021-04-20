@@ -6,17 +6,20 @@ import {ReactComponent as Buscador} from '../Static/Icons/search-icon.svg'
 
 const Busqueda = (props) => {
 	
+	// ----- Definicion de variables y funciones de entrada
 	const {getArtist, getSong} = props
 	const [search, setSearch] = useState('')
-
+	
+	// ----- Obtencion de valor de input
 	const onSearch = (e) => {
 		setSearch(e.target.value)
 	}
 
+	// ----- Peticion de lista de canciones con valor buscado
 	const submit = (busqueda) => {
 		if(busqueda !== ''){
-			getArtist(busqueda)
-    		getSong(busqueda)
+			getArtist('?busqueda='+busqueda)
+    		getSong('?busqueda='+busqueda)
 		}
 	}
 
@@ -38,7 +41,7 @@ const Busqueda = (props) => {
 				<div className="input-group-append">
 					<NavLink className='link-react' to={{
                             pathname: '/search/',
-                            search: `?q=${search}`,
+                            search: `?busqueda=${search}`,
                             }}>
 						<button
 						type="submit" id='search-button'

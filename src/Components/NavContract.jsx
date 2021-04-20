@@ -10,6 +10,7 @@ import {ReactComponent as Expandir} from '../Static/Icons/px-16-block-right-coll
 
 const NavContract = (props) => {
 
+	// ----- obtencion de funcion de entrada
 	const { Colapse } = props
 
 	const styles = {

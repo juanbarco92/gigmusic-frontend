@@ -5,6 +5,7 @@ import { ReactComponent as Next } from '../Static/Icons/Reproductor/next.svg';
 import { ReactComponent as Prev } from '../Static/Icons/Reproductor/previous.svg';
 import '../Static/CSS/AudioControls.css'
 
+// ----- Define los controles de audio y asigna las funciones
 const AudioControls = ({
   isPlaying,
 	onPlayPauseClick,
