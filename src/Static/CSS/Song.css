@@ -8,7 +8,7 @@
 #Cancion-Container{
     scrollbar-width: none;
 	overflow-y: scroll !important;
-	max-height: 72vh !important;/*800px*/
+	max-height: calc(100vh*0.72) !important;/*800px 72vh*/
 }
 #Cancion-Container::-webkit-scrollbar {
     width: 0;

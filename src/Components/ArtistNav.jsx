@@ -16,7 +16,11 @@ const ArtistNav = (props) => {
 		      			{
 		      				canciones.map((item, index) => (
 		      					<li key={index} className='list-group mt-2'>
-		      						{item.cancion}
+		      						<div className='row'>
+		      							<span className='col' >
+		      								{item.cancion}
+		      							</span>
+		      						</div>
 		      					</li>
 		      				))
 		      			}

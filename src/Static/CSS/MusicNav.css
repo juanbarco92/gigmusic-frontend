@@ -4,23 +4,31 @@
  	margin: 0 0 0 0;
  	font-family: Roboto;
  	float: right;
+ 	color: #b3b3b3;
  	z-index: 2;
 }
-.tono{
+#Restablecer{
+    font-family: Verdana;
+    color: #4ed0e5;
+    background-color: transparent;
+    border: solid 1px #4ed0e5;
+    border-radius: 100px;
+    text-align: center;
+}
+.mn-btn{
 	color: #b3b3b3 !important;
 	background-color: transparent;
-	border: 0.5px;
-	border-color: #b3b3b3 !important;
 	box-shadow: 0 0 0 0 !important;
+	padding: 0px 1px 0px 1px !important;
 }
-.tono:hover{
+.mn-btn:hover{
 	color: #f24405;
 	border-color: #b3b3b3;
 	border: 0.5px;
 	background-color: #f24405;
 	box-shadow: 0 0 0 0 !important;
 }
-.tono:active{
+.mn-btn:active{
 	color: #f24405;
 	border-color: #b3b3b3;
 	border: 0.5px;

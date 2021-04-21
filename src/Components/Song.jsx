@@ -2,7 +2,7 @@ import React, {useState, useRef, useEffect} from 'react'
 import GuitarChord from 'react-guitar-chords'
 import Notas from './Notas'
 import Reproductor from './Reproductor'
-import {isEmpty} from './utils'
+import {isEmpty} from '../Utils/utils'
 import '../Static/CSS/Song.css'
 
 let timer

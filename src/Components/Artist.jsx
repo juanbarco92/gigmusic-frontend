@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import '../Static/CSS/Artist.css'
 import ArtistNav from './ArtistNav'
-import {isEmpty} from './utils'
+import {isEmpty} from '../Utils/utils'
 
 let urlAnt = null
 
@@ -26,7 +26,7 @@ const Artist = (props) => {
     }
 
     // ----- Funcionamiento de navbar
-    const navClick = (e) => {
+    const tabClick = (e) => {
     	setNavNum(e)
     	if(e===0){
     		setNavClass(['nav-link activado','nav-link','nav-link','nav-link'])
@@ -88,7 +88,7 @@ const Artist = (props) => {
 					        				<ul className='nav nav-fill ml-5 mr-5' role="tablist">
 						        				<li className='nav-item' >
 							        				<button 
-							        				onClick={() => navClick(0)}
+							        				onClick={() => tabClick(0)}
 							        				id='tabDiscografia' 
 							        				className={navsClass[0]} role="tab" >
 							        					Discografia
@@ -96,7 +96,7 @@ const Artist = (props) => {
 						        				</li>
 						        				<li className='nav-item' >
 							        				<button 
-							        				onClick={() => navClick(1)}
+							        				onClick={() => tabClick(1)}
 							        				id='tabPopulares' 
 							        				className={navsClass[1]} role="tab" >
 							        					Canciones Populares
@@ -104,7 +104,7 @@ const Artist = (props) => {
 						        				</li>
 						        				<li className='nav-item' >
 							        				<button 
-							        				onClick={() => navClick(2)}
+							        				onClick={() => tabClick(2)}
 							        				id='tabSimilares' 
 							        				className={navsClass[2]} role="tab" >
 							        					Artistas Similares
@@ -112,7 +112,7 @@ const Artist = (props) => {
 						        				</li>
 						        				<li className='nav-item' >
 							        				<button 
-							        				onClick={() => navClick(3)}
+							        				onClick={() => tabClick(3)}
 							        				id='tabBiografia' 
 							        				className={navsClass[3]} role="tab" >
 							        					Biografia
