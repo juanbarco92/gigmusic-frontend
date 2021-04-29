@@ -1,9 +1,10 @@
 #Inicio-container{
     color: #b3b3b3;
     background: transparent;
+    scrollbar-width: none;
     overflow-x: hidden;
 	overflow-y: scroll !important;
-	max-height: 92vh !important;
+	max-height: calc(100vh*0.92) !important;
 }
 #Inicio-container::-webkit-scrollbar {
     width: 0;

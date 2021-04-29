@@ -16,6 +16,8 @@ import{
 } from 'react-router-dom'
 import axios from 'axios'
 
+let proxy='http://localhost:8080'
+
 function App() {
 
 // ----- Variables de estado
@@ -26,6 +28,11 @@ function App() {
   const [canciones, setCanciones] = useState([])
   const [cancionElegida, setCancionElegida] = useState({})
   const [artistaElegido, setArtistaElegido] = useState({})
+  const [personalize, setPersonalize] = useState({
+    'font': 'inherit',
+    'color': 'inherit',
+    'fontFamily': 'inherit'
+  })
 
 // ----- Configuracion de axios headers
   var config = {
@@ -46,12 +53,12 @@ function App() {
 
 // ----- Obtencion de canciones y artistas
   const getArtist = async (search?) => {
-      const {data} = await axios.get(`/api/artist/${search}&num_registros=5`, config)
+      const {data} = await axios.get(proxy+`/api/artist/${search}&num_registros=5`, config)
       const nuevoArray = data.map(item => (item))
       setArtistas(nuevoArray)
   }
   const getSong = async (search=null) => {
-      const {data} = await axios.get(`/api/song/${search}&num_registros=5`, config)
+      const {data} = await axios.get(proxy+`/api/song/${search}&num_registros=5`, config)
       const nuevoArray = data.map(item => (item))
       setCanciones(nuevoArray)
   }
@@ -59,11 +66,11 @@ function App() {
 // ----- Obtencion de artista o cancion especifica
   const Eleccion = async (path, id?) => {
     if(path === '/song/'){
-      const {data} = await axios.get(`/api/song/one${id}`, config)
+      const {data} = await axios.get(proxy+`/api/song/one${id}`, config)
       setCancionElegida(data)
     }
     else if(path === '/artist/'){
-      const {data} = await axios.get(`/api/artist/one${id}`, config)
+      const {data} = await axios.get(proxy+`/api/artist/one${id}`, config)
       setArtistaElegido(data)
     }
   }
@@ -79,6 +86,29 @@ function App() {
 
   const MostrarAcordes = () => {
     setAcordes(!acordes)
+  }
+
+// ----- Perzonalizacion
+  const VarAcordes = (e) => {
+    setPersonalize({
+    'font': personalize.font,
+    'color': e,
+    'fontFamily': personalize.fontFamily
+    })
+  }
+  const VarFuente = (e) => {
+    setPersonalize({
+    'font': e,
+    'color': personalize.color,
+    'fontFamily': personalize.fontFamily
+    })
+  }
+  const VarTipo = (e) => {
+    setPersonalize({
+    'font': personalize.font,
+    'color': personalize.color,
+    'fontFamily': e
+    })
   }
 
   return (
@@ -110,13 +140,16 @@ function App() {
                       scroll={scroll} 
                       acordes={acordes} 
                       Scrolling={Scrolling} 
-                      elegida={cancionElegida} />
+                      elegida={cancionElegida} 
+                      personalize={personalize} />
                     </div>
 
                     <div className='col-3' id='MusicNav'>
                       <MusicNav scroll={scroll} 
                       MostrarAcordes={MostrarAcordes}
-                      Scrolling={Scrolling} />
+                      Scrolling={Scrolling} VarTipo={VarTipo} 
+                      VarFuente={VarFuente} VarAcordes={VarAcordes} 
+                      personalize={personalize} />
                     </div>
                   </div>
 

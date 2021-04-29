@@ -14,7 +14,7 @@
 #Expandir{
 	width: 21px;
 	height: 21px;
-	margin: 62.5vh 0 10px 0;
+	margin: calc(100vh * 0.625) 0 10px 0;
 	object-fit: contain;
 }
 #Expandir button{

@@ -16,7 +16,7 @@ function Song(props) {
 	// ----- Obtencion de variables de entrada
 	let urlPath = window.location.pathname
 	let urlSearch = window.location.search
-	const { scroll, Scrolling, acordes, elegida, Eleccion } = props
+	const { scroll, Scrolling, acordes, elegida, Eleccion, personalize } = props
 	
 	// ----- Destructuring de la cancion
 	const can = elegida
@@ -31,7 +31,9 @@ function Song(props) {
 	const contenSong = useRef(null)
 
 	const styles = {
-		maxHeight : window.screen.height
+		maxHeight : window.screen.height,
+		color: personalize.font,
+		fontFamily: personalize.fontFamily,
 	}
 
 	// ----- verificacion de fin y scroll 
@@ -103,7 +105,7 @@ function Song(props) {
 	  		<div>
 		  		<div className='row justify-content-center'>
 
-			    	<div className='col-5 col-auto mt-2' id='Cancion-Container'
+			    	<div className='col-6 mt-2' id='Cancion-Container'
 			    	ref={contenSong}
 			    	onScroll={onScroll}
 			    	onWheel={(e) => onWheel(e)}>
@@ -129,7 +131,8 @@ function Song(props) {
 		    								{
 				    							item.contenido.map((item, index) => (
 				    								<li className='list-group' key={index}>
-														<Notas notas={item.notas} espacio={item.espacio} letra={item.letra}/>
+														<Notas notas={item.notas} espacio={item.espacio} letra={item.letra} 
+														colorAc={personalize.color} />
 				    								</li>
 				    							))
 			    							}
@@ -144,8 +147,8 @@ function Song(props) {
 			    	{
 		    			acordes ?
 		    			(
-		    				<div className='col-5 col-auto mt-2' id='Chord-Container'>
-				    			<GuitarChord className='acordes-svg' chordName='nota' frets={['x', 3, 0, 0, 1, 1]}/>
+		    				<div className='col-4 col-auto mt-2' id='Chord-Container'>
+				    			<GuitarChord chordName='nota' frets={['x', 3, 0, 0, 1, 1]}/>
 				    		</div>
 		    			)
 		    			:

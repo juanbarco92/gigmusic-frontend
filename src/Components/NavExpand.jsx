@@ -23,7 +23,7 @@ const NavExpand = (props) => {
   return (
   	<div style={styles}>
 		<div className='row justify-content-center w-100' id='NavExpand'>
-			<div className='col-8'>
+			<div className='col col-lg-9'>
 				<div className='row'>
 					<div className='col-10 align-self-center'>
 						<img src={logo} alt='Gig' id='LogoExpand'/>

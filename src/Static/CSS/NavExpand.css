@@ -40,22 +40,22 @@
 #facebook{
 	width: 19.5px;
 	height: 19px;
-	margin-top: 40vh;
+	margin-top: calc(100vh * 0.4);
 }
 #youtube{
 	width: 27px;
 	height: 19px;
-	margin-top: 40vh;
+	margin-top: calc(100vh * 0.4);
 }
 #instagram{
 	width: 20px;
 	height: 19px;
-	margin-top: 40vh;
+	margin-top: calc(100vh * 0.4);
 }
 #Contraer{
 	width: 21px;
 	height: 21px;
-	margin: 20vh 0px 10px 9vw;
+	margin: calc(100vh * 0.2) 0px 10px calc(100vw * 0.09);
 	object-fit: contain;
 }
 #Contraer button{

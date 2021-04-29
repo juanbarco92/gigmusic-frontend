@@ -4,7 +4,7 @@ import '../Static/CSS/Notas.css';
 const Notas = (props) => {
 
     // ----- Obtencion y adecuacion de parametros de entrada
-    const {notas, espacio, letra} = props
+    const {notas, espacio, letra, colorAc} = props
     
     const notacion = notas.split(';')
     const espaciado = espacio.split(';').map( item => (' '.repeat(item) ))
@@ -15,8 +15,8 @@ const Notas = (props) => {
   return (
     <div className='row'>
         <div className='col'>
-            <div className='row mt-3'>
-                <pre id='Acordes'>
+            <div className='row mt-3' id='Acordes'>
+                <pre id='Contenedor-Acordes' style={{'color':colorAc}}>
                     {spacedNotes}
                 </pre>
             </div>

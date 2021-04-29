@@ -1,13 +1,37 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../Static/CSS/MusicNav.css'
+import Portal from './Portal'
 
 const MusicNav = (props) => {
   	
   	// ----- Obtencion de variables y funciones de entrada
-	const { Scrolling, scroll, MostrarAcordes } = props
+	const { Scrolling, scroll, MostrarAcordes, VarFuente, VarAcordes, VarTipo, personalize } = props
+	const [font, setFont] = useState(false)
+	const [tipo, setTipo] = useState(false)
+	const [chord, setChord] = useState(false)
+
+	// ----- Restaura personalizacion
+	const Restablecer = () => {
+		VarAcordes('inherit')
+		VarFuente('inherit')
+		VarTipo('inherit')
+	}
 
 	const styles = {
 		maxHeight : window.screen.height
+	}
+
+	// ----- Se invoca el portal
+	const ColorFuente = () => {
+		setFont(!font)
+	}
+
+	const Tipografia = () => {
+		setTipo(!tipo)
+	}
+
+	const ColorAcordes = () => {
+		setChord(!chord)
 	}
 
   return (
@@ -39,7 +63,7 @@ const MusicNav = (props) => {
 			    	<div className='col float-left'>
 			    		<span>AutoScroll</span>
 			    	</div>
-			    	<div className="col custom-control custom-switch float-right">
+			    	<div className="col-3 custom-control custom-switch float-right">
 						<input type="checkbox" className="custom-control-input" id="scroll-btn" checked={scroll}			onChange={Scrolling} />
 						<label className="custom-control-label" htmlFor="scroll-btn"></label>
 					</div>
@@ -48,7 +72,7 @@ const MusicNav = (props) => {
 			    	<div className='col float-left'>
 			    		<span>Mostrar acordes</span>
 			    	</div>
-			    	<div className="col custom-control custom-switch float-right">
+			    	<div className="col-3 custom-control custom-switch float-right">
 						<input type="checkbox" className="custom-control-input" id="acordes-btn" onChange={MostrarAcordes}/>
 						<label className="custom-control-label" htmlFor="acordes-btn"></label>
 					</div>
@@ -69,12 +93,16 @@ const MusicNav = (props) => {
 			    <div className='row'>
 			    	<div className='col'>
 			    		<div className='row'>
-			    			<div className='col float-left'>
+			    			<div className='col w-75 float-left'>
 			    				<span>Color de acordes</span>
 			    			</div>
-			    			<div className='col-4 float-right'>
-			    				<button type='button' className='btn mn-btn' id='color-acordes'>&gt;</button>
+			    			<div className='col-4 w-25 float-right'>
+			    				<button type='button' className='btn mn-btn' onClick={ColorAcordes} id='color-acordes'>&gt;</button>
 			    			</div>
+			    			{
+		    					chord &&
+		    					(<Portal tipo='ColAc' selection={personalize.color} method={ColorAcordes} varExt={VarAcordes} />)
+		    				}
 			    		</div>
 			    		<div className="row align-items-center">
 					    	<div className='col float-left'>
@@ -90,24 +118,32 @@ const MusicNav = (props) => {
 							</div>
 						</div>
 			    		<div className='row'>
-			    			<div className='col float-left'>
+			    			<div className='col w-75 float-left'>
 			    				<span>Tipografía</span>
 			    			</div>
-			    			<div className='col-4 float-right'>
-			    				<button type='button' className='btn mn-btn' id='tipografia'>&gt;</button>
+			    			<div className='col-4 w-25 float-right'>
+			    				<button type='button' onClick={Tipografia} className='btn mn-btn' id='tipografia'>&gt;</button>
 			    			</div>
+			    			{
+		    					tipo &&
+		    					(<Portal tipo='SelTi' selection={personalize.fontFamily} method={Tipografia} varExt={VarTipo} />)
+		    				}
 			    		</div>
 			    		<div className='row'>
-			    			<div className='col float-left'>
+			    			<div className='col w-75 float-left'>
 			    				<span>Color de fuente</span>
 			    			</div>
-			    			<div className='col-4 float-right'>
-			    				<button type='button' className='btn mn-btn' id='color-fuente'>&gt;</button>
+			    			<div className='col-4 w-25 float-right'>
+			    				<button type='button' className='btn mn-btn' onClick={ColorFuente} id='color-fuente'>&gt;</button>
 			    			</div>
+			    			{
+		    					font &&
+		    					(<Portal tipo='ColFu' selection={personalize.font} method={ColorFuente} varExt={VarFuente} />)
+			    			}
 			    		</div>
 			    	</div>
 			    </div>
-			    <button className='btn mt-2' id='Restablecer'>
+			    <button onClick={Restablecer} className='btn mt-2' id='Restablecer' type = "reset">
 			    	RESTABLECER AJUSTES
 			    </button>
 		    </div>
