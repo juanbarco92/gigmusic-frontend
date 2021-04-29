@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import '../Static/CSS/MusicNav.css'
 import Portal from './Portal'
+import InstrumentSelector from './InstrumentSelector'
 
 const MusicNav = (props) => {
   	
@@ -37,27 +38,12 @@ const MusicNav = (props) => {
   		<div className='row' id='MusicNav-Container' >
   			<div className='col px-0'>
 	  			<p className='h4 text-center'>ACORDES PARA</p>
-	  			<div className="row justify-content-between" >
+	  			<div className="row" >
 	  				<div className='col'>
-	  					<div className="row" >
-	  						<div className='col'>
-	  							IMG
-	  						</div>
-	  					</div>
-	  					<div className="row" >
-	  						<div className='col-3'>
-	  							<button type='button' className='btn mn-btn' id='Prev-Instrument'>&lt;</button>
-	  						</div>
-	  						<div className='col-6'>
-	  							Guitarra Acustica
-	  						</div>
-	  						<div className='col-3'>
-	  							<button type='button' className='btn mn-btn' id='Next-Instrument'>&gt;</button>
-	  						</div>
-	  					</div>
+	  					<InstrumentSelector />
 	  				</div>
 	  			</div>
-			    <div className="row justify-content-between" >
+			    <div className="row justify-content-between mt-4" >
 			    	<div className='col float-left'>
 			    		<span>AutoScroll</span>
 			    	</div>
