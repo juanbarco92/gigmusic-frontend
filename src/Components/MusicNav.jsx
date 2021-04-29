@@ -5,16 +5,14 @@ import Portal from './Portal'
 const MusicNav = (props) => {
   	
   	// ----- Obtencion de variables y funciones de entrada
-	const { Scrolling, scroll, MostrarAcordes, VarFuente, VarAcordes, VarTipo, personalize } = props
+	const { Scrolling, scroll, MostrarAcordes, VarFuente, VarAcordes, VarTipo, personalize, ResetP } = props
 	const [font, setFont] = useState(false)
 	const [tipo, setTipo] = useState(false)
 	const [chord, setChord] = useState(false)
 
 	// ----- Restaura personalizacion
 	const Restablecer = () => {
-		VarAcordes('inherit')
-		VarFuente('inherit')
-		VarTipo('inherit')
+		ResetP()
 	}
 
 	const styles = {

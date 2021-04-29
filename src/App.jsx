@@ -88,7 +88,7 @@ function App() {
     setAcordes(!acordes)
   }
 
-// ----- Perzonalizacion
+// ----- Personalizacion
   const VarAcordes = (e) => {
     setPersonalize({
     'font': personalize.font,
@@ -108,6 +108,14 @@ function App() {
     'font': personalize.font,
     'color': personalize.color,
     'fontFamily': e
+    })
+  }
+// ----- Reset de Personalizacion
+  const ResetP = () => {
+    setPersonalize({
+    'font': 'inherit',
+    'color': 'inherit',
+    'fontFamily': 'inherit'
     })
   }
 
@@ -149,7 +157,7 @@ function App() {
                       MostrarAcordes={MostrarAcordes}
                       Scrolling={Scrolling} VarTipo={VarTipo} 
                       VarFuente={VarFuente} VarAcordes={VarAcordes} 
-                      personalize={personalize} />
+                      personalize={personalize} ResetP={ResetP} />
                     </div>
                   </div>
 
