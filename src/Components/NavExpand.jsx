@@ -54,7 +54,7 @@ const NavExpand = (props) => {
 					</NavLink>
 				</div>
 				<div className='row justify-content-center'>
-					<NavLink to='/' className='link-react link-react-nav w-100' >
+					<NavLink to='/user' className='link-react link-react-nav w-100' >
 						<div className='col-10 align-self-center ajustes-nav'>
 							<Ajustes id='Ajustes'/>
 							<span className='ml-3'>Ajustes</span>

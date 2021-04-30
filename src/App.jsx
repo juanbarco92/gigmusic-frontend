@@ -1,5 +1,12 @@
 import React, {useState} from 'react'
+import{
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from 'react-router-dom'
+import axios from 'axios'
 import './App.css';
+import {getToken, setToken, delToken} from './Utils/utils'
 import Song from './Components/Song'
 import Inicio from './Components/Inicio'
 import Resultados from './Components/Resultados'
@@ -9,16 +16,20 @@ import NavExpand from './Components/NavExpand'
 import NavContract from './Components/NavContract'
 import MusicNav from './Components/MusicNav'
 import Artist from './Components/Artist'
-import{
-    BrowserRouter as Router,
-    Switch,
-    Route
-} from 'react-router-dom'
-import axios from 'axios'
+import User from './Components/User'
 
-let proxy='http://localhost:8080'
 
 function App() {
+
+  const token = getToken()
+  console.log(token)
+// ----- Configuracion de axios
+  axios.defaults.baseURL = "http://localhost:8080/api"
+  axios.defaults.headers.common['Content-type'] = 'application/json; charset=utf-8'
+  axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
+  axios.defaults.headers.common['Access-Control-Allow-Methods'] = '*'
+  axios.defaults.headers.common['Access-Control-Allow-Headers'] = '*'
+  axios.defaults.headers.common['cache-control'] = 'no-cache'
 
 // ----- Variables de estado
   const [colapsar, setColapsar] = useState(false)
@@ -34,17 +45,6 @@ function App() {
     'fontFamily': 'inherit'
   })
 
-// ----- Configuracion de axios headers
-  var config = {
-       headers: {
-            'Content-type': 'application/json; charset=utf-8',
-            'Access-Control-Allow-Origin':'*',
-            'Access-Control-Allow-Methods': '*',
-            'Access-Control-Allow-Headers':'*',
-            'cache-control': 'no-cache'
-          }
-    }
-
 // ----- Estilos adicionales de adaptacion
   const styles = {
     maxWidth : window.screen.width,
@@ -53,12 +53,12 @@ function App() {
 
 // ----- Obtencion de canciones y artistas
   const getArtist = async (search?) => {
-      const {data} = await axios.get(proxy+`/api/artist/${search}&num_registros=5`, config)
+      const {data} = await axios.get(`/artist/${search}&num_registros=5`)
       const nuevoArray = data.map(item => (item))
       setArtistas(nuevoArray)
   }
   const getSong = async (search=null) => {
-      const {data} = await axios.get(proxy+`/api/song/${search}&num_registros=5`, config)
+      const {data} = await axios.get(`/song/${search}&num_registros=5`)
       const nuevoArray = data.map(item => (item))
       setCanciones(nuevoArray)
   }
@@ -66,13 +66,21 @@ function App() {
 // ----- Obtencion de artista o cancion especifica
   const Eleccion = async (path, id?) => {
     if(path === '/song/'){
-      const {data} = await axios.get(proxy+`/api/song/one${id}`, config)
+      const {data} = await axios.get(`/song/one${id}`)
       setCancionElegida(data)
     }
     else if(path === '/artist/'){
-      const {data} = await axios.get(proxy+`/api/artist/one${id}`, config)
+      const {data} = await axios.get(`/artist/one${id}`)
       setArtistaElegido(data)
     }
+  }
+
+// ----- Login de usuario
+  const LogUser = async (credentials) => {
+    const {data} = await axios.post('/user/login', {
+      'body': JSON.stringify(credentials)
+    })
+    return data
   }
 
 // ----- Helpers para collapse, scrolling y acordes
@@ -171,6 +179,11 @@ function App() {
                 <Route path='/artist/'>
                   <Busqueda getSong={getSong} getArtist={getArtist} />
                   <Artist Eleccion={Eleccion} elegida={artistaElegido} />
+                </Route>
+
+                <Route path='/user/'>
+                  <Busqueda getSong={getSong} getArtist={getArtist} />
+                  <User LogUser={LogUser} token={token} delToken={delToken} setToken={setToken} />
                 </Route>
 
                 <Route exact path='/'>

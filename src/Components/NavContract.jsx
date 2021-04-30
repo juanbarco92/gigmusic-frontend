@@ -48,7 +48,7 @@ const NavContract = (props) => {
 					</NavLink>
 				</div>
 				<div className='row'>
-					<NavLink to='/' className='link-react link-react-nav w-100' >
+					<NavLink to='/user' className='link-react link-react-nav w-100' >
 						<div className='col ajustes-nav'>
 							<Ajustes id='Ajustes'/>
 						</div>

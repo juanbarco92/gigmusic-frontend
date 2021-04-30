@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-//import propTypes from 'prop-types'
 import {NavLink} from 'react-router-dom';
 import '../Static/CSS/Busqueda.css';
 import {ReactComponent as Buscador} from '../Static/Icons/search-icon.svg'
