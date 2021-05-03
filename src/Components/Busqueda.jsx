@@ -25,15 +25,15 @@ const Busqueda = (props) => {
   return (
       <div className='row sticky-top w-100' id='Search-container'>
       	<div className='col'>
-			<form className="input-group" id='Buscar'>
+			<form className="input-group" id='Buscar' onSubmit={() => submit(search)}>
 				<div className='input-group-prepend'>
 					<Buscador className='align-self-center input-group-text' id='icon-search'/>
 				</div>
 				<input type="search" 
 					className="form-control align-self-center"
 					id='search-bar' 
-					value={search}
-					required='required' 
+					value={search} 
+					required
 					placeholder="Search"
 					onChange={onSearch}
 					onSubmit={() => submit(search)}/>
@@ -42,9 +42,8 @@ const Busqueda = (props) => {
                             pathname: '/search/',
                             search: `?busqueda=${search}`,
                             }}>
-						<button
-						type="submit" id='search-button'
-						onClick={() => submit(search)}/>
+						<input
+						type="submit" id='search-button' />
 					</NavLink>
 				</div>
 			</form>

@@ -38,15 +38,21 @@ const Login = (props) => {
     <div className="container text-center" id='Login-container'>
     	<h1>Login</h1>
     	<form onSubmit={submit}>
+    		{
+				(email.length>0 && (!email.includes('.') || !email.includes('@')))&&
+				(
+					<span className='text-danger'>Ingrese un email válido</span>
+				)
+			}
 			<div className="mb-3">
 				<label htmlFor="email-login" className="form-label">Correo electrónico</label>
-				<input type="email" onChange={onEmail} className="form-control" id="email-login"/>
+				<input required type="email" onChange={onEmail} className="form-control" id="email-login"/>
 			</div>
 			<div className="mb-3">
 				<label htmlFor="password-login" className="form-label">Contraseña</label>
-				<input type="password" id="password-login" onChange={onPassword} className="form-control"/>
+				<input required type="password" id="password-login" minlength='4' onChange={onPassword} className="form-control"/>
 			</div>
-			<button type="submit" className="btn btn-primary">Ingresar</button>
+			<input type="submit" value='Ingresar' className="btn btn-primary"/>
 		</form>
     </div>
   );

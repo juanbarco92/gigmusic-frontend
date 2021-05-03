@@ -17,16 +17,20 @@ const SignUp = (props) => {
 // ----- Autenticacion
 	const submit = async (e) => {
 		e.preventDefault()
-		const verify_password = verifyPassword
-		const res = await SignUpUser({
-			username, nombre, password, verify_password, email
-		})
-		if (res.error === null){
-			window.location.reload()
-			alert('Se registró con éxito')
-		}
-		else{
-			return alert(res.error)
+		if(password===verifyPassword){
+			const verify_password = verifyPassword
+			const res = await SignUpUser({
+				username, nombre, password, verify_password, email
+			})
+			if (res.error === null){
+				window.location.reload()
+				alert('Se registró con éxito')
+			}
+			else{
+				return alert(res.error)
+			}
+		}else{
+			alert('Las contraseñas no coinciden')
 		}
 	}
 	const onEmail = (e) => {
@@ -52,25 +56,37 @@ const SignUp = (props) => {
     	<form onSubmit={submit}>
     		<div className="mb-3">
 				<label htmlFor="nombre-signup" className="form-label">Nombre</label>
-				<input type="text" onChange={onNombre} className="form-control" id="nombre-signup"/>
+				<input required type="text" onChange={onNombre} className="form-control" id="nombre-signup"/>
 			</div>
+			{
+				(email.length>0 && (!email.includes('.') || !email.includes('@')))&&
+				(
+					<span className='text-danger'>Ingrese un email válido</span>
+				)
+			}
 			<div className="mb-3">
 				<label htmlFor="email-signup" className="form-label">Correo electrónico</label>
-				<input type="email" onChange={onEmail} className="form-control" id="email-signup"/>
+				<input required type="email" onChange={onEmail} className="form-control" id="email-signup"/>
 			</div>
 			<div className="mb-3">
 				<label htmlFor="username-signup" className="form-label">Username</label>
-				<input type="text" onChange={onUsername} id="username-signup"  className="form-control"/>
+				<input required type="text" onChange={onUsername} id="username-signup"  className="form-control"/>
 			</div>
+			{
+				(password !== verifyPassword) && 
+				(
+					<span className='text-danger'>Las contraseñas no coinciden</span>
+				)
+			}
 			<div className="mb-3">
 				<label htmlFor="password-signup" className="form-label">Contraseña</label>
-				<input type="password" id="password-signup" onChange={onPassword} className="form-control"/>
+				<input required type="password" id="password-signup" onChange={onPassword} className="form-control"/>
 			</div>
 			<div className="mb-3">
 				<label htmlFor="verifypassword-signup" className="form-label">Vuelva a ingresar su contraseña</label>
-				<input type="password" id="verify-password-signup" onChange={onVerifyPassword} className="form-control"/>
+				<input required type="password" id="verify-password-signup" onChange={onVerifyPassword} className="form-control"/>
 			</div>
-			<button type="submit" className="btn btn-primary">Registrarse</button>
+			<input type="submit" value='Registrarse' className="btn btn-primary"/>
 		</form>
     </div>
   );
