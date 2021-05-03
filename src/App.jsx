@@ -22,7 +22,6 @@ import User from './Components/User'
 function App() {
 
   const token = getToken()
-  console.log(token)
 // ----- Configuracion de axios
   axios.defaults.baseURL = "http://localhost:8080/api"
   axios.defaults.headers.common['Content-type'] = 'application/json; charset=utf-8'
@@ -77,9 +76,13 @@ function App() {
 
 // ----- Login de usuario
   const LogUser = async (credentials) => {
-    const {data} = await axios.post('/user/login', {
-      'body': JSON.stringify(credentials)
-    })
+    const {data} = await axios.post('/user/login', JSON.stringify(credentials))
+    return data
+  }
+
+// ----- SignUp de usuario
+  const SignUpUser = async(credentials) => {
+    const {data} = await axios.post('/user', JSON.stringify(credentials))
     return data
   }
 
@@ -183,7 +186,7 @@ function App() {
 
                 <Route path='/user/'>
                   <Busqueda getSong={getSong} getArtist={getArtist} />
-                  <User LogUser={LogUser} token={token} delToken={delToken} setToken={setToken} />
+                  <User LogUser={LogUser} SignUpUser={SignUpUser} token={token} delToken={delToken} setToken={setToken} />
                 </Route>
 
                 <Route exact path='/'>
