@@ -62,23 +62,6 @@
 	width: 100%;
 	height: 100%;
 }
-.link-react{
-	color: currentColor;
-	background-color: transparent;
-}
-.link-react:link{
-	color: currentColor;
-	text-decoration: none;
-	background-color: transparent;
-}
-.link-react:hover{
-	color: #f24405;
-	background-color: transparent;
-}
-.link-react:active{
-	color: #f24405;
-	background-color: transparent;
-}
 .link-react-nav{
 	color: currentColor;
 	background-color: transparent;
