@@ -41,7 +41,9 @@ function App() {
   const [personalize, setPersonalize] = useState({
     'font': 'inherit',
     'color': 'inherit',
-    'fontFamily': 'inherit'
+    'fontFamily': 'inherit',
+    'fontSize': '1rem',
+    'titleFontSize': '1.5rem'
   })
 
 // ----- Estilos adicionales de adaptacion
@@ -104,21 +106,36 @@ function App() {
     setPersonalize({
     'font': personalize.font,
     'color': e,
-    'fontFamily': personalize.fontFamily
+    'fontFamily': personalize.fontFamily,
+    'fontSize': personalize.fontSize,
+    'titleFontSize': personalize.titleFontSize
     })
   }
   const VarFuente = (e) => {
     setPersonalize({
     'font': e,
     'color': personalize.color,
-    'fontFamily': personalize.fontFamily
+    'fontFamily': personalize.fontFamily,
+    'fontSize': personalize.fontSize,
+    'titleFontSize': personalize.titleFontSize
     })
   }
   const VarTipo = (e) => {
     setPersonalize({
     'font': personalize.font,
     'color': personalize.color,
-    'fontFamily': e
+    'fontFamily': e,
+    'fontSize': personalize.fontSize,
+    'titleFontSize': personalize.titleFontSize
+    })
+  }
+  const VarSize = (e) => {
+    setPersonalize({
+    'font': personalize.font,
+    'color': personalize.color,
+    'fontFamily': personalize.fontFamily,
+    'fontSize': e+'rem',
+    'titleFontSize': e+0.5+'rem'
     })
   }
 // ----- Reset de Personalizacion
@@ -126,7 +143,9 @@ function App() {
     setPersonalize({
     'font': 'inherit',
     'color': 'inherit',
-    'fontFamily': 'inherit'
+    'fontFamily': 'inherit',
+    'fontSize': '1rem',
+    'titleFontSize': '1.5rem'
     })
   }
 
@@ -166,7 +185,7 @@ function App() {
                     <div className='col-3' id='MusicNav'>
                       <MusicNav scroll={scroll} 
                       MostrarAcordes={MostrarAcordes}
-                      Scrolling={Scrolling} VarTipo={VarTipo} 
+                      Scrolling={Scrolling} VarTipo={VarTipo} VarSize={VarSize}
                       VarFuente={VarFuente} VarAcordes={VarAcordes} 
                       personalize={personalize} ResetP={ResetP} />
                     </div>

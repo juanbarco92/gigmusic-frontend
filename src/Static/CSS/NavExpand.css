@@ -84,7 +84,7 @@
 	background-color: transparent;
 }
 .link-react-nav:link{
-	color: #f24405;
+	color: currentColor;
 	text-decoration: none;
 	background-color: transparent;
 }

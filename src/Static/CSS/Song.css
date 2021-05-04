@@ -1,4 +1,5 @@
 #Song-Container{
+    font-size: 1rem;
 	background-color: transparent;
 	color: #b3b3b3;
 }
@@ -15,6 +16,7 @@
     height: 0;
 }
 #Intro-title{
+    font-size: 1.5rem;
     color: #4ed0e5;
     background-color: transparent;
     border: solid 1px #4ed0e5;

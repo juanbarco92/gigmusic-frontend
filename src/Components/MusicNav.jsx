@@ -1,23 +1,50 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import '../Static/CSS/MusicNav.css'
 import Portal from './Portal'
 import InstrumentSelector from './InstrumentSelector'
 
+const sizeIncDec=0.1
+let sizeAux = 1
+
 const MusicNav = (props) => {
   	
   	// ----- Obtencion de variables y funciones de entrada
-	const { Scrolling, scroll, MostrarAcordes, VarFuente, VarAcordes, VarTipo, personalize, ResetP } = props
+	const { Scrolling, scroll, MostrarAcordes, VarSize, VarFuente, VarAcordes, VarTipo, personalize, ResetP } = props
 	const [font, setFont] = useState(false)
 	const [tipo, setTipo] = useState(false)
 	const [chord, setChord] = useState(false)
+	const [fuente, setFuente] = useState(1)
+	const [tono, setTono] = useState(0)
 
 	// ----- Restaura personalizacion
 	const Restablecer = () => {
 		ResetP()
+		setFuente(1)
+		VarSize(1)
 	}
 
 	const styles = {
 		maxHeight : window.screen.height
+	}
+
+	// ----- Cambios de botones + y -
+	const Sumar = (cambio) => {
+		if(cambio === 'fuente'){
+			if(fuente<=1.3){
+				setFuente(fuente+sizeIncDec)
+			}
+		}else if(cambio === 'tono'){
+			setTono(tono+sizeIncDec)
+		}
+	}
+	const Restar = (cambio) => {
+		if(cambio === 'fuente'){
+			if(fuente>0.7){
+				setFuente(fuente-sizeIncDec)
+			}
+		}else if(cambio === 'tono'){
+			setTono(tono-sizeIncDec)
+		}
 	}
 
 	// ----- Se invoca el portal
@@ -32,6 +59,13 @@ const MusicNav = (props) => {
 	const ColorAcordes = () => {
 		setChord(!chord)
 	}
+
+	useEffect(() => {
+		if(fuente !== sizeAux){
+			VarSize(fuente)
+			sizeAux=fuente
+		}
+	}, [VarSize, fuente])
 
   return (
   	<div style={styles}>
@@ -66,10 +100,10 @@ const MusicNav = (props) => {
 			    		<span>Tono</span>
 			    	</div>
 			    	<div className='col btn-group float-right'>
-						<button type='button' className='btn mn-btn' id='tono-menos'>
+						<button onClick={() => Restar('tono')} type='button' className='btn mn-btn' id='tono-menos'>
 							<span>-</span>
 						</button>
-						<button type='button' className='btn mn-btn' id='tono-mas'>
+						<button onClick={() => Sumar('tono')} type='button' className='btn mn-btn' id='tono-mas'>
 							<span>+</span>
 						</button>
 					</div>
@@ -93,10 +127,10 @@ const MusicNav = (props) => {
 					    		<p>Tamaño de fuente</p>
 					    	</div>
 					    	<div className='col btn-group float-right'>
-								<button type='button' className='btn mn-btn' id='fuente-menos'>
+								<button onClick={() => Restar('fuente')} type='button' className='btn mn-btn' id='fuente-menos'>
 									<span>-</span>
 								</button>
-								<button type='button' className='btn mn-btn' id='fuente-mas'>
+								<button onClick={() => Sumar('fuente')} type='button' className='btn mn-btn' id='fuente-mas'>
 									<span>+</span>
 								</button>
 							</div>

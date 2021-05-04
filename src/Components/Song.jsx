@@ -34,6 +34,10 @@ function Song(props) {
 		maxHeight : window.screen.height,
 		color: personalize.font,
 		fontFamily: personalize.fontFamily,
+		fontSize: personalize.fontSize
+	}
+	const titleStyle = {
+		fontSize: personalize.titleFontSize
 	}
 
 	// ----- verificacion de fin y scroll 
@@ -110,8 +114,8 @@ function Song(props) {
 			    	onScroll={onScroll}
 			    	onWheel={(e) => onWheel(e)}>
 
-			    		<h3 id='artist'>Artista: {metadata.artista}</h3>
-			    		<h4 id='song'>Canción: {metadata.canción ? (metadata.canción):(metadata.cancion)}</h4>
+			    		<h4 style={titleStyle} id='artist'>Artista: {metadata.artista}</h4>
+			    		<h4 style={titleStyle} id='song'>Canción: {metadata.canción ? (metadata.canción):(metadata.cancion)}</h4>
 			    		<p id='details'>Género: {metadata.genero ? (metadata.genero):(metadata.género)}<br/>
 			    			Subgénero: {metadata.subgenero ? (metadata.subgenero):(metadata.subgénero)}<br/>
 			    			Álbum: {metadata.album ? (metadata.album):(metadata.álbum)}<br/>
@@ -124,7 +128,7 @@ function Song(props) {
 		    						<li className='list-group' key={index}>
 		    							<div className='row offset-1'>
 				    						<div className='col col-auto' id='Intro-title'>
-				    							<h4 className='text-center'>{item.tipo}</h4>
+				    							<h4 className='text-center' style={titleStyle}>{item.tipo}</h4>
 			    							</div>
 		    							</div>
 		    							<ul className='list-group'>
@@ -132,7 +136,7 @@ function Song(props) {
 				    							item.contenido.map((item, index) => (
 				    								<li className='list-group' key={index}>
 														<Notas notas={item.notas} espacio={item.espacio} letra={item.letra} 
-														colorAc={personalize.color} />
+														colorAc={personalize.color} sizeAc={personalize.fontSize} />
 				    								</li>
 				    							))
 			    							}
