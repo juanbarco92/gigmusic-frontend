@@ -6,7 +6,7 @@ import '../Static/CSS/Reproductor.css'
 
 const Reproductor = (props) => {
     
-    // ----- Arreglo de entrada
+    // ----- Obtencion de variables de entrada
     const tracks = [
       {
         title: 'La Flaca',
@@ -15,32 +15,13 @@ const Reproductor = (props) => {
       },
     ]
 
-    // ----- Variables de estado
-    const [trackIndex, setTrackIndex] = useState(0)
-    const [trackProgress, setTrackProgress] = useState(0)
-    const [isPlaying, setIsPlaying] = useState(false)
-    const [isVolZero, setIsVolZero] = useState(false)
-
-    const { title, artist, audioSrc } = tracks[trackIndex]
-
-
-    // ----- Cracion de elemento de audio
-    const audioRef = useRef(new Audio(audioSrc))
-    const intervalRef = useRef()
-    const isReady = useRef(false)
-
-    // ----- Obtencion de la duracion
-    const { duration } = audioRef.current
-
-    // ----- Estilos de barras de progreso
-    const currentPercentage = duration ? `${(trackProgress / duration) * 100}%` : '0%'
-    const trackStyling = `
-    -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #f24405), color-stop(${currentPercentage}, #404040))`
-
-    const volumeStyling = `
-    -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${audioRef.current.volume}, #f24405), color-stop(${audioRef.current.volume}, #404040))`
-
     // ----- Definicion de funciones Prev y Next
+    const [trackIndex, setTrackIndex] = useState(0)
+
+    // Obtencion de propiedades de entrada
+    const { title, artist, audioSrc } = tracks[trackIndex]
+    
+    // Funcion Prev
     const toPrevTrack = () => {
       audioRef.current.currentTime = '0'
       if (trackIndex - 1 < 0) {
@@ -52,6 +33,7 @@ const Reproductor = (props) => {
       }
     }
 
+    // Funcion Next
     const toNextTrack = React.useCallback(() => {
       audioRef.current.currentTime = '0'
       if (trackIndex < tracks.length - 1) {
@@ -63,7 +45,43 @@ const Reproductor = (props) => {
       }
     },[trackIndex, tracks.length])
 
-    // ----- Timer para progreso de las barras
+    // ----- Cracion de elemento de audio
+    const audioRef = useRef(new Audio(audioSrc))
+    const intervalRef = useRef()
+    const isReady = useRef(false)
+
+    // ----- Obtencion de la duracion
+    const { duration } = audioRef.current
+
+    // ----- Obtencion de movimiento manual en barra de progreso
+    const [isPlaying, setIsPlaying] = useState(false)
+    const [trackProgress, setTrackProgress] = useState(0)
+
+    const onScrub = (value) => {
+      // Clear any timers already running
+      clearInterval(intervalRef.current)
+      audioRef.current.currentTime = value
+      setTrackProgress(audioRef.current.currentTime)
+    }
+
+    // Accion al finalizar el scrub
+    const onScrubEnd = () => {
+      // If not already playing, start
+      if (!isPlaying) {
+        setIsPlaying(true)
+      }
+      startTimer()
+    }
+
+    // ----- Estilos de barras de progreso
+    const currentPercentage = duration ? `${(trackProgress / duration) * 100}%` : '0%'
+    const trackStyling = `
+    -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #f24405), color-stop(${currentPercentage}, #404040))`
+
+    const volumeStyling = `
+    -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${audioRef.current.volume}, #f24405), color-stop(${audioRef.current.volume}, #404040))`
+
+    // Timer para progreso de las barras
     const startTimer = React.useCallback(() => {
       // Clear any timers already running
       clearInterval(intervalRef.current)
@@ -76,23 +94,45 @@ const Reproductor = (props) => {
       }, [1000])
     },[toNextTrack])
 
-    // ----- Obtencion de movimiento manual en barra de progreso
-    const onScrub = (value) => {
-      // Clear any timers already running
-      clearInterval(intervalRef.current)
-      audioRef.current.currentTime = value
-      setTrackProgress(audioRef.current.currentTime)
-    }
+    // ----- Cambio de audio for next and prev
+    useEffect(() => {
+      audioRef.current.pause()
 
-    const onScrubEnd = () => {
-      // If not already playing, start
-      if (!isPlaying) {
+      audioRef.current = new Audio(audioSrc)
+      setTrackProgress(audioRef.current.currentTime)
+
+      if (isReady.current) {
+        audioRef.current.play()
         setIsPlaying(true)
+        startTimer()
+      } else {
+        // Set the isReady ref as true for the next pass
+        isReady.current = true
       }
-      startTimer()
-    }
+    }, [trackIndex, audioSrc, startTimer])
+
+    // ----- Inicia la reproduccion
+    useEffect(() => {
+      if (isPlaying) {
+        audioRef.current.play()
+        startTimer()
+      } else {
+        audioRef.current.pause()
+      }
+    }, [isPlaying, startTimer])
+
+    // ----- Pausa al salir
+    useEffect(() => {
+      // Pause and clean up on unmount
+      return () => {
+        audioRef.current.pause()
+        clearInterval(intervalRef.current)
+      }
+    }, [])
 
     // ----- Control de volumen encendido o apagado
+    const [isVolZero, setIsVolZero] = useState(false)
+
     const onVolume = (value) => {
       audioRef.current.volume = value
       if (value === '0'){
@@ -114,42 +154,6 @@ const Reproductor = (props) => {
       })
       return `${min}:${sec}`
     }
-
-    // ----- Inicia la reproduccion
-    useEffect(() => {
-      if (isPlaying) {
-        audioRef.current.play()
-        startTimer()
-      } else {
-        audioRef.current.pause()
-      }
-    }, [isPlaying, startTimer])
-
-    // ----- Pausa al salir
-    useEffect(() => {
-      // Pause and clean up on unmount
-      return () => {
-        audioRef.current.pause()
-        clearInterval(intervalRef.current)
-      }
-    }, [])
-    
-    // ----- Cambio de audio for next and prev
-    useEffect(() => {
-      audioRef.current.pause()
-
-      audioRef.current = new Audio(audioSrc)
-      setTrackProgress(audioRef.current.currentTime)
-
-      if (isReady.current) {
-        audioRef.current.play()
-        setIsPlaying(true)
-        startTimer()
-      } else {
-        // Set the isReady ref as true for the next pass
-        isReady.current = true
-      }
-    }, [trackIndex, audioSrc, startTimer])
 
   return (
     <div className='audio-player'>

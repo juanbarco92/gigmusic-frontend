@@ -5,11 +5,12 @@ import {ReactComponent as Buscador} from '../Static/Icons/search-icon.svg'
 
 const Busqueda = (props) => {
 	
-	// ----- Definicion de variables y funciones de entrada
+	// ----- Obtencion de variables de inicio
 	const {getArtist, getSong} = props
-	const [search, setSearch] = useState('')
 	
 	// ----- Obtencion de valor de input
+	const [search, setSearch] = useState('')
+	
 	const onSearch = (e) => {
 		setSearch(e.target.value)
 	}

@@ -7,6 +7,7 @@ const Inicio = () => {
     // ----- Definicion titulo del documento
     document.title = "GIG - Inicio"
 
+    // ----- Definicion de estilos de adaptacion
     const styles = {
       maxHeight : window.screen.height
     }

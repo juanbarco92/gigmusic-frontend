@@ -3,18 +3,45 @@ import '../Static/CSS/SignUp.css'
 
 const SignUp = (props) => {
 
-// ----- Obtencion de variables y funciones de inicio
+	// ----- Obtencion de variables y funciones de inicio
 	const {SignUpUser} = props
 
-// ----- Definicion de variables de estado
+	// ----- Obtencion de email
 	const [email, setEmail] = useState('')
+
+	const onEmail = (e) => {
+		setEmail(e.target.value)
+	}
+
+	// ----- Obtencion de Username
 	const [username, setUsername] = useState('')
+
+	const onUsername = (e) => {
+		setUsername(e.target.value)
+	}
+
+	// ----- Obtencion de nombre
 	const [nombre, setNombre] = useState('')
+
+	const onNombre = (e) => {
+		setNombre(e.target.value)
+	}
+
+	// ----- Obtencion de password
 	const [password, setPassword] = useState('')
+
+	const onPassword = (e) => {
+		setPassword(e.target.value)
+	}
+
+	// ----- Obtencion de verify password
 	const [verifyPassword, setVerifyPassword] = useState('')
 
+	const onVerifyPassword = (e) => {
+		setVerifyPassword(e.target.value)
+	}
 
-// ----- Autenticacion
+	// ----- Autenticacion y registro
 	const submit = async (e) => {
 		e.preventDefault()
 		if(password===verifyPassword){
@@ -33,22 +60,6 @@ const SignUp = (props) => {
 			alert('Las contraseñas no coinciden')
 		}
 	}
-	const onEmail = (e) => {
-		setEmail(e.target.value)
-	}
-	const onNombre = (e) => {
-		setNombre(e.target.value)
-	}
-	const onUsername = (e) => {
-		setUsername(e.target.value)
-	}
-	const onPassword = (e) => {
-		setPassword(e.target.value)
-	}
-	const onVerifyPassword = (e) => {
-		setVerifyPassword(e.target.value)
-	}
-
 
   return (
     <div className="container text-center" id='SignUp-container'>

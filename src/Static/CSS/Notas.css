@@ -13,5 +13,6 @@
     overflow-x: hidden;
 }
 pre{
+	font-size: inherit !important;
 	color: inherit !important;
 }

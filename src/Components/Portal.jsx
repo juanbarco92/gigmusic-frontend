@@ -6,7 +6,6 @@ const Portal = (props) => {
 	
 	// ----- Obtencion de funciones y propiedades iniciales
 	const { method, tipo, varExt, selection } = props
-	const [metodo, setMetodo] = useState([])
 
 	// ----- Obtiene el resultado de la seleccion
 	const Seleccion = (e) => {
@@ -14,6 +13,8 @@ const Portal = (props) => {
 	}
 
 	// ----- De que tipo es el portal
+	const [metodo, setMetodo] = useState([])
+	
 	useEffect(() => {
 		if(tipo === 'ColAc'){
 			setMetodo(ColAc)

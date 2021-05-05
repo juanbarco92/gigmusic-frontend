@@ -4,16 +4,27 @@ import '../Static/CSS/Login.css'
 
 const Login = (props) => {
 
-// ----- Obtencion de variables y funciones de inicio
+	// ----- Obtencion de variables y funciones de inicio
 	const {setToken, LogUser} = props
 
+	// ----- Cambio de titulo de documento
 	document.title = "GIG - Login - Signup"
 
-// ----- Definicion de variables de estado
+	// ----- Obtencion de email
 	const [email, setEmail] = useState('')
+
+	const onEmail = (e) => {
+		setEmail(e.target.value)
+	}
+
+	// ----- Obtencion de password
 	const [password, setPassword] = useState('')
 
-// ----- Autenticacion
+	const onPassword = (e) => {
+		setPassword(e.target.value)
+	}
+	
+	// ----- Autenticacion
 	const submit = async (e) => {
 		e.preventDefault()
 		const token = await LogUser({
@@ -26,12 +37,6 @@ const Login = (props) => {
 		else{
 			return alert(token.error)
 		}
-	}
-	const onEmail = (e) => {
-		setEmail(e.target.value)
-	}
-	const onPassword = (e) => {
-		setPassword(e.target.value)
 	}
 
   return (

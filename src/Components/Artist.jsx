@@ -6,26 +6,20 @@ import {isEmpty} from '../Utils/utils'
 let urlAnt = null
 
 const Artist = (props) => {
-	
-	// ----- Definicion de variables
-	let urlPath = window.location.pathname
-	let urlSearch = window.location.search
-	const {elegida, Eleccion} = props
-	const artista = elegida
 
-	// ----- Define el titulo de la pagina
-	document.title = 'GIG - ' + artista.nombre
-
-	// ----- Definicion de variables de estado
-    const [navsClass, setNavClass] = useState(['nav-link activado','nav-link','nav-link','nav-link'])
-    const [load, setLoad] = useState(false)
-    const [navNum, setNavNum] = useState(0)
-
-    const styles = {
+	// ----- Estilos adicionales de adaptacion
+	const styles = {
       maxHeight : window.screen.height
     }
 
+	// ----- Obtencion de variables de inicio
+	const {elegida, Eleccion} = props
+
     // ----- Funcionamiento de navbar
+    const [navsClass, setNavClass] = useState(['nav-link activado','nav-link','nav-link','nav-link'])
+    const [navNum, setNavNum] = useState(0)
+    const [load, setLoad] = useState(false)
+
     const tabClick = (e) => {
     	setNavNum(e)
     	if(e===0){
@@ -42,17 +36,36 @@ const Artist = (props) => {
     	}
     }
 
-    // ----- Peticiones al servidor y control de visualizacion
+    // ----- Obtencion de parametros desde url
+    let urlPath = window.location.pathname
+	let urlSearch = window.location.search
+
+	// Obtencion de artista segun url
+  	let artista
+
+  	if (elegida.id === urlSearch.slice(4)){
+  		artista = elegida
+  	}else{
+  		artista = {}
+  	}
+
+  	// ----- Peticiones al servidor y control de visualizacion
     useEffect(() => {
     	if(urlSearch !== urlAnt){
     		Eleccion(urlPath, urlSearch)
     		urlAnt = urlSearch
+    	}
+    	if(!urlSearch.startsWith('?')){
+	        setLoad(false)
     	}
     	setLoad(!isEmpty(artista))
       return () => {
         setLoad(false)
       }
     }, [urlPath, urlSearch, Eleccion, artista])
+
+    // ----- Define el titulo de la pagina
+	document.title = 'GIG - ' + artista.nombre
 
   return (
     <div style={styles} id='Artist-container'>

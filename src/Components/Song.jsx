@@ -14,22 +14,9 @@ let estrofa
 function Song(props) {
 	
 	// ----- Obtencion de variables de entrada
-	let urlPath = window.location.pathname
-	let urlSearch = window.location.search
-	const { scroll, Scrolling, acordes, elegida, Eleccion, personalize } = props
-	
-	// ----- Destructuring de la cancion
-	const can = elegida
-	const {metadata, canción} = can
+	const { scroll, Scrolling, acordes, elegida, Eleccion, personalize} = props
 
-	// ----- Variables de estado
-	const [load, setLoad] = useState(false)
-	const [mostrar, setMostrar] = useState(false)
-	const [lineasRec,setLineasRec] = useState(0)
-	const [yOff,setYOff] = useState(0)
-	const finCancion = useRef(null)
-	const contenSong = useRef(null)
-
+	// ----- Estilos adicionales de adaptacion
 	const styles = {
 		maxHeight : window.screen.height,
 		color: personalize.font,
@@ -41,6 +28,10 @@ function Song(props) {
 	}
 
 	// ----- verificacion de fin y scroll 
+	const [lineasRec,setLineasRec] = useState(0)
+	const [yOff,setYOff] = useState(0)
+	const finCancion = useRef(null)
+
 	const logicScroll = React.useCallback(() => {
 		const offTop = finCancion.current ? finCancion.current.offsetTop : 0
 		if(lineasRec + hOff <= offTop){
@@ -57,6 +48,8 @@ function Song(props) {
 	},[Scrolling, yOff, lineasRec])
 
 	// ----- Actualizacion de posicion de scroll
+	const contenSong = useRef(null)
+
 	const onScroll = () => {
 	    setYOff(contenSong.current.scrollTop)
 	    hOff = contenSong.current.offsetHeight
@@ -74,7 +67,26 @@ function Song(props) {
 	    hOff = contenSong.current.offsetHeight
   	}
 
-  	// ----- Inicializacion de variables y timer luego de carga
+  	// ----- Obtencion de parametros desde url
+	let urlPath = window.location.pathname
+	let urlSearch = window.location.search
+
+  	// Obtencion de cancion segun url
+  	let can
+
+  	if (elegida.id === urlSearch.slice(4)){
+  		can = elegida
+  	}else{
+  		can = {}
+  	}
+
+	const {metadata, canción} = can
+
+	// ----- Variables de control de visualizacion
+  	const [load, setLoad] = useState(false)
+	const [mostrar, setMostrar] = useState(false)
+
+	// ----- Inicializacion de variables y timer luego de carga
 	useEffect(() => {
 		if(load === true){
 			document.title = 'GIG - ' + (metadata.canción ? (metadata.canción):(metadata.cancion))
@@ -99,6 +111,10 @@ function Song(props) {
   		if(urlSearch !== urlAnt){
     		Eleccion(urlPath, urlSearch)
     		urlAnt = urlSearch
+    	}
+    	if(!urlSearch.startsWith('?')){
+    		setMostrar(false)
+	        setLoad(false)
     	}
     	setLoad(!isEmpty(can))
     	return () => {

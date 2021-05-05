@@ -5,34 +5,38 @@ import SignUp from './SignUp'
 
 const User = (props) => {
 
+  // ----- Obtencion de variables y funciones de entrada
 	const { LogUser, SignUpUser, setToken, delToken, token } = props
     
-    if(!token) {
-    	return (
-        <div>
-          <div className='row'>
-            <div className='col text-center'>
-              <h1>Por favor inicia sesión o regístrate</h1>
-            </div>
-          </div>
-          <div className='row'>
-            <div className='col'>
-              <Login setToken={setToken} LogUser={LogUser} />
-            </div>
-            <div className='col'>
-              <SignUp SignUpUser={SignUpUser} />
-            </div>
+  // ----- Verificacion de usuario activo
+  if(!token) {
+  	return (
+      <div>
+        <div className='row'>
+          <div className='col text-center'>
+            <h1>Por favor inicia sesión o regístrate</h1>
           </div>
         </div>
-        )
-  	}
+        <div className='row'>
+          <div className='col'>
+            <Login setToken={setToken} LogUser={LogUser} />
+          </div>
+          <div className='col'>
+            <SignUp SignUpUser={SignUpUser} />
+          </div>
+        </div>
+      </div>
+      )
+	}
 
-    document.title = "GIG - Cuenta"
+  // ----- Cambio de titulo de documento
+  document.title = "GIG - Cuenta"
 
-  	const LogOut = () => {
-  		delToken()
-  		window.location.reload()
-  	}
+  // ----- Controlador de boton de salir
+	const LogOut = () => {
+		delToken()
+		window.location.reload()
+	}
 
   return (
     <div className="container text-center" id='User-container'>

@@ -13,9 +13,10 @@ import {ReactComponent as Youtube} from '../Static/Icons/youtube.svg'
 
 const NavExpand = (props) => {
 	
-	// ----- obtencion de funcion de entrada
+	// ----- Obtencion de parametros de entrada
 	const { Colapse } = props
 
+	// ----- Estilos personalizados de adaptacion
 	const styles = {
     	maxHeight : window.screen.height
   	}

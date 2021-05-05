@@ -5,7 +5,7 @@ import '../Static/CSS/Banner.css'
 
 const Banner = () => {
 
-    // ----- Modificaciones a libreria carousel
+    // ----- Modificaciones a libreria carousel para indicadores
     const indicatorStyles: CSSProperties = {
         background: '#181818',
         border: '1px solid #fafbfe',
@@ -45,7 +45,7 @@ const Banner = () => {
                 );
             }
 
-    // ----- Control del banner
+    // ----- Controlador de boton del banner
     const click = () => {
       console.log('click')
     }

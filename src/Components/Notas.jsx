@@ -3,12 +3,13 @@ import '../Static/CSS/Notas.css';
 
 const Notas = (props) => {
 
-    // ----- Obtencion y adecuacion de parametros de entrada
+    // ----- Obtencion de parametros de entrada
     const {notas, espacio, letra, colorAc, sizeAc} = props
     
+    // ----- Adecuacion de notas
     const notacion = notas.split(';')
     const espaciado = espacio.split(';').map( item => (' '.repeat(item) ))
-    //Factor de conversion de espacios a milimetro aproximado: 1.026
+    // ***** Factor de conversion de espacios a milimetro aproximado: 1.026
     let spacedNotes = ''
     espaciado.map((item, index) => spacedNotes += (item + notacion[index]) )
 

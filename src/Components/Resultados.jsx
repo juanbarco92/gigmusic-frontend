@@ -6,14 +6,15 @@ let urlAnt = null
 
 const Resultados = (props) => {
 
-    // ----- Obtencion de variables de entrada
+    // ----- Obtencion de variables y funciones de entrada
 	const { artistas, canciones, getArtist, getSong } = props
-    let url = window.location.search
 
     // ----- Setea titulo de la pagina
 	document.title = 'GIG - Resultados de busqueda'
 
     // ----- Peticion de lista de canciones despues de reload
+    let url = window.location.search
+    
     useEffect(() => {
         if(url !== urlAnt){
             getArtist(url)

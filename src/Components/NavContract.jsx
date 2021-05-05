@@ -10,9 +10,10 @@ import {ReactComponent as Expandir} from '../Static/Icons/px-16-block-right-coll
 
 const NavContract = (props) => {
 
-	// ----- obtencion de funcion de entrada
+	// ----- Obtencion de parametros de entrada
 	const { Colapse } = props
 
+	// ----- Definicion de estilos de adaptacion
 	const styles = {
     	maxHeight : window.screen.height
   	}

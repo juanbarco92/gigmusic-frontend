@@ -31,28 +31,30 @@ function App() {
   axios.defaults.headers.common['Access-Control-Allow-Headers'] = '*'
   axios.defaults.headers.common['cache-control'] = 'no-cache'
 
-// ----- Estilos adicionales de adaptacion
+  // ----- Estilos adicionales de adaptacion
   const styles = {
     maxWidth : window.screen.width,
     maxHeight : window.screen.height
   }
 
-// ----- Obtencion de canciones y artistas
+  // ----- Obtencion de canciones y artistas
   const [artistas, setArtistas] = useState([])
-  const [canciones, setCanciones] = useState([])
 
   const getArtist = async (search?) => {
       const {data} = await axios.get(`/artist/${search}&num_registros=5`)
       const nuevoArray = data.map(item => (item))
       setArtistas(nuevoArray)
   }
+
+  const [canciones, setCanciones] = useState([])
+
   const getSong = async (search=null) => {
       const {data} = await axios.get(`/song/${search}&num_registros=5`)
       const nuevoArray = data.map(item => (item))
       setCanciones(nuevoArray)
   }
 
-// ----- Obtencion de artista o cancion especifica
+  // ----- Obtencion de artista o cancion especifica
   const [cancionElegida, setCancionElegida] = useState({})
   const [artistaElegido, setArtistaElegido] = useState({})
 
@@ -67,7 +69,7 @@ function App() {
     }
   }
 
-// ----- Login de usuario
+  // ----- Login de usuario
   const token = getToken()
 
   const LogUser = async (credentials) => {
@@ -75,13 +77,13 @@ function App() {
     return data
   }
 
-// ----- SignUp de usuario
+  // ----- SignUp de usuario
   const SignUpUser = async(credentials) => {
     const {data} = await axios.post('/user', JSON.stringify(credentials))
     return data
   }
 
-// ----- Helpers para collapse, scrolling y acordes
+  // ----- Helpers para collapse, scrolling y acordes
   const [colapsar, setColapsar] = useState(false)
   const [scroll,setScroll] = useState(false)
   const [acordes,setAcordes] = useState(false)
@@ -98,10 +100,10 @@ function App() {
     setAcordes(!acordes)
   }
 
-// ----- Declaracion de Cookies
+  // ----- Declaracion de Cookies
   const [cookies, setCookie] = useCookies(['colorAcorde', 'colorFuente', 'tipografia', 'tamano'])
 
-// ----- Personalizacion
+  // ----- Personalizacion
   const [personalize, setPersonalize] = useState({
     'font': 'inherit',
     'color': 'inherit',
@@ -109,7 +111,7 @@ function App() {
     'fontSize': '1rem',
     'titleFontSize': '1.5rem'
   })
-
+  // Color acordes
   const VarAcordes = (e) => {
     console.log('VarAcorde')
     setPersonalize({
@@ -120,6 +122,7 @@ function App() {
       path: "/"
     })
   }
+  // Color de fuente
   const VarFuente = (e) => {
     console.log('VarFuente')
     setPersonalize({
@@ -130,6 +133,7 @@ function App() {
       path: "/"
     })
   }
+  // Tipografia
   const VarTipo = (e) => {
     console.log('VarTipo')
     setPersonalize({
@@ -140,6 +144,7 @@ function App() {
       path: "/"
     })
   }
+  // Tamano de fuente
   const VarSize = (e) => {
     setPersonalize({
     ...personalize,
@@ -150,7 +155,7 @@ function App() {
       path: "/"
     })
   }
-// ----- Reset de Personalizacion
+  // Reset de Personalizacion
   const ResetP = () => {
     setPersonalize({
     'font': 'inherit',
@@ -173,6 +178,7 @@ function App() {
     })
   }
 
+  // --- Obtencion de cookies o set por default
   useEffect(() => {
     if(init){
       if(cookies){

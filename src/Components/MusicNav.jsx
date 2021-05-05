@@ -8,25 +8,19 @@ let sizeAux = 1
 
 const MusicNav = (props) => {
   	
-  	// ----- Obtencion de variables y funciones de entrada
+  	// ----- Obtencion de parametros de entrada
 	const { Scrolling, scroll, MostrarAcordes, VarSize, VarFuente, VarAcordes, VarTipo, personalize, ResetP } = props
-	const [font, setFont] = useState(false)
-	const [tipo, setTipo] = useState(false)
-	const [chord, setChord] = useState(false)
-	const [fuente, setFuente] = useState(1)
-	const [tono, setTono] = useState(0)
 
-	// ----- Restaura personalizacion
-	const Restablecer = () => {
-		ResetP()
-		setFuente(1)
-	}
-
+	// ----- Definicion de estilos de adaptacion
 	const styles = {
 		maxHeight : window.screen.height
 	}
 
 	// ----- Cambios de botones + y -
+	const [fuente, setFuente] = useState(1)
+	const [tono, setTono] = useState(0)
+
+	// Funcion suma
 	const Sumar = (cambio) => {
 		if(cambio === 'fuente'){
 			if(fuente<=1.3){
@@ -36,6 +30,7 @@ const MusicNav = (props) => {
 			setTono(tono+sizeIncDec)
 		}
 	}
+	// Funcion resta
 	const Restar = (cambio) => {
 		if(cambio === 'fuente'){
 			if(fuente>0.7){
@@ -45,26 +40,40 @@ const MusicNav = (props) => {
 			setTono(tono-sizeIncDec)
 		}
 	}
-
-	// ----- Se invoca el portal
-	const ColorFuente = () => {
-		setFont(!font)
-	}
-
-	const Tipografia = () => {
-		setTipo(!tipo)
-	}
-
-	const ColorAcordes = () => {
-		setChord(!chord)
-	}
-
+	// ----- Obtencion de tamano de fuente
 	useEffect(() => {
 		if(fuente !== sizeAux){
 			VarSize(fuente)
 			sizeAux=fuente
 		}
 	}, [VarSize, fuente])
+
+	// ----- Restaura personalizacion
+	const Restablecer = () => {
+		ResetP()
+		setFuente(1)
+	}
+
+	// ----- Se invoca el portal de color de fuente
+	const [font, setFont] = useState(false)
+
+	const ColorFuente = () => {
+		setFont(!font)
+	}
+
+	// ----- Se invoca el portal de tipografia
+	const [tipo, setTipo] = useState(false)
+
+	const Tipografia = () => {
+		setTipo(!tipo)
+	}
+
+	// ----- Se invoca el portal de color de acorde
+	const [chord, setChord] = useState(false)
+
+	const ColorAcordes = () => {
+		setChord(!chord)
+	}
 
   return (
   	<div style={styles}>
