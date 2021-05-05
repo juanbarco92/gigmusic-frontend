@@ -12,4 +12,6 @@
 #Contenedor-Acordes{
     overflow-x: hidden;
 }
-
+pre{
+	color: currentcolor !important;
+}

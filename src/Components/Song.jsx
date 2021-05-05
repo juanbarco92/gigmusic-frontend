@@ -42,7 +42,8 @@ function Song(props) {
 
 	// ----- verificacion de fin y scroll 
 	const logicScroll = React.useCallback(() => {
-		if(lineasRec + hOff <= finCancion.current.offsetTop){
+		const offTop = finCancion.current ? finCancion.current.offsetTop : 0
+		if(lineasRec + hOff <= offTop){
 			setLineasRec(yOff + (finCancion.current.offsetTop)/(lineas*50))
 			document.getElementById('Cancion-Container').scrollTo({ 
 				top: lineasRec,
@@ -60,11 +61,15 @@ function Song(props) {
 	    setYOff(contenSong.current.scrollTop)
 	    hOff = contenSong.current.offsetHeight
   	}
-
   	// ----- Recepcion de evento de rueda de mouse
   	const onWheel = (e) => {
   		clearTimeout(timer)
-  		setYOff(contenSong.current.scrollTop + e.deltaY)
+  		const yDelta = e.deltaY
+  		if(yDelta >= 0){
+  			setYOff(contenSong.current.scrollTop + e.deltaY)
+  		}else{
+  			setYOff(contenSong.current.scrollTop)
+  		}
 	    hOff = contenSong.current.offsetHeight
   	}
 
@@ -98,8 +103,11 @@ function Song(props) {
     	return () => {
     		setMostrar(false)
 	        setLoad(false)
+	        if(scroll){
+	        	Scrolling()
+	        }
 	    }
-  	}, [urlPath, urlSearch, Eleccion, can])
+  	}, [urlPath, urlSearch, Eleccion, can, scroll, Scrolling])
 
   return (
 	  <div style={styles} id='Song-Container'>

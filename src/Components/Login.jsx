@@ -46,11 +46,11 @@ const Login = (props) => {
 			}
 			<div className="mb-3">
 				<label htmlFor="email-login" className="form-label">Correo electrónico</label>
-				<input required type="email" onChange={onEmail} className="form-control" id="email-login"/>
+				<input required type="email" minLength='5' onChange={onEmail} className="form-control" id="email-login"/>
 			</div>
 			<div className="mb-3">
 				<label htmlFor="password-login" className="form-label">Contraseña</label>
-				<input required type="password" id="password-login" minlength='4' onChange={onPassword} className="form-control"/>
+				<input required type="password" id="password-login" minLength='4' onChange={onPassword} className="form-control"/>
 			</div>
 			<input type="submit" value='Ingresar' className="btn btn-primary"/>
 		</form>

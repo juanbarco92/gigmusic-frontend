@@ -66,7 +66,7 @@ const SignUp = (props) => {
 			}
 			<div className="mb-3">
 				<label htmlFor="email-signup" className="form-label">Correo electrónico</label>
-				<input required type="email" onChange={onEmail} className="form-control" id="email-signup"/>
+				<input required type="email" minLength='5' onChange={onEmail} className="form-control" id="email-signup"/>
 			</div>
 			<div className="mb-3">
 				<label htmlFor="username-signup" className="form-label">Username</label>
@@ -80,11 +80,11 @@ const SignUp = (props) => {
 			}
 			<div className="mb-3">
 				<label htmlFor="password-signup" className="form-label">Contraseña</label>
-				<input required type="password" id="password-signup" onChange={onPassword} className="form-control"/>
+				<input required type="password" minLength='4' id="password-signup" onChange={onPassword} className="form-control"/>
 			</div>
 			<div className="mb-3">
 				<label htmlFor="verifypassword-signup" className="form-label">Vuelva a ingresar su contraseña</label>
-				<input required type="password" id="verify-password-signup" onChange={onVerifyPassword} className="form-control"/>
+				<input required type="password" minLength='4' id="verify-password-signup" onChange={onVerifyPassword} className="form-control"/>
 			</div>
 			<input type="submit" value='Registrarse' className="btn btn-primary"/>
 		</form>

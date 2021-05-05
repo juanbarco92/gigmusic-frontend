@@ -20,7 +20,6 @@ const MusicNav = (props) => {
 	const Restablecer = () => {
 		ResetP()
 		setFuente(1)
-		VarSize(1)
 	}
 
 	const styles = {

@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import{
     BrowserRouter as Router,
     Switch,
     Route
 } from 'react-router-dom'
 import axios from 'axios'
+import { useCookies } from "react-cookie";
 import './App.css';
 import {getToken, setToken, delToken} from './Utils/utils'
 import Song from './Components/Song'
@@ -18,10 +19,10 @@ import MusicNav from './Components/MusicNav'
 import Artist from './Components/Artist'
 import User from './Components/User'
 
+let init = true
 
 function App() {
 
-  const token = getToken()
 // ----- Configuracion de axios
   axios.defaults.baseURL = "http://localhost:8080/api"
   axios.defaults.headers.common['Content-type'] = 'application/json; charset=utf-8'
@@ -30,22 +31,6 @@ function App() {
   axios.defaults.headers.common['Access-Control-Allow-Headers'] = '*'
   axios.defaults.headers.common['cache-control'] = 'no-cache'
 
-// ----- Variables de estado
-  const [colapsar, setColapsar] = useState(false)
-  const [scroll,setScroll] = useState(false)
-  const [acordes,setAcordes] = useState(false)
-  const [artistas, setArtistas] = useState([])
-  const [canciones, setCanciones] = useState([])
-  const [cancionElegida, setCancionElegida] = useState({})
-  const [artistaElegido, setArtistaElegido] = useState({})
-  const [personalize, setPersonalize] = useState({
-    'font': 'inherit',
-    'color': 'inherit',
-    'fontFamily': 'inherit',
-    'fontSize': '1rem',
-    'titleFontSize': '1.5rem'
-  })
-
 // ----- Estilos adicionales de adaptacion
   const styles = {
     maxWidth : window.screen.width,
@@ -53,6 +38,9 @@ function App() {
   }
 
 // ----- Obtencion de canciones y artistas
+  const [artistas, setArtistas] = useState([])
+  const [canciones, setCanciones] = useState([])
+
   const getArtist = async (search?) => {
       const {data} = await axios.get(`/artist/${search}&num_registros=5`)
       const nuevoArray = data.map(item => (item))
@@ -65,6 +53,9 @@ function App() {
   }
 
 // ----- Obtencion de artista o cancion especifica
+  const [cancionElegida, setCancionElegida] = useState({})
+  const [artistaElegido, setArtistaElegido] = useState({})
+
   const Eleccion = async (path, id?) => {
     if(path === '/song/'){
       const {data} = await axios.get(`/song/one${id}`)
@@ -77,6 +68,8 @@ function App() {
   }
 
 // ----- Login de usuario
+  const token = getToken()
+
   const LogUser = async (credentials) => {
     const {data} = await axios.post('/user/login', JSON.stringify(credentials))
     return data
@@ -89,6 +82,10 @@ function App() {
   }
 
 // ----- Helpers para collapse, scrolling y acordes
+  const [colapsar, setColapsar] = useState(false)
+  const [scroll,setScroll] = useState(false)
+  const [acordes,setAcordes] = useState(false)
+
   const Colapse = () => {
     setColapsar(!colapsar)
   }
@@ -101,41 +98,56 @@ function App() {
     setAcordes(!acordes)
   }
 
+// ----- Declaracion de Cookies
+  const [cookies, setCookie] = useCookies(['colorAcorde', 'colorFuente', 'tipografia', 'tamano'])
+
 // ----- Personalizacion
+  const [personalize, setPersonalize] = useState({
+    'font': 'inherit',
+    'color': 'inherit',
+    'fontFamily': 'inherit',
+    'fontSize': '1rem',
+    'titleFontSize': '1.5rem'
+  })
+
   const VarAcordes = (e) => {
+    console.log('VarAcorde')
     setPersonalize({
-    'font': personalize.font,
-    'color': e,
-    'fontFamily': personalize.fontFamily,
-    'fontSize': personalize.fontSize,
-    'titleFontSize': personalize.titleFontSize
+    ...personalize,
+    'color': e
+    })
+    setCookie("colorAcorde", e, {
+      path: "/"
     })
   }
   const VarFuente = (e) => {
+    console.log('VarFuente')
     setPersonalize({
-    'font': e,
-    'color': personalize.color,
-    'fontFamily': personalize.fontFamily,
-    'fontSize': personalize.fontSize,
-    'titleFontSize': personalize.titleFontSize
+    ...personalize,
+    'font': e
+    })
+    setCookie("colorFuente", e, {
+      path: "/"
     })
   }
   const VarTipo = (e) => {
+    console.log('VarTipo')
     setPersonalize({
-    'font': personalize.font,
-    'color': personalize.color,
-    'fontFamily': e,
-    'fontSize': personalize.fontSize,
-    'titleFontSize': personalize.titleFontSize
+    ...personalize,
+    'fontFamily': e
+    })
+    setCookie("tipografia", e, {
+      path: "/"
     })
   }
   const VarSize = (e) => {
     setPersonalize({
-    'font': personalize.font,
-    'color': personalize.color,
-    'fontFamily': personalize.fontFamily,
+    ...personalize,
     'fontSize': e+'rem',
     'titleFontSize': e+0.5+'rem'
+    })
+    setCookie("tamano", String(e), {
+      path: "/"
     })
   }
 // ----- Reset de Personalizacion
@@ -147,7 +159,47 @@ function App() {
     'fontSize': '1rem',
     'titleFontSize': '1.5rem'
     })
+    setCookie("colorAcorde", 'inherit', {
+      path: "/"
+    })
+    setCookie("colorFuente", 'inherit', {
+      path: "/"
+    })
+    setCookie("tipografia", 'inherit', {
+      path: "/"
+    })
+    setCookie("tamano", String(1), {
+      path: "/"
+    })
   }
+
+  useEffect(() => {
+    if(init){
+      if(cookies){
+        const ctam = parseFloat(cookies.tamano)
+        setPersonalize({
+        'font': cookies.colorFuente,
+        'color': cookies.colorAcorde,
+        'fontFamily': cookies.tipografia,
+        'fontSize': ctam+'rem',
+        'titleFontSize': ctam+0.5+'rem'
+        })
+      }else{
+        setCookie("colorAcorde", 'inherit', {
+          path: "/"
+        })
+        setCookie("colorFuente", 'inherit', {
+          path: "/"
+        })
+        setCookie("tipografia", 'inherit', {
+          path: "/"
+        })
+        setCookie("tamano", String(1), {
+          path: "/"
+        })
+      }
+    }
+  }, [cookies, setCookie])
 
   return (
       <div className='container-fluid' id='App' style={styles}>
