@@ -61,6 +61,7 @@ function Song(props) {
 	    setYOff(contenSong.current.scrollTop)
 	    hOff = contenSong.current.offsetHeight
   	}
+
   	// ----- Recepcion de evento de rueda de mouse
   	const onWheel = (e) => {
   		clearTimeout(timer)
@@ -93,7 +94,7 @@ function Song(props) {
 		}
 	},[scroll, logicScroll, load, canción, metadata])
 
-	// ----- Peticion de cancion especifica y control de visualizacion
+	// ----- Peticion de cancion especifica, control de visualizacion y scroll al salir
 	useEffect(() => {
   		if(urlSearch !== urlAnt){
     		Eleccion(urlPath, urlSearch)
