@@ -16,8 +16,10 @@ const Notas = (props) => {
     <div className='row'>
         <div className='col'>
             <div className='row mt-3' id='Acordes'>
-                <pre id='Contenedor-Acordes' style={{'color':colorAc, 'fontSize':sizeAc}}>
-                    {spacedNotes}
+                <pre id='Contenedor-Acordes'>
+                    <span style={{'color':colorAc, 'fontSize':sizeAc}}>
+                        {spacedNotes}
+                    </span>
                 </pre>
             </div>
             <div className='row' id='Letra'>

@@ -13,5 +13,5 @@
     overflow-x: hidden;
 }
 pre{
-	color: currentcolor !important;
+	color: inherit !important;
 }
