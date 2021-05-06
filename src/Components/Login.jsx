@@ -25,7 +25,7 @@ const Login = (props) => {
 	}
 	
 	// ----- Autenticacion
-	const submit = async (e) => {
+	const onSubmit = async (e) => {
 		e.preventDefault()
 		const token = await LogUser({
 			email, password
@@ -42,7 +42,7 @@ const Login = (props) => {
   return (
     <div className="container text-center" id='Login-container'>
     	<h1>Login</h1>
-    	<form onSubmit={submit}>
+    	<form onSubmit={onSubmit}>
     		{
 				(email.length>0 && (!email.includes('.') || !email.includes('@')))&&
 				(

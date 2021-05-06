@@ -43,7 +43,7 @@ const Busqueda = (props) => {
                             pathname: '/search/',
                             search: `?busqueda=${search}`,
                             }}>
-						<input
+						<button onClick={() => submit(search)}
 						type="submit" id='search-button' />
 					</NavLink>
 				</div>
