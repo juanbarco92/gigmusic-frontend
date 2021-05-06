@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import {Redirect} from 'react-router-dom'
 import '../Static/CSS/Artist.css'
 import ArtistNav from './ArtistNav'
 import {isEmpty} from '../Utils/utils'
@@ -55,7 +56,7 @@ const Artist = (props) => {
     		Eleccion(urlPath, urlSearch)
     		urlAnt = urlSearch
     	}
-    	if(!urlSearch.startsWith('?')){
+    	if(!urlSearch.startsWith('?id=')){
 	        setLoad(false)
     	}
     	setLoad(!isEmpty(artista))
@@ -66,6 +67,10 @@ const Artist = (props) => {
 
     // ----- Define el titulo de la pagina
 	document.title = 'GIG - ' + artista.nombre
+
+	if(!urlSearch.startsWith('?id=')){
+	    return(<Redirect to="/" />)
+    }
 
   return (
     <div style={styles} id='Artist-container'>

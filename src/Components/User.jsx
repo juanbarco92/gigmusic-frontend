@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import {Redirect} from 'react-router-dom'
 import '../Static/CSS/User.css'
+import {isEmpty} from '../Utils/utils'
 import Login from './Login'
 import SignUp from './SignUp'
 
@@ -19,7 +20,7 @@ const User = (props) => {
         getUser(token)
       }
       urlAnt = urlSearch
-      if(user!== null){
+      if(user!== null && !isEmpty(user)){
         document.title = "GIG - "+user.username
       }
     }

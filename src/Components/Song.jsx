@@ -1,4 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react'
+import {Redirect} from 'react-router-dom'
 import GuitarChord from 'react-guitar-chords'
 import Notas from './Notas'
 import Reproductor from './Reproductor'
@@ -112,7 +113,7 @@ function Song(props) {
     		Eleccion(urlPath, urlSearch)
     		urlAnt = urlSearch
     	}
-    	if(!urlSearch.startsWith('?')){
+    	if(!urlSearch.startsWith('?id=')){
     		setMostrar(false)
 	        setLoad(false)
     	}
@@ -125,6 +126,10 @@ function Song(props) {
 	        }
 	    }
   	}, [urlPath, urlSearch, Eleccion, can, scroll, Scrolling])
+
+  	if(!urlSearch.startsWith('?id=')){
+	    return(<Redirect to="/" />)
+    }
 
   return (
 	  <div style={styles} id='Song-Container'>
