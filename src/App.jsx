@@ -7,7 +7,11 @@ import{
 import axios from 'axios'
 import { useCookies } from "react-cookie";
 import './App.css';
-import {getToken, setToken, delToken} from './Utils/utils'
+import {
+  getToken, 
+  setToken, 
+  delToken
+} from './Utils/utils'
 import Song from './Components/Song'
 import Inicio from './Components/Inicio'
 import Resultados from './Components/Resultados'
@@ -67,20 +71,6 @@ function App() {
       const {data} = await axios.get(`/artist/one${id}`)
       setArtistaElegido(data)
     }
-  }
-
-  // ----- Login de usuario
-  const token = getToken()
-
-  const LogUser = async (credentials) => {
-    const {data} = await axios.post('/user/login', JSON.stringify(credentials))
-    return data
-  }
-
-  // ----- SignUp de usuario
-  const SignUpUser = async(credentials) => {
-    const {data} = await axios.post('/user', JSON.stringify(credentials))
-    return data
   }
 
   // ----- Helpers para collapse, scrolling y acordes
@@ -207,6 +197,34 @@ function App() {
     }
   }, [cookies, setCookie])
 
+  // ----- Login de usuario
+  const LogUser = async (credentials) => {
+    const {data} = await axios.post('/user/login', JSON.stringify(credentials))
+    return data
+  }
+
+  // ----- Obtencion de usuario desde local
+  const token = getToken()
+
+  // ----- SignUp de usuario
+  const SignUpUser = async (credentials) => {
+    const {data} = await axios.post('/user', JSON.stringify(credentials))
+    return data
+  }
+
+  // ----- Obtencion de usuario
+  const [user, setUser] = useState({})
+
+  const getUser = async (token) => {
+    const {data} = await axios.get(`/user/user_token?token=${token}`)
+    setUser(data)
+  }
+
+  // ----- Eliminacion de usuario
+  const delUser = () => {
+    setUser({})
+  }
+
   return (
       <div className='container-fluid' id='App' style={styles}>
         <Router>
@@ -263,7 +281,9 @@ function App() {
 
                 <Route path='/user/'>
                   <Busqueda getSong={getSong} getArtist={getArtist} />
-                  <User LogUser={LogUser} SignUpUser={SignUpUser} token={token} delToken={delToken} setToken={setToken} />
+                  <User LogUser={LogUser} SignUpUser={SignUpUser} getUser={getUser}
+                  token={token} delToken={delToken} user={user}
+                  setToken={setToken} delUser={delUser} />
                 </Route>
 
                 <Route exact path='/'>

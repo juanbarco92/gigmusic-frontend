@@ -8,7 +8,7 @@ const Login = (props) => {
 	const {setToken, LogUser} = props
 
 	// ----- Cambio de titulo de documento
-	document.title = "GIG - Login - Signup"
+	document.title = "GIG - Log"
 
 	// ----- Obtencion de email
 	const [email, setEmail] = useState('')

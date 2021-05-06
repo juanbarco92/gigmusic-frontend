@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {NavLink} from 'react-router-dom';
-import '../Static/CSS/Busqueda.css';
+import {NavLink} from 'react-router-dom'
+import '../Static/CSS/Busqueda.css'
 import {ReactComponent as Buscador} from '../Static/Icons/search-icon.svg'
 
 const Busqueda = (props) => {

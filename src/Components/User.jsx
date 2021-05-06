@@ -1,17 +1,45 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import {Redirect} from 'react-router-dom'
 import '../Static/CSS/User.css'
 import Login from './Login'
 import SignUp from './SignUp'
 
+let urlAnt = null
+
 const User = (props) => {
 
   // ----- Obtencion de variables y funciones de entrada
-	const { LogUser, SignUpUser, setToken, delToken, token } = props
-    
+	const { getUser, delUser, LogUser, SignUpUser, setToken, delToken, token, user } = props
+
+  let urlSearch = window.location.search
+
+  useEffect(() => {
+    if(urlAnt !== urlSearch){
+      if(token !== null){
+        getUser(token)
+      }
+      urlAnt = urlSearch
+      if(user!== null){
+        document.title = "GIG - "+user.username
+      }
+    }
+
+  }, [getUser, token, urlSearch, user])
+
+  // ----- Controlador de boton de salir
+  const LogOut = () => {
+    delToken()
+    delUser()
+    window.location.reload()
+  }
+
+
   // ----- Verificacion de usuario activo
   if(!token) {
+       
   	return (
       <div>
+        <Redirect to="/user/log" />
         <div className='row'>
           <div className='col text-center'>
             <h1>Por favor inicia sesión o regístrate</h1>
@@ -29,18 +57,10 @@ const User = (props) => {
       )
 	}
 
-  // ----- Cambio de titulo de documento
-  document.title = "GIG - Cuenta"
-
-  // ----- Controlador de boton de salir
-	const LogOut = () => {
-		delToken()
-		window.location.reload()
-	}
-
   return (
     <div className="container text-center" id='User-container'>
-    	<h1>Bienvenido</h1>
+      <Redirect to={"/user?username="+user.username} />
+    	<h1>Bienvenido {user.nombre}</h1>
     	<button type="submit" className="btn btn-primary" onClick={LogOut} >Salir</button>
     </div>
   );
