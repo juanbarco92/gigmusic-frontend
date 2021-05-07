@@ -1,11 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import{
     BrowserRouter as Router,
     Switch,
     Route
 } from 'react-router-dom'
 import axios from 'axios'
-import { useCookies } from "react-cookie"
+import { useCookies } from 'react-cookie'
+import { CSSTransition } from 'react-transition-group'
 import './App.css'
 import {
   getToken, 
@@ -225,24 +226,38 @@ function App() {
     setUser({})
   }
 
+  // ----- Auxiliares de animacion del navBar
+  const [colapsado, setColapsado] = useState(false)
+  const colapseNavBar = useRef(null)
+
+  const Collapsed = () => {
+    setColapsado(!colapsado)
+  }
+
   return (
       <div className='container-fluid' id='App' style={styles}>
         <Router>
           <div className='row'>
             {
-              colapsar ?
+              colapsado &&
               (
                 <div className='col-1 py-0' id='NavContract'>
-                  <NavContract Colapse={Colapse}/>
-                </div>
-              )
-              :
-              (
-                <div className='col-3 py-0' id='NavExpand'>
-                  <NavExpand Colapse={Colapse}/>
+                  <NavContract Colapse={Colapse} Collapsed={Collapsed} />
                 </div>
               )
             }
+            <CSSTransition
+              in={!colapsar}
+              nodeRef={colapseNavBar}
+              classNames="expand-nav"
+              timeout={300}
+              unmountOnExit
+              onExited={Collapsed}>
+            
+                <div ref={colapseNavBar} className='col-3 py-0' id='NavExpand'>
+                  <NavExpand Colapse={Colapse}/>
+                </div>
+            </CSSTransition>`
             <div className='col'>
               <Switch>
                 <Route path='/song/'>

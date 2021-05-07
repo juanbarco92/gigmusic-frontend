@@ -11,7 +11,12 @@ import {ReactComponent as Expandir} from '../Static/Icons/px-16-block-right-coll
 const NavContract = (props) => {
 
 	// ----- Obtencion de parametros de entrada
-	const { Colapse } = props
+	const { Colapse, Collapsed } = props
+
+	const Colapsar = () => {
+		Colapse()
+		Collapsed()
+	}
 
 	// ----- Definicion de estilos de adaptacion
 	const styles = {
@@ -57,7 +62,7 @@ const NavContract = (props) => {
 				</div>
 				<div className='row justify-content-end' id='Expandir'>
 					<div className='col'>
-						<button className='btn' onClick={Colapse}>
+						<button className='btn' onClick={Colapsar}>
 							<Expandir className='con-exp'/>
 						</button>
 					</div>

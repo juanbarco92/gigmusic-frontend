@@ -21,3 +21,19 @@
 	color: #b3b3b3;
 	background-color: #121212;
 }
+.expand-nav-enter{
+	transition: transform 300ms;
+	transform: scaleX(0.43);
+	transform-origin: left;
+}
+.expand-nav-enter-active{
+	transform: scaleX(1);
+}
+.expand-nav-exit{
+	transform: scaleX(1);
+}
+.expand-nav-exit-active{
+	transition: transform 300ms;
+	transform: scaleX(0.43);
+	transform-origin: left;
+}
