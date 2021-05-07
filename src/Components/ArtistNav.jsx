@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Static/CSS/ArtistNav.css';
+import '../Static/CSS/ArtistNav.css'
 
 const ArtistNav = (props) => {
 	

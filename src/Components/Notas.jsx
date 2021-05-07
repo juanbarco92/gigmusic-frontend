@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Static/CSS/Notas.css';
+import '../Static/CSS/Notas.css'
 
 const Notas = (props) => {
 

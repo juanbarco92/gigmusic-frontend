@@ -10,7 +10,7 @@ let urlAnt = null
 const User = (props) => {
 
   // ----- Obtencion de variables y funciones de entrada
-	const { getUser, delUser, LogUser, SignUpUser, setToken, delToken, token, user } = props
+	const { getUser, delUser, LogUser, SignUpUser, setToken, token, user } = props
 
   let urlSearch = window.location.search
 
@@ -29,7 +29,6 @@ const User = (props) => {
 
   // ----- Controlador de boton de salir
   const LogOut = () => {
-    delToken()
     delUser()
     window.location.reload()
   }

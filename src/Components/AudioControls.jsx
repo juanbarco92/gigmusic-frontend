@@ -1,8 +1,8 @@
-import React from 'react';
-import { ReactComponent as Play } from '../Static/Icons/Reproductor/play.svg';
-import { ReactComponent as Pause } from '../Static/Icons/Reproductor/pause.svg';
-import { ReactComponent as Next } from '../Static/Icons/Reproductor/next.svg';
-import { ReactComponent as Prev } from '../Static/Icons/Reproductor/previous.svg';
+import React from 'react'
+import { ReactComponent as Play } from '../Static/Icons/Reproductor/play.svg'
+import { ReactComponent as Pause } from '../Static/Icons/Reproductor/pause.svg'
+import { ReactComponent as Next } from '../Static/Icons/Reproductor/next.svg'
+import { ReactComponent as Prev } from '../Static/Icons/Reproductor/previous.svg'
 import '../Static/CSS/AudioControls.css'
 
 // ----- Define los controles de audio y asigna las funciones
