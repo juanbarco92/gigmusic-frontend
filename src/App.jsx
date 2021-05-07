@@ -250,14 +250,14 @@ function App() {
               in={!colapsar}
               nodeRef={colapseNavBar}
               classNames="expand-nav"
-              timeout={300}
+              timeout={200}
               unmountOnExit
               onExited={Collapsed}>
-            
                 <div ref={colapseNavBar} className='col-3 py-0' id='NavExpand'>
                   <NavExpand Colapse={Colapse}/>
                 </div>
-            </CSSTransition>`
+            </CSSTransition>
+            
             <div className='col'>
               <Switch>
                 <Route path='/song/'>
