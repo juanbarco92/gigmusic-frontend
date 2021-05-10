@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
-import '../Static/CSS/Resultados.css'
 import{NavLink} from 'react-router-dom'
+import '../Static/CSS/Resultados.css'
 
 let urlAnt = null
 

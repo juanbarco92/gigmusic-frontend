@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import '../Static/CSS/MusicNav.css'
+import '../../Static/CSS/Songs/MusicNav.css'
 import Portal from './Portal'
 import InstrumentSelector from './InstrumentSelector'
 

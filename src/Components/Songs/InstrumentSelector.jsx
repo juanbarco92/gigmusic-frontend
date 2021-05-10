@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
-import '../Static/CSS/InstrumentSelector.css'
+import '../../Static/CSS/Songs/InstrumentSelector.css'
 
 const InstrumentSelector = () => {
 	

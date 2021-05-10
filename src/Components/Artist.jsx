@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Redirect} from 'react-router-dom'
 import '../Static/CSS/Artist.css'
-import ArtistNav from './ArtistNav'
+import ArtistNav from './Artists/ArtistNav'
 import {isEmpty} from '../Utils/utils'
 
 let urlAnt = null

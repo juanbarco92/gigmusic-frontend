@@ -18,9 +18,9 @@ import Inicio from './Components/Inicio'
 import Resultados from './Components/Resultados'
 import Busqueda from './Components/Busqueda'
 import Error404 from './Components/Error404'
-import NavExpand from './Components/NavExpand'
-import NavContract from './Components/NavContract'
-import MusicNav from './Components/MusicNav'
+import NavExpand from './Components/Navs/NavExpand'
+import NavContract from './Components/Navs/NavContract'
+import MusicNav from './Components/Songs/MusicNav'
 import Artist from './Components/Artist'
 import User from './Components/User'
 
@@ -104,7 +104,6 @@ function App() {
   })
   // Color acordes
   const VarAcordes = (e) => {
-    console.log('VarAcorde')
     setPersonalize({
     ...personalize,
     'color': e
@@ -115,7 +114,6 @@ function App() {
   }
   // Color de fuente
   const VarFuente = (e) => {
-    console.log('VarFuente')
     setPersonalize({
     ...personalize,
     'font': e
@@ -126,7 +124,6 @@ function App() {
   }
   // Tipografia
   const VarTipo = (e) => {
-    console.log('VarTipo')
     setPersonalize({
     ...personalize,
     'fontFamily': e
@@ -216,13 +213,13 @@ function App() {
   // ----- Obtencion de usuario
   const [user, setUser] = useState({})
 
-  const getUser = async (token) => {
+  const GetUser = async (token) => {
     const {data} = await axios.get(`/user/user_token?token=${token}`)
     setUser(data)
   }
 
-  // ----- Eliminacion de usuario
-  const delUser = () => {
+  // ----- Eliminacion de sesion de usuario
+  const DelUserSession = () => {
     setUser({})
     delToken()
   }
@@ -237,7 +234,14 @@ function App() {
 
   // ----- Editar Usuario
   const EditarUsuario = async (updated_data) => {
-    const {data} = await axios.patch(`/user/edit/${user.id}?id=${user.id}`, JSON.stringify(updated_data))
+    const {data} = await axios.patch(`/user/edit/${user.id}`, JSON.stringify(updated_data))
+    return data
+  }
+
+  // ----- Eliminar Usuario
+  const SoftDelUser = async (credentials) => {
+    console.log(credentials)
+    const {data} = await axios.patch(`/user/set_eliminated/${user.id}?is_eliminated=true`, JSON.stringify(credentials))
     return data
   }
 
@@ -303,9 +307,11 @@ function App() {
 
                 <Route path='/user/'>
                   <Busqueda getSong={getSong} getArtist={getArtist} />
-                  <User LogUser={LogUser} SignUpUser={SignUpUser} getUser={getUser}
+                  <User LogUser={LogUser} SignUpUser={SignUpUser} 
+                  GetUser={GetUser} SoftDelUser={SoftDelUser}
                   token={token} delToken={delToken} user={user}
-                  setToken={setToken} delUser={delUser} EditarUsuario={EditarUsuario}/>
+                  setToken={setToken} DelUserSession={DelUserSession} 
+                  EditarUsuario={EditarUsuario}/>
                 </Route>
 
                 <Route exact path='/'>

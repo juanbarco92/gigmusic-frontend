@@ -1,8 +1,8 @@
 import React, {useState, useRef, useEffect} from 'react'
 import {Redirect} from 'react-router-dom'
 import GuitarChord from 'react-guitar-chords'
-import Notas from './Notas'
-import Reproductor from './Reproductor'
+import Notas from './Songs/Notas'
+import Reproductor from './Songs/Reproductor'
 import {isEmpty} from '../Utils/utils'
 import '../Static/CSS/Song.css'
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import AudioControls from './AudioControls'
-import { ReactComponent as VolOn } from '../Static/Icons/Reproductor/volume-on.svg'
-import { ReactComponent as VolOff } from '../Static/Icons/Reproductor/volume-off.svg'
-import '../Static/CSS/Reproductor.css'
+import { ReactComponent as VolOn } from '../../Static/Icons/Reproductor/volume-on.svg'
+import { ReactComponent as VolOff } from '../../Static/Icons/Reproductor/volume-off.svg'
+import '../../Static/CSS/Songs/Reproductor.css'
 
 const Reproductor = (props) => {
     

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
-import '../Static/CSS/Login.css'
+import '../../Static/CSS/Users/Login.css'
 
 const Login = (props) => {
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import '../Static/CSS/Inicio.css'
-import Banner from './Banner'
+import Banner from './Inicio/Banner'
 
 const Inicio = () => {
     

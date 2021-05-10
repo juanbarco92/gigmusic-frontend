@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import '../Static/CSS/Portal.css'
-import { ColAc, ColFu, SelTi } from '../Utils/utils'
+import '../../Static/CSS/Songs/Portal.css'
+import { ColAc, ColFu, SelTi } from '../../Utils/utils'
 
 const Portal = (props) => {
 	

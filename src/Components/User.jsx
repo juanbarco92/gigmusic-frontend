@@ -2,23 +2,24 @@ import React, {useEffect, useState} from 'react'
 import {Redirect} from 'react-router-dom'
 import '../Static/CSS/User.css'
 import {isEmpty} from '../Utils/utils'
-import Login from './Login'
-import SignUp from './SignUp'
-import ChangeUser from './ChangeUser'
+import Login from './Users/Login'
+import SignUp from './Users/SignUp'
+import ChangeUser from './Users/ChangeUser'
+import DeleteUser from './Users/DeleteUser'
 
 let urlAnt = null
 
 const User = (props) => {
 
   // ----- Obtencion de variables y funciones de entrada
-	const { getUser, delUser, LogUser, SignUpUser, setToken, token, user, EditarUsuario} = props
+	const { GetUser, DelUserSession, SoftDelUser, LogUser, SignUpUser, setToken, token, user, EditarUsuario} = props
 
   let urlSearch = window.location.search
 
   useEffect(() => {
     if(urlAnt !== urlSearch){
       if(token !== null){
-        getUser(token)
+        GetUser(token)
       }
       urlAnt = urlSearch
       if(user!== null && !isEmpty(user)){
@@ -26,11 +27,11 @@ const User = (props) => {
       }
     }
 
-  }, [getUser, token, urlSearch, user])
+  }, [GetUser, token, urlSearch, user])
 
   // ----- Controlador de boton de salir
   const LogOut = () => {
-    delUser()
+    DelUserSession()
     window.location.reload()
   }
 
@@ -41,6 +42,18 @@ const User = (props) => {
     setEdit(!edit)
   }
 
+  // ----- Controlador de eliminar cuenta
+  const [deleter, setDeleter] = useState(false)
+
+  const DeleteAccount = () => {
+    setDeleter(!deleter)
+  }
+
+  if(deleter){
+    return (
+      <DeleteUser SoftDelUser={SoftDelUser} DelUserSession={DelUserSession} Atras={DeleteAccount}/>
+    )
+  }
 
   // ----- Verificacion de usuario activo
   if(!token) {
@@ -68,7 +81,7 @@ const User = (props) => {
   if(edit){
     return (
       <div>
-        <ChangeUser EditUser={EditUser} EditarUsuario={EditarUsuario} />
+        <ChangeUser Atras={EditUser} EditUser={EditUser} EditarUsuario={EditarUsuario} />
       </div>
     )
   }
@@ -78,7 +91,8 @@ const User = (props) => {
       <Redirect to={"/user?username="+user.username} />
     	<h1>Bienvenido {user.nombre}</h1>
       <button type='button' className='btn btn-primary' onClick={EditUser}>Editar cuenta</button>
-    	<button type="button" className="btn btn-primary" onClick={LogOut} >Salir</button>
+    	<button type="button" className=" mx-2 btn btn-primary" onClick={LogOut} >Salir</button>
+      <button type="button" className="btn btn-primary" onClick={DeleteAccount} >Eliminar cuenta</button>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import '../Static/CSS/SignUp.css'
+import '../../Static/CSS/Users/SignUp.css'
 
 const SignUp = (props) => {
 
