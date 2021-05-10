@@ -1,16 +1,17 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Redirect} from 'react-router-dom'
 import '../Static/CSS/User.css'
 import {isEmpty} from '../Utils/utils'
 import Login from './Login'
 import SignUp from './SignUp'
+import ChangeUser from './ChangeUser'
 
 let urlAnt = null
 
 const User = (props) => {
 
   // ----- Obtencion de variables y funciones de entrada
-	const { getUser, delUser, LogUser, SignUpUser, setToken, token, user } = props
+	const { getUser, delUser, LogUser, SignUpUser, setToken, token, user, EditarUsuario} = props
 
   let urlSearch = window.location.search
 
@@ -31,6 +32,13 @@ const User = (props) => {
   const LogOut = () => {
     delUser()
     window.location.reload()
+  }
+
+  // ----- Controlador de edicion de usuario
+  const [edit, setEdit] = useState(false)
+
+  const EditUser = () => {
+    setEdit(!edit)
   }
 
 
@@ -57,11 +65,20 @@ const User = (props) => {
       )
 	}
 
+  if(edit){
+    return (
+      <div>
+        <ChangeUser EditUser={EditUser} EditarUsuario={EditarUsuario} />
+      </div>
+    )
+  }
+
   return (
     <div className="container text-center" id='User-container'>
       <Redirect to={"/user?username="+user.username} />
     	<h1>Bienvenido {user.nombre}</h1>
-    	<button type="submit" className="btn btn-primary" onClick={LogOut} >Salir</button>
+      <button type='button' className='btn btn-primary' onClick={EditUser}>Editar cuenta</button>
+    	<button type="button" className="btn btn-primary" onClick={LogOut} >Salir</button>
     </div>
   );
 }

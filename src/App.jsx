@@ -224,6 +224,7 @@ function App() {
   // ----- Eliminacion de usuario
   const delUser = () => {
     setUser({})
+    delToken()
   }
 
   // ----- Auxiliares de animacion del navBar
@@ -232,6 +233,12 @@ function App() {
 
   const Collapsed = () => {
     setColapsado(!colapsado)
+  }
+
+  // ----- Editar Usuario
+  const EditarUsuario = async (updated_data) => {
+    const {data} = await axios.patch(`/user/edit/${user.id}?id=${user.id}`, JSON.stringify(updated_data))
+    return data
   }
 
   return (
@@ -298,7 +305,7 @@ function App() {
                   <Busqueda getSong={getSong} getArtist={getArtist} />
                   <User LogUser={LogUser} SignUpUser={SignUpUser} getUser={getUser}
                   token={token} delToken={delToken} user={user}
-                  setToken={setToken} delUser={delUser} />
+                  setToken={setToken} delUser={delUser} EditarUsuario={EditarUsuario}/>
                 </Route>
 
                 <Route exact path='/'>
