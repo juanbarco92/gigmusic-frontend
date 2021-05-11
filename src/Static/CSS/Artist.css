@@ -1,9 +1,14 @@
-#Artist-Container{
+#Artist-container{
 	background-color: transparent;
 	color: #b3b3b3;
 	overflow-x: hidden;
+	scrollbar-width: none;
 	overflow-y: scroll !important;
 	max-height: 92vh !important;
+}
+#Artist-container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 .accent{
 	background: #121212;

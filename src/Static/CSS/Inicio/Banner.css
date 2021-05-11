@@ -1,0 +1,44 @@
+#Banner-Container{
+	color: inherit;
+    background: transparent;
+}
+.control-dots{
+	max-width: 10% !important;
+	margin: 0 !important;
+	position: absolute !important;
+	top: 50% !important;
+	right: 0% !important;
+}
+.p-dots{
+	background: '#181818' !important;
+    border: '1px solid #fafbfe' !important;
+    border-radius: '100px' !important;
+}
+.p-dots:hover {
+	border: 1px solid #f24405 !important;
+	border-radius: '100px' !important;
+}
+.legend {
+	background: transparent !important;
+	width: 100% !important;
+	color: #b3b3b3 !important;
+	position: absolute !important;
+	top: 50% !important;
+	margin-left: -45% !important;
+	text-align: start !important;
+	text-decoration: inherit !important;
+	font-size: inherit !important;
+}
+.header-carousel{
+}
+.body-carousel{
+}
+.btn-carousel{
+	-webkit-appearance: inherit !important;
+	appearance: inherit !important;
+	color: #b3b3b3 !important;
+	cursor: pointer !important;
+	display: inline-block !important;
+	border-radius: 16px !important;
+	background: #f24405 !important;
+}

@@ -1,0 +1,14 @@
+#Portal-container{
+    color : #b3b3b3;
+    background-color : black;
+    position : absolute;
+    z-index: 2;
+}
+select{
+	color : #b3b3b3 !important;
+    background-color : transparent !important;
+}
+select option{
+	color : #b3b3b3 !important;
+    background: black !important;
+}

@@ -1,13 +1,18 @@
 #Acordes{
+	font-size: 1rem;
     color: #f24405;
     background-color: transparent;
-    overflow-x: hidden;
 }
 #Letra{
-    font-family: Verdana;
-    color: #b3b3b3;
+    color: inherit;
     background-color: transparent;
     text-shadow: 1px;
     margin-bottom: 5mm;
 }
-
+#Contenedor-Acordes{
+    overflow-x: hidden;
+}
+pre{
+	font-size: inherit !important;
+	color: inherit !important;
+}
