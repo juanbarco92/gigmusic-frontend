@@ -68,6 +68,7 @@ const Artist = (props) => {
     // ----- Define el titulo de la pagina
 	document.title = 'GIG - ' + artista.nombre
 
+	// ----- Redireccion si no se esta pidiendo una cancion especifica
 	if(!urlSearch.startsWith('?id=')){
 	    return(<Redirect to="/" />)
     }

@@ -224,14 +224,6 @@ function App() {
     delToken()
   }
 
-  // ----- Auxiliares de animacion del navBar
-  const [colapsado, setColapsado] = useState(false)
-  const colapseNavBar = useRef(null)
-
-  const Collapsed = () => {
-    setColapsado(!colapsado)
-  }
-
   // ----- Editar Usuario
   const EditarUsuario = async (updated_data) => {
     const {data} = await axios.patch(`/user/edit/${user.id}`, JSON.stringify(updated_data))
@@ -243,6 +235,14 @@ function App() {
     console.log(credentials)
     const {data} = await axios.patch(`/user/set_eliminated/${user.id}?is_eliminated=true`, JSON.stringify(credentials))
     return data
+  }
+
+  // ----- Auxiliares de animacion del navBar
+  const [colapsado, setColapsado] = useState(false)
+  const colapseNavBar = useRef(null)
+
+  const Collapsed = () => {
+    setColapsado(!colapsado)
   }
 
   return (

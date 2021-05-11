@@ -26,36 +26,36 @@ const NavContract = (props) => {
   return (
   	<div style={styles}>
 	  	<div className='row justify-content-center w-100' id='NavContract'>
-	    	<div className='col-6'>
-				<div className='row'>
-				<div className='col'>
-					<img src={logo} alt='Gig' id='LogoContract'/>
+	    	<div className='col col-lg-6'>
+				<div className='row justify-content-center'>
+					<div className='col'>
+						<img src={logo} alt='Gig' id='LogoContract'/>
+					</div>
 				</div>
-				</div>
-				<div className='row'>
-					<NavLink to='/' className='link-react-nav w-100' >
+				<div className='row justify-content-center'>
+					<NavLink to='/' className='div-nav link-react-nav w-100' >
 						<div className='col-10 align-self-center inicio-nav'>
 							<Inicio id='Inicio'/>
 						</div>
 					</NavLink>
 				</div>
-				<div className='row'>
-					<NavLink to='/artist' className='link-react-nav w-100' >
-						<div className='col descubrir-nav'>
+				<div className='row justify-content-center'>
+					<NavLink to='/artist' className='div-nav link-react-nav w-100' >
+						<div className='col-10 align-self-center descubrir-nav'>
 							<Descubrir id='Descubrir'/>
 						</div>
 					</NavLink>
 				</div>
-				<div className='row'>
-					<NavLink to='/song' className='link-react-nav w-100' >
-						<div className='col catalogo-nav'>
+				<div className='row justify-content-center'>
+					<NavLink to='/song' className='div-nav link-react-nav w-100' >
+						<div className='col-10 align-self-center catalogo-nav'>
 							<Catalogo id='Catalogo'/>
 						</div>
 					</NavLink>
 				</div>
-				<div className='row'>
-					<NavLink to='/user' className='link-react-nav w-100' >
-						<div className='col ajustes-nav'>
+				<div className='row justify-content-center'>
+					<NavLink to='/user' className='div-nav link-react-nav w-100' >
+						<div className='col-10 align-self-center ajustes-nav'>
 							<Ajustes id='Ajustes'/>
 						</div>
 					</NavLink>

@@ -89,10 +89,14 @@ const User = (props) => {
   return (
     <div className="container text-center" id='User-container'>
       <Redirect to={"/user?username="+user.username} />
-    	<h1>Bienvenido {user.nombre}</h1>
-      <button type='button' className='btn btn-primary' onClick={EditUser}>Editar cuenta</button>
-    	<button type="button" className=" mx-2 btn btn-primary" onClick={LogOut} >Salir</button>
-      <button type="button" className="btn btn-primary" onClick={DeleteAccount} >Eliminar cuenta</button>
+      <div className='row'>
+        <div className='col'>
+          <button type='button' className='mt-2 sticky-top btn btn-primary' onClick={EditUser}>Editar cuenta</button>
+        	<button type="button" className="mt-2 sticky-top mx-2 btn btn-primary" onClick={LogOut} >Salir</button>
+          <button type="button" className="mt-2 sticky-top btn btn-primary" onClick={DeleteAccount} >Eliminar cuenta</button>
+          <h1>Bienvenido {user.nombre}</h1>
+        </div>
+      </div>
     </div>
   );
 }

@@ -31,7 +31,7 @@ const NavExpand = (props) => {
 					</div>
 				</div>
 				<div className='row justify-content-center'>
-					<NavLink to='/' className='link-react-nav w-100' >
+					<NavLink to='/' className='div-nav link-react-nav w-100' >
 						<div className='col-10 align-self-center'>
 							<Inicio id='Inicio'/>
 							<span className='ml-3'>Inicio</span>
@@ -39,7 +39,7 @@ const NavExpand = (props) => {
 					</NavLink>
 				</div>
 				<div className='row justify-content-center'>
-					<NavLink to='/artist' className='link-react-nav w-100' >
+					<NavLink to='/artist' className='div-nav link-react-nav w-100' >
 						<div className='col-10 align-self-center'>
 							<Descubrir id='Descubrir'/>
 							<span className='ml-3'>Descubrir</span>
@@ -47,7 +47,7 @@ const NavExpand = (props) => {
 					</NavLink>
 				</div>
 				<div className='row justify-content-center'>
-					<NavLink to='/song' className='link-react-nav w-100' >
+					<NavLink to='/song' className='div-nav link-react-nav w-100' >
 						<div className='col-10 align-self-center'>
 							<Catalogo id='Catalogo'/>
 							<span className='ml-3'>Catálogo</span>
@@ -55,7 +55,7 @@ const NavExpand = (props) => {
 					</NavLink>
 				</div>
 				<div className='row justify-content-center'>
-					<NavLink to='/user' className='link-react-nav w-100' >
+					<NavLink to='/user' className='div-nav link-react-nav w-100' >
 						<div className='col-10 align-self-center'>
 							<Ajustes id='Ajustes'/>
 							<span className='ml-3'>Ajustes</span>

@@ -2,7 +2,7 @@
 	max-width: 104px;
 	height: 100vh;
  	margin: 0 0 0 0;
- 	padding: 23px 0px 23.1px 0px;
+ 	padding: 1.65em 0px 1.65em 0px;
  	float: left;
 }
 #LogoContract{
@@ -34,4 +34,7 @@
     * {
         all: unset;
     }
+}
+.div-nav{
+	height: 2em;
 }

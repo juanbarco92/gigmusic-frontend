@@ -127,6 +127,7 @@ function Song(props) {
 	    }
   	}, [urlPath, urlSearch, Eleccion, can, scroll, Scrolling])
 
+	// ----- Redireccion si no se esta pidiendo una cancion especifica
   	if(!urlSearch.startsWith('?id=')){
 	    return(<Redirect to="/" />)
     }

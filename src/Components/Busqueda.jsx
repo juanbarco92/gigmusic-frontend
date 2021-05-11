@@ -16,17 +16,18 @@ const Busqueda = (props) => {
 	}
 
 	// ----- Peticion de lista de canciones con valor buscado
-	const submit = (busqueda) => {
-		if(busqueda !== ''){
-			getArtist('?busqueda='+busqueda)
-    		getSong('?busqueda='+busqueda)
+	const submit = (e) => {
+		e.preventDefault()
+		if(search !== ''){
+			getArtist('?busqueda='+search)
+    		getSong('?busqueda='+search)
 		}
 	}
 
   return (
       <div className='row sticky-top w-100' id='Search-container'>
       	<div className='col'>
-			<form className="input-group" id='Buscar' onSubmit={() => submit(search)}>
+			<form className="input-group" id='Buscar' onSubmit={submit}>
 				<div className='input-group-prepend'>
 					<Buscador className='align-self-center input-group-text' id='icon-search'/>
 				</div>
@@ -43,7 +44,7 @@ const Busqueda = (props) => {
                             pathname: '/search/',
                             search: `?busqueda=${search}`,
                             }}>
-						<button onClick={() => submit(search)}
+						<button onClick={() => submit}
 						type="submit" id='search-button' />
 					</NavLink>
 				</div>

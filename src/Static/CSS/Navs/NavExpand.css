@@ -3,7 +3,7 @@
 	height: 100vh;
  	margin: 0 0 0 0;
  	font-family: Roboto;
- 	padding: 28px 0px 27px 0px;
+ 	padding: 2em 0px 2em 0px;
  	float: left;
 }
 #LogoExpand{
@@ -15,26 +15,26 @@
 #Inicio{
 	width: 24px;
 	height: 24px;
-	margin: 7px 0px 7px 0px;
+	margin: 0px 0px 0px 0px;
 	color: #b3b3b3;
 	object-fit: contain;
 }
 #Descubrir{
 	width: 16px;
 	height: 16px;
-	margin: 7px 0px 7px 0px;
+	margin: 0px 0px 0px 0px;
 	object-fit: contain;
 }
 #Catalogo{
 	width: 20px;
 	height: 20px;
-	margin: 7px 0px 7px 0px;
+	margin: 0px 0px 0px 0px;
 	object-fit: contain;
 }
 #Ajustes{
 	width: 18px;
 	height: 18px;
-	margin: 7px 0px 7px 0px;
+	margin: 0px 0px 0px 0px;
 	object-fit: contain;
 }
 #facebook{
