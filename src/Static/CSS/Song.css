@@ -5,6 +5,13 @@
 }
 #Chord-Container{
 	color: #b3b3b3;
+    scrollbar-width: none;
+    overflow-y: scroll !important;
+    max-height: calc(100vh*0.72) !important;/*800px 72vh*/
+}
+#Chord-Container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 #Cancion-Container{
     scrollbar-width: none;
@@ -22,21 +29,6 @@
     border: solid 1px #4ed0e5;
     border-radius: 100px;
     text-align: center;
-}
-#Chord-Container svg line{
-    stroke: #a9a9a9 !important;
-    fill: #a9a9a9 !important;
-}
-#Chord-Container svg circle{
-    fill: #f24405 !important;
-    stroke: #a9a9a9 !important;
-}
-#Chord-Container svg text{
-    fill: #f24405 !important;
-    stroke: #f24405 !important;
-}
-#Chord-Container button{
-    color: #a9a9a9 !important;
 }
 #Reproductor-Container{
     padding: 0;

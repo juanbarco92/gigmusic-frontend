@@ -1,16 +1,17 @@
 import React, {useState, useRef, useEffect} from 'react'
 import {Redirect} from 'react-router-dom'
-import GuitarChord from 'react-guitar-chords'
+import {isEmpty} from '../Utils/utils'
 import Notas from './Songs/Notas'
 import Reproductor from './Songs/Reproductor'
-import {isEmpty} from '../Utils/utils'
+import Acordes from './Songs/Acordes'
 import '../Static/CSS/Song.css'
 
 let timer
-let lineas = 0
+let lineas
 let hOff = 0
 let urlAnt = null
 let estrofa
+let notasAcordes
 
 function Song(props) {
 	
@@ -83,6 +84,9 @@ function Song(props) {
 
 	const {metadata, canción} = can
 
+	// ----- Array de notas para acordes
+    const [arrayAcordes, setArrayAcordes] = useState([])
+
 	// ----- Variables de control de visualizacion
   	const [load, setLoad] = useState(false)
 	const [mostrar, setMostrar] = useState(false)
@@ -93,8 +97,14 @@ function Song(props) {
 			document.title = 'GIG - ' + (metadata.canción ? (metadata.canción):(metadata.cancion))
 			estrofa = canción.map((item)=>({tipo: item.tipo, contenido: item.contenido}))
 			lineas = 0
-			estrofa.map(item => lineas += parseInt(item.contenido.length))
+			notasAcordes = []
+			estrofa.forEach(item => {
+				lineas += parseInt(item.contenido.length)
+				item.contenido.map(i => notasAcordes.push(i.notas))
+			})
+
 			lineas += estrofa.length
+			setArrayAcordes(notasAcordes)
 			setMostrar(true)
 		}
 		else{
@@ -182,8 +192,8 @@ function Song(props) {
 			    	{
 		    			acordes ?
 		    			(
-		    				<div className='col-4 col-auto mt-2' id='Chord-Container'>
-				    			<GuitarChord chordName='nota' frets={['x', 3, 0, 0, 1, 1]}/>
+		    				<div className='col-4 col-auto mt-2' id='Chord-Container'>	
+								<Acordes notas={arrayAcordes} colorAc={personalize.color} />
 				    		</div>
 		    			)
 		    			:
