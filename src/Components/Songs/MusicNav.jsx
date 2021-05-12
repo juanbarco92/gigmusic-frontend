@@ -9,7 +9,7 @@ let sizeAux = 1
 const MusicNav = (props) => {
   	
   	// ----- Obtencion de parametros de entrada
-	const { Scrolling, scroll, MostrarAcordes, VarSize, VarFuente, VarAcordes, VarTipo, personalize, ResetP } = props
+	const { Scrolling, scroll, MostrarAcordes, acordes, VarSize, VarFuente, VarAcordes, VarTipo, personalize, ResetP } = props
 
 	// ----- Definicion de estilos de adaptacion
 	const styles = {
@@ -90,7 +90,7 @@ const MusicNav = (props) => {
 			    		<span>AutoScroll</span>
 			    	</div>
 			    	<div className="col-3 custom-control custom-switch float-right">
-						<input type="checkbox" className="custom-control-input" id="scroll-btn" checked={scroll}			onChange={Scrolling} />
+						<input type="checkbox" className="custom-control-input" id="scroll-btn" checked={scroll} onChange={Scrolling} />
 						<label className="custom-control-label" htmlFor="scroll-btn"></label>
 					</div>
 			    </div>
@@ -99,7 +99,7 @@ const MusicNav = (props) => {
 			    		<span>Mostrar acordes</span>
 			    	</div>
 			    	<div className="col-3 custom-control custom-switch float-right">
-						<input type="checkbox" className="custom-control-input" id="acordes-btn" onChange={MostrarAcordes}/>
+						<input type="checkbox" className="custom-control-input" id="acordes-btn" checked={acordes} onChange={MostrarAcordes}/>
 						<label className="custom-control-label" htmlFor="acordes-btn"></label>
 					</div>
 			    </div>
