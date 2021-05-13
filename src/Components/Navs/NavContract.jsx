@@ -25,8 +25,8 @@ const NavContract = (props) => {
 
   return (
   	<div style={styles}>
-	  	<div className='row justify-content-center w-100' id='NavContract'>
-	    	<div className='col col-lg-6'>
+	  	<div className='row justify-content-center w-100' id='NavContract-container'>
+	    	<div className='col col-sm-10 col-lg-6'>
 				<div className='row justify-content-center'>
 					<div className='col'>
 						<img src={logo} alt='Gig' id='LogoContract'/>

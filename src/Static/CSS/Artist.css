@@ -1,3 +1,4 @@
+/* IDs */
 #Artist-container{
 	background-color: transparent;
 	color: #b3b3b3;
@@ -10,6 +11,8 @@
     width: 0;
     height: 0;
 }
+
+/* Clases */
 .accent{
 	background: #121212;
 	opacity: 0.5;
@@ -46,13 +49,21 @@
 }
 .nav-link{
 	color: #b3b3b3 !important;
+	background: none;
+	border: none;
+	box-shadow: 0;
 }
 .nav-link:hover {
 	color: #ffffff !important;
+	background: none;
+	border: none;
+	box-shadow: 0;
 }
 .nav-link:focus {
 	color: #ffffff !important;
 	border-bottom: 1px solid #f24405 !important;
+	background: none;
+	box-shadow: 0;
 }
 .activado {
 	color: #ffffff !important;

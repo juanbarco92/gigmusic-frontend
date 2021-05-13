@@ -1,7 +1,10 @@
+/* IDs */
 #Banner-Container{
 	color: inherit;
     background: transparent;
 }
+
+/* Clases */
 .control-dots{
 	max-width: 10% !important;
 	margin: 0 !important;

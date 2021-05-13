@@ -1,7 +1,10 @@
+/* IDs */
 #Resultados-container{
 	color: #b3b3b3;
     background-color: #181818;
 }
+
+/* Clases */
 .link-react-results{
 	color: currentColor !important;
 	background-color: transparent;

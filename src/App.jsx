@@ -74,18 +74,29 @@ function App() {
     }
   }
 
-  // ----- Helpers para collapse, scrolling y acordes
+  // ----- Helpers de obtencion de instrumento
+  const [cualInstrumento, setCualInstrumento] = useState('')
+
+  const QInstrumento = (instru) => {
+    setCualInstrumento(instru)
+  }
+
+  // ----- Helpers de collapse
   const [colapsar, setColapsar] = useState(false)
-  const [scroll,setScroll] = useState(false)
-  const [acordes,setAcordes] = useState(false)
 
   const Colapse = () => {
     setColapsar(!colapsar)
   }
 
+  // ----- Helper de scrolling
+  const [scroll,setScroll] = useState(false)
+
   const Scrolling = () => {
     setScroll(!scroll)
   }
+
+  // ----- Helper de acordes
+  const [acordes,setAcordes] = useState(false)
 
   const MostrarAcordes = () => {
     setAcordes(!acordes)
@@ -264,7 +275,7 @@ function App() {
               timeout={200}
               unmountOnExit
               onExited={Collapsed}>
-                <div ref={colapseNavBar} className='col-3 py-0' id='NavExpand'>
+                <div ref={colapseNavBar} className='col-auto col-lg-3 py-0' id='NavExpand'>
                   <NavExpand Colapse={Colapse}/>
                 </div>
             </CSSTransition>
@@ -274,22 +285,24 @@ function App() {
                 <Route path='/song/'>
                   <div className='row'>
 
-                    <div className='col'>
+                    <div className='col col-md-9 col-xl'>
                       <Busqueda getSong={getSong} getArtist={getArtist} />
                       <Song Eleccion={Eleccion} 
                       scroll={scroll} 
+                      cualInstrumento={cualInstrumento} 
                       acordes={acordes} 
                       Scrolling={Scrolling} 
                       elegida={cancionElegida} 
                       personalize={personalize} />
                     </div>
 
-                    <div className='col-3' id='MusicNav'>
+                    <div className='col-2 col-md-3' id='MusicNav'>
                       <MusicNav scroll={scroll} acordes={acordes}
                       MostrarAcordes={MostrarAcordes} Scrolling={Scrolling} 
                       VarTipo={VarTipo} VarSize={VarSize}
                       VarFuente={VarFuente} VarAcordes={VarAcordes} 
-                      personalize={personalize} ResetP={ResetP} />
+                      personalize={personalize} ResetP={ResetP} 
+                      QInstrumento={QInstrumento} />
                     </div>
                   </div>
 

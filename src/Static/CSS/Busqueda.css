@@ -1,7 +1,8 @@
+/* IDs */
 #Search-container{
 	margin: 0 0 0 0px;
 	padding: 15px 0 10px 25px;
-	background-color: transparent;
+	background-color: #181818;
 	color: #b3b3b3;
 	border-bottom: solid 1px #b3b3b3;
 	z-index: 1;
@@ -10,7 +11,7 @@
 	width: 20px;
 	height: 20px;
 	padding: 0 0 0 0;
-	background-color: transparent;
+	background-color: inherit;
 	border: none;
 	object-fit: contain;
 }
@@ -18,23 +19,25 @@
 	display: none;
 }
 #search-bar{
-	background-color: transparent;
+	background-color: inherit;
 	color: currentColor !important;
 	border: none;
 	box-shadow: 0 0 0 0;
 }
 #search-bar:focus{
-	background-color: transparent;
+	background-color: inherit;
 	color: currentColor !important;
 	border: none;
 	box-shadow: 0 0 0 0;
 }
 #search-bar:active{
-	background-color: transparent;
+	background-color: inherit;
 	color: currentColor !important;
 	border: none;
 	box-shadow: 0 0 0 0;
 }
+
+/* Etiquetas */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus

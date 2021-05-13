@@ -1,3 +1,4 @@
+/* IDs */
 #App {
 	background-color: #181818;
 	position: absolute;
@@ -10,7 +11,7 @@
  	background-color: #121212;
 }
 #NavContract{
-	max-width: 103px;
+	max-width: 104px;
 	float: left;
 	color: #b3b3b3;
 	background-color: #121212;
@@ -21,6 +22,8 @@
 	color: #b3b3b3;
 	background-color: #121212;
 }
+
+/* Clases */
 .expand-nav-enter{
 	transition: transform 200ms;
 	transform: scaleX(0.43);

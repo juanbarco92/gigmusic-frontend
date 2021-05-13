@@ -41,24 +41,28 @@ const Login = (props) => {
 
   return (
     <div className="container text-center" id='Login-container'>
-    	<h1>Login</h1>
-    	<form onSubmit={onSubmit}>
-    		{
-				(email.length>0 && (!email.includes('.') || !email.includes('@')))&&
-				(
-					<span className='text-danger'>Ingrese un email válido</span>
-				)
-			}
-			<div className="mb-3">
-				<label htmlFor="email-login" className="form-label">Correo electrónico</label>
-				<input required type="email" minLength='5' onChange={onEmail} className="form-control" id="email-login"/>
+    	<div className='row'>
+    		<div className='col'>
+		    	<h1>Login</h1>
+		    	<form onSubmit={onSubmit}>
+		    		{
+						(email.length>0 && (!email.includes('.') || !email.includes('@')))&&
+						(
+							<span className='text-danger'>Ingrese un email válido</span>
+						)
+					}
+					<div className="mb-3">
+						<label htmlFor="email-login" className="form-label">Correo electrónico</label>
+						<input required type="email" minLength='5' onChange={onEmail} className="form-control form-input-p" id="email-login"/>
+					</div>
+					<div className="mb-3">
+						<label htmlFor="password-login" className="form-label">Contraseña</label>
+						<input required type="password" id="password-login" minLength='4' onChange={onPassword} className="form-control form-input-p"/>
+					</div>
+					<input type="submit" value='Ingresar' className="gig-btn btn"/>
+				</form>
 			</div>
-			<div className="mb-3">
-				<label htmlFor="password-login" className="form-label">Contraseña</label>
-				<input required type="password" id="password-login" minLength='4' onChange={onPassword} className="form-control"/>
-			</div>
-			<input type="submit" value='Ingresar' className="btn btn-primary"/>
-		</form>
+    	</div>
     </div>
   );
 }

@@ -9,8 +9,8 @@ let sizeAux = 1
 const MusicNav = (props) => {
   	
   	// ----- Obtencion de parametros de entrada
-	const { Scrolling, scroll, MostrarAcordes, acordes, VarSize, VarFuente, VarAcordes, VarTipo, personalize, ResetP } = props
-
+	const { QInstrumento, Scrolling, scroll, MostrarAcordes, acordes, VarSize, VarFuente, VarAcordes, VarTipo, personalize, ResetP } = props
+	
 	// ----- Definicion de estilos de adaptacion
 	const styles = {
 		maxHeight : window.screen.height
@@ -82,7 +82,7 @@ const MusicNav = (props) => {
 	  			<p className='h4 text-center'>ACORDES PARA</p>
 	  			<div className="row" >
 	  				<div className='col'>
-	  					<InstrumentSelector />
+	  					<InstrumentSelector QInstrumento={QInstrumento} />
 	  				</div>
 	  			</div>
 			    <div className="row justify-content-between mt-4" >
@@ -94,7 +94,7 @@ const MusicNav = (props) => {
 						<label className="custom-control-label" htmlFor="scroll-btn"></label>
 					</div>
 			    </div>
-			    <div className="row">
+			    <div className="row justify-content-between">
 			    	<div className='col float-left'>
 			    		<span>Mostrar acordes</span>
 			    	</div>

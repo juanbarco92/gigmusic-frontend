@@ -1,3 +1,4 @@
+/* IDs */
 #Acordes{
 	font-size: 1rem;
     color: #f24405;
@@ -10,9 +11,22 @@
     margin-bottom: 5mm;
 }
 #Contenedor-Acordes{
-    overflow-x: hidden;
+    scrollbar-height: 10px;
 }
+#Contenedor-Acordes::-webkit-scrollbar {
+    height: 10px;
+}
+#Contenedor-Acordes::-webkit-scrollbar-track {
+  background: #181818; 
+  border: 2.5px solid #121212;
+}
+#Contenedor-Acordes::-webkit-scrollbar-thumb {
+  background: #121212; 
+}
+
+/* Etiquetas */
 pre{
 	font-size: inherit !important;
 	color: inherit !important;
+  white-space: pre-wrap;
 }

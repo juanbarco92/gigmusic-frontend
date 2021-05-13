@@ -1,7 +1,9 @@
+/* IDs */
 #Song-Container{
     font-size: 1rem;
 	background-color: transparent;
 	color: #b3b3b3;
+    max-width: calc(100%-200px);
 }
 #Chord-Container{
 	color: #b3b3b3;

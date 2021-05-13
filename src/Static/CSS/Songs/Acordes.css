@@ -1,9 +1,12 @@
+/* IDs */
 #Acordes-Container{
 	color: inherit;
 	background: inherit;
 }
+
+/* Clases */
 .chord{
-	color: #f24405
+	color: #f24405;
 }
 .chord svg line{
     stroke: #a9a9a9 !important;
@@ -19,4 +22,8 @@
 }
 .chord button{
     color: #a9a9a9 !important;
+    display: none;
+    background: none;
+    border: none;
+    box-shadow: 0;
 }

@@ -16,7 +16,7 @@ let notasAcordes
 function Song(props) {
 	
 	// ----- Obtencion de variables de entrada
-	const { scroll, Scrolling, acordes, elegida, Eleccion, personalize} = props
+	const { cualInstrumento, scroll, Scrolling, acordes, elegida, Eleccion, personalize} = props
 
 	// ----- Estilos adicionales de adaptacion
 	const styles = {
@@ -131,7 +131,7 @@ function Song(props) {
     	return () => {
     		setMostrar(false)
 	        setLoad(false)
-	        if(scroll){
+	        if(scroll && urlPath!=='/song/'){
 	        	Scrolling()
 	        }
 	    }
@@ -190,15 +190,11 @@ function Song(props) {
 			    		</ul>
 			    	</div>
 			    	{
-		    			acordes ?
+		    			acordes &&
 		    			(
-		    				<div className='col-4 col-auto mt-2' id='Chord-Container'>	
-								<Acordes notas={arrayAcordes} colorAc={personalize.color} />
+		    				<div className='col-4 mt-2' id='Chord-Container'>	
+								<Acordes cualInstrumento={cualInstrumento} notas={arrayAcordes} colorAc={personalize.color} />
 				    		</div>
-		    			)
-		    			:
-		    			(
-		    				<span></span>
 		    			)
 		    		}
 				</div>

@@ -1,9 +1,11 @@
-#NavContract{
+/* IDs */
+#NavContract-container{
 	max-width: 104px;
 	height: 100vh;
  	margin: 0 0 0 0;
  	padding: 1.65em 0px 1.65em 0px;
  	float: left;
+ 	background-color: #121212;
 }
 #LogoContract{
 	width: 40px;
@@ -20,7 +22,10 @@
 #Expandir button{
 	width: 100%;
 	height: 100%;
+	background: none;
 }
+
+/* Clases */
 .con-exp:hover g{
 	box-shadow: 2px 2px 5px #b3b3b3;
 	stroke: #b3b3b3;

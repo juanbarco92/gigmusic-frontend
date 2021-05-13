@@ -1,0 +1,56 @@
+/* IDs */
+#User-Container{
+	background-color: inherit;
+	color: inherit;
+}
+#edit{
+	background-color: inherit;
+	color: inherit;
+}
+#sign{
+	background-color: inherit;
+	color: inherit;
+}
+#delete{
+	background-color: inherit;
+	color: inherit;
+}
+
+/* Clases */
+.gig-btn{
+	background: #f24405 !important;
+	color: #b3b3b3 !important;
+	border-color: #b3b3b3 !important;
+	box-shadow: 0 0 0 0 !important;
+}
+.gig-btn:hover{
+	color: #b3b3b3;
+	border-color: #b3b3b3;
+	border: 0.5px;
+	background-color: #f24405;
+	box-shadow: 0 0 0 0 !important;
+}
+.gig-btn:active{
+	color: #f24405;
+	border-color: #f24405;
+	border: 0.5px;
+	background-color: #b3b3b3;
+	box-shadow: 0 0 0 0 !important;
+}
+.form-input-p{
+	background-color: transparent !important;
+	color: currentColor !important;
+	border-color: #b3b3b3 !important;
+	box-shadow: 0 0 0 0 !important;
+}
+.form-input-p:focus{
+	background-color: transparent !important;
+	color: currentColor !important;
+	border-color: #f24405 !important;
+	box-shadow: 0 0 0 0 !important;
+}
+.form-input-p:active{
+	background-color: transparent !important;
+	color: currentColor !important;
+	box-shadow: 0 0 0 0 !important;
+}

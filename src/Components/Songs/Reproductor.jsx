@@ -73,13 +73,10 @@ const Reproductor = (props) => {
       startTimer()
     }
 
-    // ----- Estilos de barras de progreso
+    // ----- Estilos de barra de progreso
     const currentPercentage = duration ? `${(trackProgress / duration) * 100}%` : '0%'
     const trackStyling = `
     -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #f24405), color-stop(${currentPercentage}, #404040))`
-
-    const volumeStyling = `
-    -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${audioRef.current.volume}, #f24405), color-stop(${audioRef.current.volume}, #404040))`
 
     // Timer para progreso de las barras
     const startTimer = React.useCallback(() => {
@@ -130,11 +127,17 @@ const Reproductor = (props) => {
       }
     }, [])
 
-    // ----- Control de volumen encendido o apagado
+    // ----- Definicion de estilo de volumen
+    const [volumeProgress, setVolumeProgress] = useState(100)
+    const volumeStyling = `
+    -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${volumeProgress}, #f24405), color-stop(${volumeProgress}, #404040))`
+
+    // ----- Control de volumen
     const [isVolZero, setIsVolZero] = useState(false)
 
     const onVolume = (value) => {
       audioRef.current.volume = value
+      setVolumeProgress(value)
       if (value === '0'){
         setIsVolZero(true)
       }else{
@@ -156,62 +159,64 @@ const Reproductor = (props) => {
     }
 
   return (
-    <div className='audio-player'>
-      <div className="track-info">
-        <div className='row justify-content-center'>
-          <span className="h3 title">{title}</span>
-          <span className=" h3 artist"> &nbsp; - &nbsp;{artist}</span>
-        </div>
-        <div className='row'>
-          <AudioControls
-            isPlaying={isPlaying}
-            onPrevClick={toPrevTrack}
-            onNextClick={toNextTrack}
-            onPlayPauseClick={setIsPlaying}
-            />
-        </div>
-        <div className='row justify-content-between align-items-center'>
-          <div className='col col-sm-9'>
-            <div className='row'>
-              <div className='col-auto'>
-                <span>{conversionRange(trackProgress)}</span>
-              </div>
-              <div className='col'>
-                <input
-                type="range"
-                value={trackProgress}
-                step="1"
-                min="0"
-                max={duration ? duration : `${duration}`}
-                className="progress"
-                onChange={(e) => onScrub(e.target.value)}
-                onMouseUp={onScrubEnd}
-                onKeyUp={onScrubEnd}
-                style={{ background: trackStyling }}
-                />
-              </div>
-              <div className='col-auto'>
-                <span>{conversionRange(duration)}</span>
+    <div id='Reproductor-musica'>
+      <div className='audio-player'>
+        <div className="track-info">
+          <div className='row justify-content-center'>
+            <span className="h3 title">{title}</span>
+            <span className=" h3 artist"> &nbsp; - &nbsp;{artist}</span>
+          </div>
+          <div className='row'>
+            <AudioControls
+              isPlaying={isPlaying}
+              onPrevClick={toPrevTrack}
+              onNextClick={toNextTrack}
+              onPlayPauseClick={setIsPlaying}
+              />
+          </div>
+          <div className='row justify-content-between align-items-center'>
+            <div className='col col-sm-9'>
+              <div className='row align-items-center'>
+                <div className='col-auto'>
+                  <span>{conversionRange(trackProgress)}</span>
+                </div>
+                <div className='col'>
+                  <input
+                  type="range"
+                  value={trackProgress}
+                  step="1"
+                  min="0"
+                  max={duration ? duration : `${duration}`}
+                  className="progress range-input"
+                  onChange={(e) => onScrub(e.target.value)}
+                  onMouseUp={onScrubEnd}
+                  onKeyUp={onScrubEnd}
+                  style={{ background: trackStyling }}
+                  />
+                </div>
+                <div className='col-auto'>
+                  <span>{conversionRange(duration)}</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div className='col'>
-            <div className='row'>
-              <div className='col-auto'>
-              {
-                isVolZero ? <VolOff className='vol' /> : <VolOn className='vol' /> 
-              }
-              </div>
-              <div className='col'>
-                <input 
-                type="range"
-                step="0.1"
-                min="0"
-                max='1'
-                className="volume"
-                onChange={(e) => onVolume(e.target.value)}
-                style={{ background: volumeStyling }}
-                />
+            <div className='col'>
+              <div className='row align-items-center'>
+                <div className='col-auto'>
+                {
+                  isVolZero ? <VolOff className='vol' /> : <VolOn className='vol' /> 
+                }
+                </div>
+                <div className='col'>
+                  <input 
+                  type="range"
+                  step="0.1"
+                  min="0"
+                  max='1'
+                  className="volume range-input"
+                  onChange={(e) => onVolume(e.target.value)}
+                  style={{ background: volumeStyling }}
+                  />
+                </div>
               </div>
             </div>
           </div>

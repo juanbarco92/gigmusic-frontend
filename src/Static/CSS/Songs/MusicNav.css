@@ -1,3 +1,4 @@
+/* IDs */
 #MusicNav-Container{
 	max-width: 210px;
 	height: 100vh;
@@ -6,6 +7,7 @@
  	float: right;
  	color: #b3b3b3;
  	z-index: 1;
+ 	background-color: #121212;
 }
 #Restablecer{
     font-family: Verdana;
@@ -15,6 +17,8 @@
     border-radius: 100px;
     text-align: center;
 }
+
+/* Clases */
 .mn-btn{
 	color: #b3b3b3 !important;
 	background-color: transparent;

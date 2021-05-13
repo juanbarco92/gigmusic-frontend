@@ -1,9 +1,12 @@
+/* IDs */
 #Portal-container{
     color : #b3b3b3;
     background-color : black;
     position : absolute;
     z-index: 2;
 }
+
+/* Etiquetas */
 select{
 	color : #b3b3b3 !important;
     background-color : transparent !important;

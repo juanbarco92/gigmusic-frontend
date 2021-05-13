@@ -1,10 +1,12 @@
-#NavExpand{
+/* IDs */
+#NavExpand-container{
 	max-width: 240px;
 	height: 100vh;
  	margin: 0 0 0 0;
  	font-family: Roboto;
  	padding: 2em 0px 2em 0px;
  	float: left;
+ 	background-color: #121212;
 }
 #LogoExpand{
 	width: 56px;
@@ -61,7 +63,19 @@
 #Contraer button{
 	width: 100%;
 	height: 100%;
+	background: none;
 }
+#instagram:hover path{
+	fill: #dd2b7b;
+}
+#facebook:hover path{
+	fill: #3b5998;
+}
+#youtube:hover path{
+	fill: #c4302b;
+}
+
+/* Clases */
 .link-react-nav{
 	color: currentColor;
 	background-color: transparent;
@@ -94,12 +108,7 @@
 .link-react-nav:hover div #Ajustes g:nth-of-type(1){
 	stroke: #f24405;
 }
-#instagram:hover path{
-	fill: #dd2b7b;
-}
-#facebook:hover path{
-	fill: #3b5998;
-}
-#youtube:hover path{
-	fill: #c4302b;
+.nav-col-exp{
+	margin: 0 !important;
+	padding: 0 !important;
 }
