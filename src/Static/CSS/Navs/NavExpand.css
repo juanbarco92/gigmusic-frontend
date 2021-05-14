@@ -11,32 +11,32 @@
 #LogoExpand{
 	width: 56px;
  	height: 40px;
- 	margin: 28px 0px 28px 0px;
+ 	margin: calc(100vh * 0.03) 0px calc(100vh * 0.03) 0px;/* 28px*/
  	object-fit: contain;
 }
 #Inicio{
 	width: 24px;
 	height: 24px;
-	margin: 0px 0px 0px 0px;
+	margin: 0px 10px 0px 10px;
 	color: #b3b3b3;
 	object-fit: contain;
 }
 #Descubrir{
 	width: 16px;
 	height: 16px;
-	margin: 0px 0px 0px 0px;
+	margin: 0px 10px 0px 10px;
 	object-fit: contain;
 }
 #Catalogo{
 	width: 20px;
 	height: 20px;
-	margin: 0px 0px 0px 0px;
+	margin: 0px 10px 0px 10px;
 	object-fit: contain;
 }
 #Ajustes{
 	width: 18px;
 	height: 18px;
-	margin: 0px 0px 0px 0px;
+	margin: 0px 10px 0px 10px;
 	object-fit: contain;
 }
 #facebook{

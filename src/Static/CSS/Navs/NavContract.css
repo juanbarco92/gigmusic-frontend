@@ -10,7 +10,7 @@
 #LogoContract{
 	width: 40px;
  	height: 40px;
- 	margin: 23px 0 33px 0px;
+ 	margin: calc(100vh * 0.024) 0 calc(100vh * 0.035) 0px;/*23px y 33px*/
  	object-fit: contain;
 }
 #Expandir{

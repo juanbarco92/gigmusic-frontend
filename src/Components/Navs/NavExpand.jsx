@@ -32,9 +32,9 @@ const NavExpand = (props) => {
 				</div>
 				<div className='row justify-content-center'>
 					<NavLink to='/' className='div-nav link-react-nav w-100' >
-						<div className='col-10 align-self-center'>
+						<div className='col align-self-center'>
 							<div className='row'>
-								<span className='col-2 nav-col-exp'><Inicio id='Inicio'/></span>
+								<span className='col-3 text-center nav-col-exp'><Inicio id='Inicio'/></span>
 								<span className='col ml-3 nav-col-exp'>Inicio</span>
 							</div>
 						</div>
@@ -42,9 +42,9 @@ const NavExpand = (props) => {
 				</div>
 				<div className='row justify-content-center'>
 					<NavLink to='/artist' className='div-nav link-react-nav w-100' >
-						<div className='col-10 align-self-center'>
+						<div className='col align-self-center'>
 							<div className='row'>
-								<span className='col-2 nav-col-exp'><Descubrir id='Descubrir'/></span>
+								<span className='col-3 text-center nav-col-exp'><Descubrir id='Descubrir'/></span>
 								<span className='col ml-3 nav-col-exp'>Descubrir</span>
 							</div>
 						</div>
@@ -52,9 +52,9 @@ const NavExpand = (props) => {
 				</div>
 				<div className='row justify-content-center'>
 					<NavLink to='/song' className='div-nav link-react-nav w-100' >
-						<div className='col-10 align-self-center'>
+						<div className='col align-self-center'>
 							<div className='row'>
-								<span className='col-2 nav-col-exp'><Catalogo id='Catalogo'/></span>
+								<span className='col-3 text-center nav-col-exp'><Catalogo id='Catalogo'/></span>
 								<span className='col ml-3 nav-col-exp'>Catálogo</span>
 							</div>
 						</div>
@@ -62,9 +62,9 @@ const NavExpand = (props) => {
 				</div>
 				<div className='row justify-content-center'>
 					<NavLink to='/user' className='div-nav link-react-nav w-100' >
-						<div className='col-10 align-self-center'>
+						<div className='col align-self-center'>
 							<div className='row'>
-								<span className='col-2 nav-col-exp'><Ajustes id='Ajustes'/></span>
+								<span className='col-3 text-center nav-col-exp'><Ajustes id='Ajustes'/></span>
 								<span className='col ml-3 nav-col-exp'>Ajustes</span>
 							</div>
 						</div>
