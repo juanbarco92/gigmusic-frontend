@@ -1,32 +1,22 @@
-/* IDs */
-#Resultados-container{
-	color: #b3b3b3;
-    background-color: #181818;
-}
-
-/* Clases */
-.link-react-results{
-	color: currentColor !important;
-	background-color: transparent;
-}
-.link-react-results:link{
-	color: currentColor !important;
-	text-decoration: none !important;
-	background-color: #121212;
-}
-.link-react-results:hover{
-	color: #f24405 !important;
-	background-color: #121212;
-}
-.link-react-results:active{
-	color: #f24405 !important;
-	background-color: #121212;
-}
 .list-search{
 	width: 100%;
 	display: block;
 	opacity: 0.5;
 	border-radius: 16px;
-	color: currentColor;
 	border: 0.5px solid #f24405;
+}
+.list-search, .link-react-results:link{
+	color: inherit;
+}
+.link-react-results:link{
+	text-decoration: none !important;
+	background-color: #121212;
+}
+.link-react-results:hover, .link-react-results:active{
+	color: #f24405;
+	background-color: #121212;
+}
+.link-react-results, #Resultados-container{
+	color: inherit;
+    background-color: inherit;
 }

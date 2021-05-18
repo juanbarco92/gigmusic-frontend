@@ -1,14 +1,19 @@
-/* IDs */
-#Acordes{
-	font-size: 1rem;
-    color: #f24405;
-    background-color: transparent;
+pre{
+    font-size: inherit !important;
+    color: inherit !important;
+    white-space: pre-wrap;
+}
+#Letra, #Acordes{
+    color: inherit;
+    background-color: inherit;
 }
 #Letra{
-    color: inherit;
-    background-color: transparent;
     text-shadow: 1px;
     margin-bottom: 5mm;
+}
+#Acordes{
+    font-size: 1rem;
+    color: #f24405;
 }
 #Contenedor-Acordes{
     scrollbar-height: 10px;
@@ -17,16 +22,9 @@
     height: 10px;
 }
 #Contenedor-Acordes::-webkit-scrollbar-track {
-  background: #181818; 
-  border: 2.5px solid #121212;
+    background: #181818; 
+    border: 2.5px solid #121212;
 }
 #Contenedor-Acordes::-webkit-scrollbar-thumb {
-  background: #121212; 
-}
-
-/* Etiquetas */
-pre{
-	font-size: inherit !important;
-	color: inherit !important;
-  white-space: pre-wrap;
+    background: #121212; 
 }

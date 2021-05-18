@@ -1,22 +1,6 @@
-/* IDs */
-#Inicio-container{
-    color: #b3b3b3;
-    background: transparent;
-    scrollbar-width: none;
-    overflow-x: hidden;
-	overflow-y: scroll !important;
-	max-height: calc(100vh*0.92) !important;
-}
-#Inicio-container::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-}
-
-/* Clases */
 .card{
 	background: #222222 !important;
-	color: #b3b3b3 !important;
-	border-radius: 8px !important;
+	color: inherit;
 }
 .ultimo{
 	column-count: 2 !important;
@@ -25,5 +9,17 @@
 	column-count: 4 !important;
 }
 .populares .card, .populares .card img{
-	border-radius: 15px !important;
+	border-radius: 15px;
+}
+#Inicio-container{
+    color: inherit;
+    background: inherit;
+    scrollbar-width: none;
+    overflow-x: hidden;
+	overflow-y: scroll !important;
+	max-height: calc(100vh*0.92) !important;
+}
+#Inicio-container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }

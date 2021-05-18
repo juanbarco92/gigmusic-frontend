@@ -1,24 +1,5 @@
-/* IDs */
-#Acordes-Container{
-	color: inherit;
-	background: inherit;
-}
-
-/* Clases */
 .chord{
 	color: #f24405;
-}
-.chord svg line{
-    stroke: #a9a9a9 !important;
-    fill: #a9a9a9 !important;
-}
-.chord svg circle{
-    fill: currentcolor !important;/*f24405*/
-    stroke: #a9a9a9 !important;
-}
-.chord svg text{
-    fill: currentcolor !important;/*f24405*/
-    stroke: currentcolor !important;/*f24405*/
 }
 .chord button{
     color: #a9a9a9 !important;
@@ -26,4 +7,20 @@
     background: none;
     border: none;
     box-shadow: 0;
+}
+.chord svg line{
+    stroke: #a9a9a9 !important;
+    fill: #a9a9a9 !important;
+}
+.chord svg circle{
+    fill: currentColor !important;/*f24405*/
+    stroke: #a9a9a9 !important;
+}
+.chord svg text{
+    fill: currentColor !important;/*f24405*/
+    stroke: currentcolor !important;/*f24405*/
+}
+#Acordes-Container{
+    color: inherit;
+    background: inherit;
 }

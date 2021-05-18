@@ -1,14 +1,10 @@
-/* IDs */
-#Instrument-Container{
-	margin: 0 !important;
-	padding: 0 !important;
+#Instrument-Container, #Instrument{
+	margin: 0;
+	padding: 0;
 }
 #Prev-Container{
-	padding-right: 0 !important;
+	padding-right: 0;
 }
 #Next-Container{
-	padding-left: 0 !important;
-}
-#Instrument{
-	padding: 0 !important;
+	padding-left: 0;
 }

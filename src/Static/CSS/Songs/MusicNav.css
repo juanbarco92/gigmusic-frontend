@@ -1,65 +1,50 @@
-/* IDs */
+.mn-btn{
+	color: inherit !important;
+	background-color: inherit;
+	box-shadow: 0 0 0 0 !important;
+	padding: 0px 1px 0px 1px !important;
+}
+.mn-btn:hover, .mn-btn:active{
+	color: #f24405;
+	border-color: #b3b3b3;
+	border: 0.5px;
+	background-color: #f24405;
+	box-shadow: 0 0 0 0;
+}
+.custom-control-input:checked ~ .custom-control-label::after {
+	border-color: #f24405 !important;
+	background-color: #181818 !important;
+}
+.custom-control-input:focus ~ .custom-control-label::before, 
+.custom-control-input:checked ~ .custom-control-label::before{
+	border-color: #f24405 !important;
+	background-color: #f24405 !important;
+	box-shadow:	0 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+.custom-control-input:not(:checked) ~ .custom-control-label::after {
+	border-color: #b3b3b3 !important;
+	background-color: #b3b3b3 !important;
+}
+.custom-control-input:not(:checked) ~ .custom-control-label::before, 
+.custom-control-input:focus:not(:checked) ~ .custom-control-label::before{
+	border-color: #b3b3b3 !important;
+	background-color: #404040 !important;
+}
 #MusicNav-Container{
 	max-width: 210px;
 	height: 100vh;
  	margin: 0 0 0 0;
  	font-family: Roboto;
  	float: right;
- 	color: #b3b3b3;
+ 	color: inherit;
  	z-index: 1;
- 	background-color: #121212;
+ 	background-color: inherit;
 }
 #Restablecer{
     font-family: Verdana;
     color: #4ed0e5;
-    background-color: transparent;
+    background-color: inherit;
     border: solid 1px #4ed0e5;
     border-radius: 100px;
     text-align: center;
-}
-
-/* Clases */
-.mn-btn{
-	color: #b3b3b3 !important;
-	background-color: transparent;
-	box-shadow: 0 0 0 0 !important;
-	padding: 0px 1px 0px 1px !important;
-}
-.mn-btn:hover{
-	color: #f24405;
-	border-color: #b3b3b3;
-	border: 0.5px;
-	background-color: #f24405;
-	box-shadow: 0 0 0 0 !important;
-}
-.mn-btn:active{
-	color: #f24405;
-	border-color: #b3b3b3;
-	border: 0.5px;
-	background-color: #f24405;
-	box-shadow: 0 0 0 0 !important;
-}
-.custom-control-input:focus ~ .custom-control-label::before {
-	border-color: #f24405 !important;
-	box-shadow:	0 0 0 0 rgba(0, 0, 0, 0) !important;
-}
-.custom-control-input:checked ~ .custom-control-label::before {
-	border-color: #f24405 !important;
-	background-color: #f24405 !important;
-}
-.custom-control-input:not(:checked) ~ .custom-control-label::before {
-	border-color: #b3b3b3 !important;
-	background-color: #404040 !important;
-}
-.custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
-	border-color: #b3b3b3 !important;
-	background-color: #404040;
-}
-.custom-control-input:checked ~ .custom-control-label::after {
-	border-color: #f24405 !important;
-	background-color: #181818 !important;
-}
-.custom-control-input:not(:checked) ~ .custom-control-label::after {
-	border-color: #b3b3b3 !important;
-	background-color: #b3b3b3 !important;
 }

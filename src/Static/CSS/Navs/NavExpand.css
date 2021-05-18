@@ -1,4 +1,22 @@
-/* IDs */
+.nav-col-exp{
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.link-react-nav, .link-react-nav:link, .link-react-nav:active{
+	color: inherit;
+	background-color: inherit;
+}
+.link-react-nav:link{
+	text-decoration: none;
+}
+.link-react-nav:active, .link-react-nav:hover{
+	color: #f24405;
+}
+.link-react-nav:hover{
+	background-color: #181818;
+	border-radius: 16px;
+	border: 0.5px solid #f24405;
+}
 #NavExpand-container{
 	max-width: 240px;
 	height: 100vh;
@@ -6,59 +24,53 @@
  	font-family: Roboto;
  	padding: 2em 0px 2em 0px;
  	float: left;
- 	background-color: #121212;
+ 	background-color: inherit;
+}
+#LogoExpand, #Inicio, #Descubrir, #Catalogo, #Ajustes, #Contraer{
+	object-fit: contain;
+	margin: 0px 10px 0px 10px;
+	color: #b3b3b3;
 }
 #LogoExpand{
 	width: 56px;
  	height: 40px;
  	margin: calc(100vh * 0.03) 0px calc(100vh * 0.03) 0px;/* 28px*/
- 	object-fit: contain;
 }
 #Inicio{
 	width: 24px;
 	height: 24px;
-	margin: 0px 10px 0px 10px;
-	color: #b3b3b3;
-	object-fit: contain;
 }
 #Descubrir{
 	width: 16px;
 	height: 16px;
-	margin: 0px 10px 0px 10px;
-	object-fit: contain;
 }
 #Catalogo{
 	width: 20px;
 	height: 20px;
-	margin: 0px 10px 0px 10px;
-	object-fit: contain;
 }
 #Ajustes{
 	width: 18px;
 	height: 18px;
-	margin: 0px 10px 0px 10px;
-	object-fit: contain;
+}
+#facebook, #youtube, #instagram{
+	margin-top: calc(100vh * 0.4);
 }
 #facebook{
 	width: 19.5px;
 	height: 19px;
-	margin-top: calc(100vh * 0.4);
 }
 #youtube{
 	width: 27px;
 	height: 19px;
-	margin-top: calc(100vh * 0.4);
 }
 #instagram{
 	width: 20px;
 	height: 19px;
-	margin-top: calc(100vh * 0.4);
 }
 #Contraer{
 	width: 21px;
 	height: 21px;
 	margin: calc(100vh * 0.2) 0px 10px calc(100vw * 0.09);
-	object-fit: contain;
 }
 #Contraer button{
 	width: 100%;
@@ -74,41 +86,14 @@
 #youtube:hover path{
 	fill: #c4302b;
 }
-
-/* Clases */
-.link-react-nav{
-	color: currentColor;
-	background-color: transparent;
-}
-.link-react-nav:link{
-	color: currentColor;
-	text-decoration: none;
-	background-color: transparent;
-}
-.link-react-nav:hover{
-	color: #f24405;
-	background-color: #181818;
-	border-radius: 16px;
-	border: 0.5px solid #f24405;
-}
-.link-react-nav:active{
-	color: #f24405;
-	background-color: transparent;
-}
-.link-react-nav:hover div #Inicio path:nth-of-type(2){
-	fill: #f24405;
-}
 .link-react-nav:hover div #Descubrir g{
 	fill: #f24405;
-	stroke: #f24405;
 }
-.link-react-nav:hover div #Catalogo path:nth-of-type(1){
-	fill: #f24405;
-}
+.link-react-nav:hover div #Descubrir g, 
 .link-react-nav:hover div #Ajustes g:nth-of-type(1){
 	stroke: #f24405;
 }
-.nav-col-exp{
-	margin: 0 !important;
-	padding: 0 !important;
+.link-react-nav:hover div #Inicio path:nth-of-type(2), 
+.link-react-nav:hover div #Catalogo path:nth-of-type(1){
+	fill: #f24405;
 }

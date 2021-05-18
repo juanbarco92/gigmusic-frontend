@@ -1,18 +1,3 @@
-/* IDs */
-#Artist-container{
-	background-color: transparent;
-	color: #b3b3b3;
-	overflow-x: hidden;
-	scrollbar-width: none;
-	overflow-y: scroll !important;
-	max-height: 92vh !important;
-}
-#Artist-container::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-}
-
-/* Clases */
 .accent{
 	background: #121212;
 	opacity: 0.5;
@@ -21,51 +6,55 @@
 	height: 8rem !important;
 	border-radius: 100px;
 }
-.artist-description{
+.artist-description, .btn-artist-sound{
 	color: #ffffff;
 }
-.btn-artist-sound{
-	color: #ffffff !important;
-	cursor: pointer !important;
-	display: inline-block !important;
+.btn-artist-sound, .btn-artist-follow{
+	cursor: pointer;
+	display: inline-block;
 	border-radius: 16px !important;
+}
+.btn-artist-sound{
+	color: inherit !important;
 	background: #f24405 !important;
 }
 .btn-artist-follow{
 	color: #f24405 !important;
 	background: #121212 !important;
-	cursor: pointer !important;
-	display: inline-block !important;
 	border: 1px solid #ffffff !important;
-	border-radius: 16px !important;
+}
+.navbar {
+	background: rgb(255,255,255);
+	background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(24,24,24,1) 100%) !important;
+	margin-bottom: 0;
+}
+.nav-link{
+	color: #b3b3b3;
+}
+.activado {
+	color: #ffffff;
+	border-bottom: 1px solid #f24405 !important;
+}
+.nav-link, .nav-link:hover, .nav-link:focus{
+	background: none;
+	border: none;
+	box-shadow: 0;
 }
 .btn:focus{
 	box-shadow:	0 0 0 0 rgba(0, 0, 0, 0) !important;
 }
-.navbar {
-	background: rgb(255,255,255) !important;
-	background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(24,24,24,1) 100%) !important;
-	margin-bottom: 0 !important;
+.nav-link:hover, .nav-link:focus {
+	color: #ffffff;
 }
-.nav-link{
-	color: #b3b3b3 !important;
-	background: none;
-	border: none;
-	box-shadow: 0;
+#Artist-container{
+	background-color: inherit;
+	color: inherit;
+	overflow-x: hidden;
+	scrollbar-width: none;
+	overflow-y: scroll !important;
+	max-height: 92vh !important;
 }
-.nav-link:hover {
-	color: #ffffff !important;
-	background: none;
-	border: none;
-	box-shadow: 0;
-}
-.nav-link:focus {
-	color: #ffffff !important;
-	border-bottom: 1px solid #f24405 !important;
-	background: none;
-	box-shadow: 0;
-}
-.activado {
-	color: #ffffff !important;
-	border-bottom: 1px solid #f24405 !important;
+#Artist-container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
