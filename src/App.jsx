@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, {useState, useRef, useEffect, useMemo} from 'react'
 import{
     BrowserRouter as Router,
     Switch,
@@ -44,6 +44,10 @@ function App() {
 
   // ----- Declaracion de Cookies
   const [cookies, setCookie] = useCookies(['colorAcorde', 'colorFuente', 'tipografia', 'tamano', 'nav'])
+  const cookieOptions = useMemo(() => ({
+      path: "/",
+      sameSite: 'lax'
+    }), [])
 
   // ----- Obtencion de canciones y artistas
   const [artistas, setArtistas] = useState([])
@@ -89,9 +93,7 @@ function App() {
 
   const Colapse = () => {
     setColapsar(!colapsar)
-    setCookie("nav", String(!colapsar), {
-      path: "/"
-    })
+    setCookie("nav", String(!colapsar), cookieOptions)
   }
 
   // ----- Helper de scrolling
@@ -122,9 +124,7 @@ function App() {
     ...personalize,
     'color': e
     })
-    setCookie("colorAcorde", e, {
-      path: "/"
-    })
+    setCookie("colorAcorde", e, cookieOptions)
   }
   // Color de fuente
   const VarFuente = (e) => {
@@ -132,9 +132,7 @@ function App() {
     ...personalize,
     'font': e
     })
-    setCookie("colorFuente", e, {
-      path: "/"
-    })
+    setCookie("colorFuente", e, cookieOptions)
   }
   // Tipografia
   const VarTipo = (e) => {
@@ -142,9 +140,7 @@ function App() {
     ...personalize,
     'fontFamily': e
     })
-    setCookie("tipografia", e, {
-      path: "/"
-    })
+    setCookie("tipografia", e, cookieOptions)
   }
   // Tamano de fuente
   const VarSize = (e) => {
@@ -153,9 +149,7 @@ function App() {
     'fontSize': e+'rem',
     'titleFontSize': e+0.5+'rem'
     })
-    setCookie("tamano", String(e), {
-      path: "/"
-    })
+    setCookie("tamano", String(e), cookieOptions)
   }
   // Reset de Personalizacion
   const ResetP = () => {
@@ -166,18 +160,10 @@ function App() {
     'fontSize': '1rem',
     'titleFontSize': '1.5rem'
     })
-    setCookie("colorAcorde", 'inherit', {
-      path: "/"
-    })
-    setCookie("colorFuente", 'inherit', {
-      path: "/"
-    })
-    setCookie("tipografia", 'inherit', {
-      path: "/"
-    })
-    setCookie("tamano", String(1), {
-      path: "/"
-    })
+    setCookie("colorAcorde", 'inherit', cookieOptions)
+    setCookie("colorFuente", 'inherit', cookieOptions)
+    setCookie("tipografia", 'inherit', cookieOptions)
+    setCookie("tamano", String(1), cookieOptions)
   }
 
   // --- Obtencion de cookies o set por default
@@ -195,24 +181,14 @@ function App() {
         })
         setColapsar(cnav)
       }else{
-        setCookie("colorAcorde", 'inherit', {
-          path: "/"
-        })
-        setCookie("colorFuente", 'inherit', {
-          path: "/"
-        })
-        setCookie("tipografia", 'inherit', {
-          path: "/"
-        })
-        setCookie("tamano", String(1), {
-          path: "/"
-        })
-        setCookie("nav", String(false), {
-          path: "/"
-        })
+        setCookie("colorAcorde", 'inherit', cookieOptions)
+        setCookie("colorFuente", 'inherit', cookieOptions)
+        setCookie("tipografia", 'inherit', cookieOptions)
+        setCookie("tamano", String(1), cookieOptions)
+        setCookie("nav", String(false), cookieOptions)
       }
     }
-  }, [cookies, setCookie])
+  }, [cookies, setCookie, cookieOptions])
 
   // ----- Login de usuario
   const LogUser = async (credentials) => {

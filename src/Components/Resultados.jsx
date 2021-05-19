@@ -35,7 +35,7 @@ const Resultados = (props) => {
                             pathname: '/artist/',
                             search: `id=${item.id}`,
                             }}>
-                                <span className='d-block py-2 text-center'>
+                                <span className='d-block py-2 text-center border-0'>
                                     {item.nombre + ' - ' + item.genero}
                                 </span>
                             </NavLink>
@@ -52,7 +52,7 @@ const Resultados = (props) => {
                             pathname: '/song/',
                             search: `id=${item.id}`,
                             }}>
-                                <span className=' d-block py-2 text-center'>
+                                <span className=' d-block py-2 text-center border-0'>
                                     {item.metadata.artista + ' - ' + item.metadata.cancion}
                                 </span>
                             </NavLink>
