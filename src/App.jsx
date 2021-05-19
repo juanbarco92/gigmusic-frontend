@@ -226,7 +226,7 @@ function App() {
 
   const GetUser = async (token) => {
     const {data} = await axios.get(`/user/user_token?token=${token}`)
-    setUser(data)
+    setUser(data.data)
   }
 
   // ----- Eliminacion de sesion de usuario
