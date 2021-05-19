@@ -14,7 +14,7 @@ const Resultados = (props) => {
 
     // ----- Peticion de lista de canciones despues de reload
     let url = window.location.search
-    
+
     useEffect(() => {
         if(url !== urlAnt){
             getArtist(url)
@@ -35,9 +35,9 @@ const Resultados = (props) => {
                             pathname: '/artist/',
                             search: `id=${item.id}`,
                             }}>
-                                <p className='text-center'>
+                                <span className='d-block py-2 text-center'>
                                     {item.nombre + ' - ' + item.genero}
-                                </p>
+                                </span>
                             </NavLink>
     	            	</li>
         			))	
@@ -52,9 +52,9 @@ const Resultados = (props) => {
                             pathname: '/song/',
                             search: `id=${item.id}`,
                             }}>
-                                <p className='text-center'>
+                                <span className=' d-block py-2 text-center'>
                                     {item.metadata.artista + ' - ' + item.metadata.cancion}
-                                </p>
+                                </span>
                             </NavLink>
                         </li>
                     ))  

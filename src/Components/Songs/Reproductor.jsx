@@ -211,8 +211,9 @@ const Reproductor = (props) => {
                   type="range"
                   step="0.1"
                   min="0"
+                  value={volumeProgress}
                   max='1'
-                  className="volume range-input"
+                  className="progress range-input"
                   onChange={(e) => onVolume(e.target.value)}
                   style={{ background: volumeStyling }}
                   />

@@ -7,6 +7,7 @@ import Acordes from './Songs/Acordes'
 import '../Static/CSS/Song.css'
 
 let timer
+let auxScroll
 let lineas
 let hOff = 0
 let urlAnt = null
@@ -34,8 +35,9 @@ function Song(props) {
 	const [yOff,setYOff] = useState(0)
 	const finCancion = useRef(null)
 
+	const offTop = finCancion.current ? finCancion.current.offsetTop : 0
+
 	const logicScroll = React.useCallback(() => {
-		const offTop = finCancion.current ? finCancion.current.offsetTop : 0
 		if(lineasRec + hOff <= offTop){
 			setLineasRec(yOff + (finCancion.current.offsetTop)/(lineas*50))
 			document.getElementById('Cancion-Container').scrollTo({ 
@@ -47,7 +49,7 @@ function Song(props) {
 			Scrolling()
 			setLineasRec(yOff)
 		}
-	},[Scrolling, yOff, lineasRec])
+	},[Scrolling, yOff, lineasRec, offTop])
 
 	// ----- Actualizacion de posicion de scroll
 	const contenSong = useRef(null)
@@ -60,14 +62,26 @@ function Song(props) {
   	// ----- Recepcion de evento de rueda de mouse
   	const onWheel = (e) => {
   		clearTimeout(timer)
-  		const yDelta = e.deltaY
-  		if(yDelta >= 0){
-  			setYOff(contenSong.current.scrollTop + e.deltaY)
+  		if(scroll){
+  			Scrolling()
+  			auxScroll = true
+  		}
+  		const movement = contenSong.current.scrollTop + e.deltaY
+  		if(movement >= 0){
+  			setYOff(movement)
   		}else{
   			setYOff(contenSong.current.scrollTop)
   		}
 	    hOff = contenSong.current.offsetHeight
-  	}
+	  	if(lineasRec + hOff <= offTop){
+	  		setLineasRec(movement + (finCancion.current.offsetTop)/(lineas*50))
+  			if(auxScroll){
+				document.getElementById('Cancion-Container').scrollTo({ 
+					top: lineasRec
+				})
+			}
+		}
+	}
 
   	// ----- Obtencion de parametros desde url
 	let urlPath = window.location.pathname
@@ -112,10 +126,14 @@ function Song(props) {
 		}
 		if (scroll){
 			timer = setTimeout(logicScroll, 20)
-		}else{
+		}else if(!scroll && auxScroll){
+			Scrolling()
+			auxScroll = false
+		}
+		else{
 			clearTimeout(timer)
 		}
-	},[scroll, logicScroll, load, canción, metadata])
+	},[scroll, logicScroll, load, canción, metadata, Scrolling])
 
 	// ----- Peticion de cancion especifica, control de visualizacion y scroll al salir
 	useEffect(() => {
