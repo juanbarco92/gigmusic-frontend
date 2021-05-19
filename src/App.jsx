@@ -42,6 +42,9 @@ function App() {
     maxHeight : window.screen.height
   }
 
+  // ----- Declaracion de Cookies
+  const [cookies, setCookie] = useCookies(['colorAcorde', 'colorFuente', 'tipografia', 'tamano', 'nav'])
+
   // ----- Obtencion de canciones y artistas
   const [artistas, setArtistas] = useState([])
 
@@ -86,6 +89,9 @@ function App() {
 
   const Colapse = () => {
     setColapsar(!colapsar)
+    setCookie("nav", String(!colapsar), {
+      path: "/"
+    })
   }
 
   // ----- Helper de scrolling
@@ -101,9 +107,6 @@ function App() {
   const MostrarAcordes = () => {
     setAcordes(!acordes)
   }
-
-  // ----- Declaracion de Cookies
-  const [cookies, setCookie] = useCookies(['colorAcorde', 'colorFuente', 'tipografia', 'tamano'])
 
   // ----- Personalizacion
   const [personalize, setPersonalize] = useState({
@@ -182,6 +185,7 @@ function App() {
     if(init){
       if(cookies){
         const ctam = parseFloat(cookies.tamano)
+        const cnav = (cookies.nav === 'true')
         setPersonalize({
         'font': cookies.colorFuente,
         'color': cookies.colorAcorde,
@@ -189,6 +193,7 @@ function App() {
         'fontSize': ctam+'rem',
         'titleFontSize': ctam+0.5+'rem'
         })
+        setColapsar(cnav)
       }else{
         setCookie("colorAcorde", 'inherit', {
           path: "/"
@@ -200,6 +205,9 @@ function App() {
           path: "/"
         })
         setCookie("tamano", String(1), {
+          path: "/"
+        })
+        setCookie("nav", String(false), {
           path: "/"
         })
       }
