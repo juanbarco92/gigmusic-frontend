@@ -12,9 +12,12 @@ const ArtistNav = (props) => {
 	      		navNum === 0 &&
 	      		(
 	      			<div>
-		      			<ul className='list-group'>
-		      			{
-		      				canciones.map((item, index) => (
+	      			{
+	      				!canciones.length === 0 ?
+	      				(
+	      					<ul className='list-group'>
+	      					{
+	      						canciones.map((item, index) => (
 		      					<li key={index} className='list-group mt-2'>
 		      						<div className='row'>
 		      							<span className='col' >
@@ -22,10 +25,17 @@ const ArtistNav = (props) => {
 		      							</span>
 		      						</div>
 		      					</li>
-		      				))
-		      			}
-		      			</ul>
-			      		
+	      						))
+	      					}
+	      					</ul>
+	      				)
+	      				:
+	      				(
+	      					<div className='mt-2 text-center'>
+	      						<span>No hay canciones</span>
+	      					</div>
+	      				)
+	      			}	
 			      	</div>
 	      		)
 	      	}

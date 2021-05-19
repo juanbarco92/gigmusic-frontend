@@ -31,11 +31,11 @@ const Resultados = (props) => {
         		{
         			artistas.map((item, index )=> (
         				<li className='list-search link-react-results mt-3' key={index}>
-    	            		<NavLink className='link-react-nav' to={{
+    	            		<NavLink className='link-react-nav border-0' to={{
                             pathname: '/artist/',
                             search: `id=${item.id}`,
                             }}>
-                                <span className='d-block py-2 text-center border-0'>
+                                <span className='d-block py-2 text-center'>
                                     {item.nombre + ' - ' + item.genero}
                                 </span>
                             </NavLink>
@@ -48,11 +48,11 @@ const Resultados = (props) => {
                 {
                     canciones.map((item, index )=> (
                         <li className='list-search link-react-results mt-3' key={index}>
-                            <NavLink className='link-react-nav' to={{
+                            <NavLink className='link-react-nav border-0' to={{
                             pathname: '/song/',
                             search: `id=${item.id}`,
                             }}>
-                                <span className=' d-block py-2 text-center border-0'>
+                                <span className=' d-block py-2 text-center'>
                                     {item.metadata.artista + ' - ' + item.metadata.cancion}
                                 </span>
                             </NavLink>
