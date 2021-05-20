@@ -42,6 +42,11 @@ function App() {
     maxHeight : window.screen.height
   }
 
+  // ----- Registro de comportamientos
+  const Logger = async (token, tipo, objeto) => {
+    await axios.post('/analytic', JSON.stringify({token, tipo, objeto}))
+  }
+
   // ----- Declaracion de Cookies
   const [cookies, setCookie] = useCookies(['colorAcorde', 'colorFuente', 'tipografia', 'tamano', 'nav'])
   const cookieOptions = useMemo(() => ({
@@ -60,10 +65,16 @@ function App() {
 
   const [canciones, setCanciones] = useState([])
 
-  const getSong = async (search=null) => {
+  const getSong = async (search?) => {
       const {data} = await axios.get(`/song/${search}&num_registros=5`)
       const nuevoArray = data.map(item => (item))
       setCanciones(nuevoArray)
+  }
+
+  const getBusqueda = async (search?) => {
+      await getArtist(search)
+      await getSong(search)
+      await Logger(token, 'search', search)
   }
 
   // ----- Obtencion de artista o cancion especifica
@@ -74,11 +85,14 @@ function App() {
     if(path === '/song/'){
       const {data} = await axios.get(`/song/one${id}`)
       setCancionElegida(data)
+      await Logger(token, 'song', id)
     }
     else if(path === '/artist/'){
       const {data} = await axios.get(`/artist/one${id}`)
       setArtistaElegido(data)
+      await Logger(token, 'artist', id)
     }
+
   }
 
   // ----- Helpers de obtencion de instrumento
@@ -227,7 +241,6 @@ function App() {
 
   // ----- Eliminar Usuario
   const SoftDelUser = async (credentials) => {
-    console.log(credentials)
     const {data} = await axios.patch(`/user/set_eliminated/${user.id}?is_eliminated=true`, JSON.stringify(credentials))
     return data
   }
@@ -270,7 +283,7 @@ function App() {
                   <div className='row'>
 
                     <div className='col col-md-9 col-xl'>
-                      <Busqueda getSong={getSong} getArtist={getArtist} />
+                      <Busqueda getBusqueda={getBusqueda} />
                       <Song Eleccion={Eleccion} 
                       scroll={scroll} 
                       cualInstrumento={cualInstrumento} 
@@ -292,18 +305,18 @@ function App() {
 
                 </Route>
                 <Route path='/search/'>
-                  <Busqueda getSong={getSong} getArtist={getArtist} />
+                  <Busqueda getBusqueda={getBusqueda} />
                   <Resultados artistas={artistas} canciones={canciones}
                   getSong={getSong} getArtist={getArtist} />
                 </Route>
 
                 <Route path='/artist/'>
-                  <Busqueda getSong={getSong} getArtist={getArtist} />
+                  <Busqueda getBusqueda={getBusqueda} />
                   <Artist Eleccion={Eleccion} elegida={artistaElegido} />
                 </Route>
 
                 <Route path='/user/'>
-                  <Busqueda getSong={getSong} getArtist={getArtist} />
+                  <Busqueda getBusqueda={getBusqueda} />
                   <User LogUser={LogUser} SignUpUser={SignUpUser} 
                   GetUser={GetUser} SoftDelUser={SoftDelUser}
                   token={token} delToken={delToken} user={user}
@@ -312,12 +325,12 @@ function App() {
                 </Route>
 
                 <Route exact path='/'>
-                  <Busqueda getSong={getSong} getArtist={getArtist} />
+                  <Busqueda getBusqueda={getBusqueda} />
                   <Inicio/>
                 </Route>
 
                 <Route path='*'>
-                  <Busqueda getSong={getSong} getArtist={getArtist} />
+                  <Busqueda getBusqueda={getBusqueda} />
                   <Error404/>
                 </Route>
               </Switch>

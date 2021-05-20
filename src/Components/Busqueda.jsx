@@ -6,7 +6,7 @@ import {ReactComponent as Buscador} from '../Static/Icons/search-icon.svg'
 const Busqueda = (props) => {
 	
 	// ----- Obtencion de variables de inicio
-	const {getArtist, getSong} = props
+	const {getBusqueda} = props
 	
 	// ----- Obtencion de valor de input
 	const [search, setSearch] = useState('')
@@ -22,8 +22,7 @@ const Busqueda = (props) => {
 	const onSubmit = (e) => {
 		e.preventDefault()
 		if(search !== ''){
-			getArtist('?busqueda='+search)
-    		getSong('?busqueda='+search)
+			getBusqueda('?busqueda='+search)
 		}
 		history.push(`/search?busqueda=${search}`)
 	}
