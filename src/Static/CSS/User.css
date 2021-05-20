@@ -1,0 +1,31 @@
+.gig-btn{
+	background: #f24405 !important;
+	color: #b3b3b3 !important;
+	border-color: #b3b3b3 !important;
+	box-shadow: 0 0 0 0 !important;
+}
+.form-input-p{
+	background-color: inherit !important;
+	color: inherit !important;
+	border-color: #b3b3b3 !important;
+	box-shadow: 0 0 0 0 !important;
+}
+.gig-btn:hover, .gig-btn:active{
+	color: #b3b3b3;
+	border-color: #b3b3b3;
+	border: 0.5px;
+	background-color: #f24405;
+	box-shadow: 0 0 0 0;
+}
+.form-input-p:focus{
+	border-color: #f24405 !important;
+}
+.form-input-p:active, .form-input-p:focus{
+	background-color: inherit;
+	color: inherit;
+	box-shadow: 0 0 0 0;
+}
+#User-Container, #edit, #sign, #delete{
+	background-color: inherit;
+	color: inherit;
+}

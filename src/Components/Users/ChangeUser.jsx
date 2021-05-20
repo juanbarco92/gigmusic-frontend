@@ -83,47 +83,51 @@ const ChangeUser = (props) => {
 
   return (
     <div className="container text-center" id='Editar-container'>
-    	<h1>Edit</h1>
-    	<form onSubmit={submit}>
-    		<div className="mb-3">
-				<label htmlFor="nombre-edit" className="form-label">Nombre</label>
-				<input type="text" onChange={onNombre} className="form-control" id="nombre-edit"/>
-			</div>
-			{
-				(email.length>0 && (!email.includes('.') || !email.includes('@')))&&
-				(
-					<span className='text-danger'>Ingrese un email válido</span>
-				)
-			}
-			<div className="mb-3">
-				<label htmlFor="email-edit" className="form-label">Correo electrónico</label>
-				<input type="email" minLength='5' onChange={onEmail} className="form-control" id="email-edit"/>
-			</div>
-			<div className="mb-3">
-				<label htmlFor="username-edit" className="form-label">Username</label>
-				<input type="text" onChange={onUsername} id="username-edit"  className="form-control"/>
-			</div>
-			{
-				(password !== verifyPassword) && 
-				(
-					<span className='text-danger'>Las contraseñas no coinciden</span>
-				)
-			}
-			<div className="mb-3">
-				<label htmlFor="password-edit" className="form-label">Nueva contraseña</label>
-				<input type="password" minLength='4' id="password-edit" onChange={onPassword} className="form-control"/>
-			</div>
-			<div className="mb-3">
-				<label htmlFor="verifypassword-edit" className="form-label">Vuelva a ingresar su nueva contraseña</label>
-				<input required={password.length>0 ? true : false} type="password" minLength='4' id="verify-password-signup" onChange={onVerifyPassword} className="form-control"/>
-			</div>
-			<div className="mb-3">
-				<label htmlFor="ant-password-edit" className="form-label text-danger">Ingrese su contraseña actual</label>
-				<input required type="password" minLength='4' id="ant-password-edit" onChange={onAntPassword} className="form-control"/>
-			</div>
-			<input type="submit" value='Guardar cambios' className="btn btn-primary"/>
-		</form>
-		<button type="button" className="mt-2 btn btn-primary" onClick={Atras} >Atras</button>
+    	<div className='row'>
+    		<div className='col'>
+		    	<h1>Edit</h1>
+		    	<form onSubmit={submit}>
+		    		<div className="mb-3">
+						<label htmlFor="nombre-edit" className="form-label">Nombre</label>
+						<input type="text" onChange={onNombre} className="form-control form-input-p" id="nombre-edit"/>
+					</div>
+					{
+						(email.length>0 && (!email.includes('.') || !email.includes('@')))&&
+						(
+							<span className='text-danger'>Ingrese un email válido</span>
+						)
+					}
+					<div className="mb-3">
+						<label htmlFor="email-edit" className="form-label">Correo electrónico</label>
+						<input type="email" minLength='5' onChange={onEmail} className="form-control form-input-p" id="email-edit"/>
+					</div>
+					<div className="mb-3">
+						<label htmlFor="username-edit" className="form-label">Username</label>
+						<input type="text" onChange={onUsername} id="username-edit"  className="form-control form-input-p"/>
+					</div>
+					{
+						(password !== verifyPassword) && 
+						(
+							<span className='text-danger'>Las contraseñas no coinciden</span>
+						)
+					}
+					<div className="mb-3">
+						<label htmlFor="password-edit" className="form-label">Nueva contraseña</label>
+						<input type="password" minLength='4' id="password-edit" onChange={onPassword} className="form-control form-input-p"/>
+					</div>
+					<div className="mb-3">
+						<label htmlFor="verifypassword-edit" className="form-label">Vuelva a ingresar su nueva contraseña</label>
+						<input required={password.length>0 ? true : false} type="password" minLength='4' id="verify-password-signup" onChange={onVerifyPassword} className="form-control form-input-p"/>
+					</div>
+					<div className="mb-3">
+						<label htmlFor="ant-password-edit" className="form-label text-danger">Ingrese su contraseña actual</label>
+						<input required type="password" minLength='4' id="ant-password-edit" onChange={onAntPassword} className="form-control form-input-p"/>
+					</div>
+					<input type="submit" value='Guardar cambios' className="gig-btn btn"/>
+				</form>
+				<button type="button" className="gig-btn mt-2 btn" onClick={Atras} >Atras</button>
+    		</div>
+    	</div>
     </div>
   );
 }

@@ -51,7 +51,9 @@ const User = (props) => {
 
   if(deleter){
     return (
-      <DeleteUser SoftDelUser={SoftDelUser} DelUserSession={DelUserSession} Atras={DeleteAccount}/>
+      <div id='delete'>
+        <DeleteUser SoftDelUser={SoftDelUser} DelUserSession={DelUserSession} Atras={DeleteAccount}/>
+      </div>
     )
   }
 
@@ -59,7 +61,7 @@ const User = (props) => {
   if(!token) {
        
   	return (
-      <div>
+      <div id='sign'>
         <Redirect to="/user/log" />
         <div className='row'>
           <div className='col text-center'>
@@ -80,20 +82,20 @@ const User = (props) => {
 
   if(edit){
     return (
-      <div>
+      <div id='edit'>
         <ChangeUser Atras={EditUser} EditUser={EditUser} EditarUsuario={EditarUsuario} />
       </div>
     )
   }
 
   return (
-    <div className="container text-center" id='User-container'>
+    <div className="container-fluid" id='User-container'>
       <Redirect to={"/user?username="+user.username} />
       <div className='row'>
-        <div className='col'>
-          <button type='button' className='mt-2 sticky-top btn btn-primary' onClick={EditUser}>Editar cuenta</button>
-        	<button type="button" className="mt-2 sticky-top mx-2 btn btn-primary" onClick={LogOut} >Salir</button>
-          <button type="button" className="mt-2 sticky-top btn btn-primary" onClick={DeleteAccount} >Eliminar cuenta</button>
+        <div className='col text-center'>
+          <button type='button' className='gig-btn mt-2 sticky-top btn' onClick={EditUser}>Editar cuenta</button>
+        	<button type="button" className="gig-btn mt-2 sticky-top mx-2 btn" onClick={LogOut} >Salir</button>
+          <button type="button" className="gig-btn mt-2 sticky-top btn" onClick={DeleteAccount} >Eliminar cuenta</button>
           <h1>Bienvenido {user.nombre}</h1>
         </div>
       </div>

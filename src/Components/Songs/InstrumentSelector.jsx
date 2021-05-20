@@ -1,11 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
 import '../../Static/CSS/Songs/InstrumentSelector.css'
+import { lInstrumentos } from '../../Utils/utils'
 
-const InstrumentSelector = () => {
-	
-// ----- Modificadores de libreria Carousel
+const InstrumentSelector = (props) => {
+
+	// ----- Obtencion de parametros de entrada
+	const { QInstrumento } = props
+
+	// ----- Seleccionador nombre de instrumento
+	const [inst, setInst] = useState(0)
+
+	// ----- Modificadores de libreria Carousel
 	const [slide, setSlide] = useState(0)
 
 	const next = () => {
@@ -19,8 +26,13 @@ const InstrumentSelector = () => {
 	const updateSlide = (index) => {
 		if (slide !== index) {
 			setSlide(index)
+			setInst(index)
 		}
 	}
+
+	useEffect(() => {
+		QInstrumento(lInstrumentos[inst].nombre)
+	}, [QInstrumento, inst])
 
 	return(
 		<div className='container-fluid' id='Instrument-Container'>
@@ -37,9 +49,13 @@ const InstrumentSelector = () => {
 					showStatus={false}
 					dynamicHeight={true}
 					>
-						<div>
-							<img className='img-fluid' src="https://http2.mlstatic.com/D_NQ_NP_653834-MCO31121764137_062019-O.webp" alt='' />
-						</div>
+					{
+						lInstrumentos.map( (item, index) => (
+							<div key={index} >
+								<img className='img-fluid' src={item.img} alt='' />
+							</div>
+						))
+					}
 		            </Carousel>
             	</div>
             </div>
@@ -51,7 +67,7 @@ const InstrumentSelector = () => {
 				</div>
 				<div className='col text-center' id='Instrument'>
 					<span>
-						Guitarra Acustica
+						{lInstrumentos[inst].nombre}
 					</span>
 				</div>
 				<div className='col-2' id='Next-Container'>

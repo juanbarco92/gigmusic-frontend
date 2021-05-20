@@ -11,7 +11,7 @@ const Banner = () => {
         border: '1px solid #fafbfe',
         width: 12,
         height: 12,
-        borderRadius: '100px',
+        borderRadius: '100%',
         display: 'inline-flex',
         margin: '5px',
     }

@@ -1,14 +1,14 @@
+select{
+	color : inherit !important;
+    background-color : inherit !important;
+}
+select option{
+	color : inherit !important;
+    background: black !important;
+}
 #Portal-container{
-    color : #b3b3b3;
+    color : inherit;
     background-color : black;
     position : absolute;
     z-index: 2;
-}
-select{
-	color : #b3b3b3 !important;
-    background-color : transparent !important;
-}
-select option{
-	color : #b3b3b3 !important;
-    background: black !important;
 }

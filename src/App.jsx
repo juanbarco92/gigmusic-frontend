@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, {useState, useRef, useEffect, useMemo} from 'react'
 import{
     BrowserRouter as Router,
     Switch,
@@ -31,7 +31,7 @@ function App() {
 // ----- Configuracion de axios
   axios.defaults.baseURL = "http://localhost:8080/api"
   axios.defaults.headers.common['Content-type'] = 'application/json; charset=utf-8'
-  axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
+  axios.defaults.headers.common['Access-Control-Allow-Origin'] = 'localhost'
   axios.defaults.headers.common['Access-Control-Allow-Methods'] = '*'
   axios.defaults.headers.common['Access-Control-Allow-Headers'] = '*'
   axios.defaults.headers.common['cache-control'] = 'no-cache'
@@ -41,6 +41,13 @@ function App() {
     maxWidth : window.screen.width,
     maxHeight : window.screen.height
   }
+
+  // ----- Declaracion de Cookies
+  const [cookies, setCookie] = useCookies(['colorAcorde', 'colorFuente', 'tipografia', 'tamano', 'nav'])
+  const cookieOptions = useMemo(() => ({
+      path: "/",
+      sameSite: 'lax'
+    }), [])
 
   // ----- Obtencion de canciones y artistas
   const [artistas, setArtistas] = useState([])
@@ -74,25 +81,34 @@ function App() {
     }
   }
 
-  // ----- Helpers para collapse, scrolling y acordes
+  // ----- Helpers de obtencion de instrumento
+  const [cualInstrumento, setCualInstrumento] = useState('')
+
+  const QInstrumento = (instru) => {
+    setCualInstrumento(instru)
+  }
+
+  // ----- Helpers de collapse
   const [colapsar, setColapsar] = useState(false)
-  const [scroll,setScroll] = useState(false)
-  const [acordes,setAcordes] = useState(false)
 
   const Colapse = () => {
     setColapsar(!colapsar)
+    setCookie("nav", String(!colapsar), cookieOptions)
   }
+
+  // ----- Helper de scrolling
+  const [scroll,setScroll] = useState(false)
 
   const Scrolling = () => {
     setScroll(!scroll)
   }
 
+  // ----- Helper de acordes
+  const [acordes,setAcordes] = useState(false)
+
   const MostrarAcordes = () => {
     setAcordes(!acordes)
   }
-
-  // ----- Declaracion de Cookies
-  const [cookies, setCookie] = useCookies(['colorAcorde', 'colorFuente', 'tipografia', 'tamano'])
 
   // ----- Personalizacion
   const [personalize, setPersonalize] = useState({
@@ -108,9 +124,7 @@ function App() {
     ...personalize,
     'color': e
     })
-    setCookie("colorAcorde", e, {
-      path: "/"
-    })
+    setCookie("colorAcorde", e, cookieOptions)
   }
   // Color de fuente
   const VarFuente = (e) => {
@@ -118,9 +132,7 @@ function App() {
     ...personalize,
     'font': e
     })
-    setCookie("colorFuente", e, {
-      path: "/"
-    })
+    setCookie("colorFuente", e, cookieOptions)
   }
   // Tipografia
   const VarTipo = (e) => {
@@ -128,9 +140,7 @@ function App() {
     ...personalize,
     'fontFamily': e
     })
-    setCookie("tipografia", e, {
-      path: "/"
-    })
+    setCookie("tipografia", e, cookieOptions)
   }
   // Tamano de fuente
   const VarSize = (e) => {
@@ -139,9 +149,7 @@ function App() {
     'fontSize': e+'rem',
     'titleFontSize': e+0.5+'rem'
     })
-    setCookie("tamano", String(e), {
-      path: "/"
-    })
+    setCookie("tamano", String(e), cookieOptions)
   }
   // Reset de Personalizacion
   const ResetP = () => {
@@ -152,18 +160,10 @@ function App() {
     'fontSize': '1rem',
     'titleFontSize': '1.5rem'
     })
-    setCookie("colorAcorde", 'inherit', {
-      path: "/"
-    })
-    setCookie("colorFuente", 'inherit', {
-      path: "/"
-    })
-    setCookie("tipografia", 'inherit', {
-      path: "/"
-    })
-    setCookie("tamano", String(1), {
-      path: "/"
-    })
+    setCookie("colorAcorde", 'inherit', cookieOptions)
+    setCookie("colorFuente", 'inherit', cookieOptions)
+    setCookie("tipografia", 'inherit', cookieOptions)
+    setCookie("tamano", String(1), cookieOptions)
   }
 
   // --- Obtencion de cookies o set por default
@@ -171,6 +171,7 @@ function App() {
     if(init){
       if(cookies){
         const ctam = parseFloat(cookies.tamano)
+        const cnav = (cookies.nav === 'true')
         setPersonalize({
         'font': cookies.colorFuente,
         'color': cookies.colorAcorde,
@@ -178,22 +179,16 @@ function App() {
         'fontSize': ctam+'rem',
         'titleFontSize': ctam+0.5+'rem'
         })
+        setColapsar(cnav)
       }else{
-        setCookie("colorAcorde", 'inherit', {
-          path: "/"
-        })
-        setCookie("colorFuente", 'inherit', {
-          path: "/"
-        })
-        setCookie("tipografia", 'inherit', {
-          path: "/"
-        })
-        setCookie("tamano", String(1), {
-          path: "/"
-        })
+        setCookie("colorAcorde", 'inherit', cookieOptions)
+        setCookie("colorFuente", 'inherit', cookieOptions)
+        setCookie("tipografia", 'inherit', cookieOptions)
+        setCookie("tamano", String(1), cookieOptions)
+        setCookie("nav", String(false), cookieOptions)
       }
     }
-  }, [cookies, setCookie])
+  }, [cookies, setCookie, cookieOptions])
 
   // ----- Login de usuario
   const LogUser = async (credentials) => {
@@ -215,7 +210,7 @@ function App() {
 
   const GetUser = async (token) => {
     const {data} = await axios.get(`/user/user_token?token=${token}`)
-    setUser(data)
+    setUser(data.data)
   }
 
   // ----- Eliminacion de sesion de usuario
@@ -264,7 +259,7 @@ function App() {
               timeout={200}
               unmountOnExit
               onExited={Collapsed}>
-                <div ref={colapseNavBar} className='col-3 py-0' id='NavExpand'>
+                <div ref={colapseNavBar} className='col-auto col-lg-3 py-0' id='NavExpand'>
                   <NavExpand Colapse={Colapse}/>
                 </div>
             </CSSTransition>
@@ -274,22 +269,24 @@ function App() {
                 <Route path='/song/'>
                   <div className='row'>
 
-                    <div className='col'>
+                    <div className='col col-md-9 col-xl'>
                       <Busqueda getSong={getSong} getArtist={getArtist} />
                       <Song Eleccion={Eleccion} 
                       scroll={scroll} 
+                      cualInstrumento={cualInstrumento} 
                       acordes={acordes} 
                       Scrolling={Scrolling} 
                       elegida={cancionElegida} 
                       personalize={personalize} />
                     </div>
 
-                    <div className='col-3' id='MusicNav'>
-                      <MusicNav scroll={scroll} 
-                      MostrarAcordes={MostrarAcordes}
-                      Scrolling={Scrolling} VarTipo={VarTipo} VarSize={VarSize}
+                    <div className='col-2 col-md-3' id='MusicNav'>
+                      <MusicNav scroll={scroll} acordes={acordes}
+                      MostrarAcordes={MostrarAcordes} Scrolling={Scrolling} 
+                      VarTipo={VarTipo} VarSize={VarSize}
                       VarFuente={VarFuente} VarAcordes={VarAcordes} 
-                      personalize={personalize} ResetP={ResetP} />
+                      personalize={personalize} ResetP={ResetP} 
+                      QInstrumento={QInstrumento} />
                     </div>
                   </div>
 

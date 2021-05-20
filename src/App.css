@@ -1,3 +1,16 @@
+.expand-nav-enter{
+	transition: transform 200ms;
+	transform: scaleX(0.43);
+	transform-origin: left;
+}
+.expand-nav-enter-active, .expand-nav-exit{
+	transform: scaleX(1);
+}
+.expand-nav-exit-active{
+	transition: transform 200ms;
+	transform: scaleX(0.43);
+	transform-origin: left;
+}
 #App {
 	background-color: #181818;
 	position: absolute;
@@ -6,34 +19,16 @@
 #MusicNav{
 	max-width: 210px;
  	float: right;
- 	color: #b3b3b3;
- 	background-color: #121212;
 }
 #NavContract{
-	max-width: 103px;
+	max-width: 104px;
 	float: left;
-	color: #b3b3b3;
-	background-color: #121212;
 }
 #NavExpand{
 	max-width: 240px;
 	float: left;
+}
+#NavExpand, #NavContract, #MusicNav {
 	color: #b3b3b3;
 	background-color: #121212;
-}
-.expand-nav-enter{
-	transition: transform 200ms;
-	transform: scaleX(0.43);
-	transform-origin: left;
-}
-.expand-nav-enter-active{
-	transform: scaleX(1);
-}
-.expand-nav-exit{
-	transform: scaleX(1);
-}
-.expand-nav-exit-active{
-	transition: transform 200ms;
-	transform: scaleX(0.43);
-	transform-origin: left;
 }

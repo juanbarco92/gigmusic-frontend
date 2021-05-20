@@ -23,8 +23,8 @@ const NavExpand = (props) => {
 
   return (
   	<div style={styles}>
-		<div className='row justify-content-center w-100' id='NavExpand'>
-			<div className='col col-lg-9'>
+		<div className='row justify-content-center w-100' id='NavExpand-container'>
+			<div className='col col-sm-10 col-lg-9'>
 				<div className='row'>
 					<div className='col-10 align-self-center'>
 						<img src={logo} alt='Gig' id='LogoExpand'/>
@@ -32,33 +32,41 @@ const NavExpand = (props) => {
 				</div>
 				<div className='row justify-content-center'>
 					<NavLink to='/' className='div-nav link-react-nav w-100' >
-						<div className='col-10 align-self-center'>
-							<Inicio id='Inicio'/>
-							<span className='ml-3'>Inicio</span>
+						<div className='col align-self-center'>
+							<div className='row'>
+								<span className='col-3 text-center nav-col-exp'><Inicio id='Inicio'/></span>
+								<span className='col ml-3 nav-col-exp'>Inicio</span>
+							</div>
 						</div>
 					</NavLink>
 				</div>
 				<div className='row justify-content-center'>
 					<NavLink to='/artist' className='div-nav link-react-nav w-100' >
-						<div className='col-10 align-self-center'>
-							<Descubrir id='Descubrir'/>
-							<span className='ml-3'>Descubrir</span>
+						<div className='col align-self-center'>
+							<div className='row'>
+								<span className='col-3 text-center nav-col-exp'><Descubrir id='Descubrir'/></span>
+								<span className='col ml-3 nav-col-exp'>Descubrir</span>
+							</div>
 						</div>
 					</NavLink>
 				</div>
 				<div className='row justify-content-center'>
 					<NavLink to='/song' className='div-nav link-react-nav w-100' >
-						<div className='col-10 align-self-center'>
-							<Catalogo id='Catalogo'/>
-							<span className='ml-3'>Catálogo</span>
+						<div className='col align-self-center'>
+							<div className='row'>
+								<span className='col-3 text-center nav-col-exp'><Catalogo id='Catalogo'/></span>
+								<span className='col ml-3 nav-col-exp'>Catálogo</span>
+							</div>
 						</div>
 					</NavLink>
 				</div>
 				<div className='row justify-content-center'>
 					<NavLink to='/user' className='div-nav link-react-nav w-100' >
-						<div className='col-10 align-self-center'>
-							<Ajustes id='Ajustes'/>
-							<span className='ml-3'>Ajustes</span>
+						<div className='col align-self-center'>
+							<div className='row'>
+								<span className='col-3 text-center nav-col-exp'><Ajustes id='Ajustes'/></span>
+								<span className='col ml-3 nav-col-exp'>Ajustes</span>
+							</div>
 						</div>
 					</NavLink>
 				</div>

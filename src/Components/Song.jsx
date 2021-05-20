@@ -1,21 +1,23 @@
 import React, {useState, useRef, useEffect} from 'react'
 import {Redirect} from 'react-router-dom'
-import GuitarChord from 'react-guitar-chords'
+import {isEmpty} from '../Utils/utils'
 import Notas from './Songs/Notas'
 import Reproductor from './Songs/Reproductor'
-import {isEmpty} from '../Utils/utils'
+import Acordes from './Songs/Acordes'
 import '../Static/CSS/Song.css'
 
 let timer
-let lineas = 0
+let auxScroll
+let lineas
 let hOff = 0
 let urlAnt = null
 let estrofa
+let notasAcordes
 
 function Song(props) {
 	
 	// ----- Obtencion de variables de entrada
-	const { scroll, Scrolling, acordes, elegida, Eleccion, personalize} = props
+	const { cualInstrumento, scroll, Scrolling, acordes, elegida, Eleccion, personalize} = props
 
 	// ----- Estilos adicionales de adaptacion
 	const styles = {
@@ -33,8 +35,9 @@ function Song(props) {
 	const [yOff,setYOff] = useState(0)
 	const finCancion = useRef(null)
 
+	const offTop = finCancion.current ? finCancion.current.offsetTop : 0
+
 	const logicScroll = React.useCallback(() => {
-		const offTop = finCancion.current ? finCancion.current.offsetTop : 0
 		if(lineasRec + hOff <= offTop){
 			setLineasRec(yOff + (finCancion.current.offsetTop)/(lineas*50))
 			document.getElementById('Cancion-Container').scrollTo({ 
@@ -46,7 +49,7 @@ function Song(props) {
 			Scrolling()
 			setLineasRec(yOff)
 		}
-	},[Scrolling, yOff, lineasRec])
+	},[Scrolling, yOff, lineasRec, offTop])
 
 	// ----- Actualizacion de posicion de scroll
 	const contenSong = useRef(null)
@@ -59,14 +62,26 @@ function Song(props) {
   	// ----- Recepcion de evento de rueda de mouse
   	const onWheel = (e) => {
   		clearTimeout(timer)
-  		const yDelta = e.deltaY
-  		if(yDelta >= 0){
-  			setYOff(contenSong.current.scrollTop + e.deltaY)
+  		if(scroll){
+  			Scrolling()
+  			auxScroll = true
+  		}
+  		const movement = contenSong.current.scrollTop + e.deltaY
+  		if(movement >= 0){
+  			setYOff(movement)
   		}else{
   			setYOff(contenSong.current.scrollTop)
   		}
 	    hOff = contenSong.current.offsetHeight
-  	}
+	  	if(lineasRec + hOff <= offTop){
+	  		setLineasRec(movement + (finCancion.current.offsetTop)/(lineas*50))
+  			if(auxScroll){
+				document.getElementById('Cancion-Container').scrollTo({ 
+					top: lineasRec
+				})
+			}
+		}
+	}
 
   	// ----- Obtencion de parametros desde url
 	let urlPath = window.location.pathname
@@ -83,6 +98,9 @@ function Song(props) {
 
 	const {metadata, canción} = can
 
+	// ----- Array de notas para acordes
+    const [arrayAcordes, setArrayAcordes] = useState([])
+
 	// ----- Variables de control de visualizacion
   	const [load, setLoad] = useState(false)
 	const [mostrar, setMostrar] = useState(false)
@@ -93,8 +111,14 @@ function Song(props) {
 			document.title = 'GIG - ' + (metadata.canción ? (metadata.canción):(metadata.cancion))
 			estrofa = canción.map((item)=>({tipo: item.tipo, contenido: item.contenido}))
 			lineas = 0
-			estrofa.map(item => lineas += parseInt(item.contenido.length))
+			notasAcordes = []
+			estrofa.forEach(item => {
+				lineas += parseInt(item.contenido.length)
+				item.contenido.map(i => notasAcordes.push(i.notas))
+			})
+
 			lineas += estrofa.length
+			setArrayAcordes(notasAcordes)
 			setMostrar(true)
 		}
 		else{
@@ -102,10 +126,14 @@ function Song(props) {
 		}
 		if (scroll){
 			timer = setTimeout(logicScroll, 20)
-		}else{
+		}else if(!scroll && auxScroll){
+			Scrolling()
+			auxScroll = false
+		}
+		else{
 			clearTimeout(timer)
 		}
-	},[scroll, logicScroll, load, canción, metadata])
+	},[scroll, logicScroll, load, canción, metadata, Scrolling])
 
 	// ----- Peticion de cancion especifica, control de visualizacion y scroll al salir
 	useEffect(() => {
@@ -121,7 +149,7 @@ function Song(props) {
     	return () => {
     		setMostrar(false)
 	        setLoad(false)
-	        if(scroll){
+	        if(scroll && urlPath!=='/song/'){
 	        	Scrolling()
 	        }
 	    }
@@ -180,15 +208,11 @@ function Song(props) {
 			    		</ul>
 			    	</div>
 			    	{
-		    			acordes ?
+		    			acordes &&
 		    			(
-		    				<div className='col-4 col-auto mt-2' id='Chord-Container'>
-				    			<GuitarChord chordName='nota' frets={['x', 3, 0, 0, 1, 1]}/>
+		    				<div className='col-4 mt-2' id='Chord-Container'>	
+								<Acordes cualInstrumento={cualInstrumento} notas={arrayAcordes} colorAc={personalize.color} />
 				    		</div>
-		    			)
-		    			:
-		    			(
-		    				<span></span>
 		    			)
 		    		}
 				</div>

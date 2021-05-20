@@ -1,8 +1,8 @@
 #Search-container{
 	margin: 0 0 0 0px;
 	padding: 15px 0 10px 25px;
-	background-color: transparent;
-	color: #b3b3b3;
+	background-color: inherit;
+	color: inherit;
 	border-bottom: solid 1px #b3b3b3;
 	z-index: 1;
 }
@@ -10,39 +10,25 @@
 	width: 20px;
 	height: 20px;
 	padding: 0 0 0 0;
-	background-color: transparent;
-	border: none;
 	object-fit: contain;
 }
 #search-button{
 	display: none;
 }
-#search-bar{
-	background-color: transparent;
-	color: currentColor !important;
-	border: none;
-	box-shadow: 0 0 0 0;
-}
-#search-bar:focus{
-	background-color: transparent;
-	color: currentColor !important;
-	border: none;
-	box-shadow: 0 0 0 0;
-}
-#search-bar:active{
-	background-color: transparent;
-	color: currentColor !important;
-	border: none;
-	box-shadow: 0 0 0 0;
-}
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus
-{
-	-webkit-text-fill-color: #b3b3b3 !important;
-	transition: background-color 5000s ease-in-out 0s;
-	caret-color: #b3b3b3 !important;
-}
-input[type="search"]::-webkit-search-cancel-button {
+#search-bar::-webkit-search-cancel-button {
 	-webkit-appearance: none;
+}
+#icon-search, #search-bar, #search-bar:focus, #search-bar:active{
+	background-color: inherit;
+	color: inherit;
+	border: none;
+	box-shadow: 0 0 0 0;
+}
+#search-bar:-webkit-autofill,
+#search-bar:-webkit-autofill:hover, 
+#search-bar:-webkit-autofill:focus
+{
+	-webkit-text-fill-color: #b3b3b3;
+	transition: background-color 5000s ease-in-out 0s;
+	caret-color: #b3b3b3;
 }
