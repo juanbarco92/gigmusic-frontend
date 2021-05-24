@@ -245,6 +245,12 @@ function App() {
     return data
   }
 
+  // ----- Inicio con Google
+  const GoogleIn = async (gtoken) => {
+    const {data} = await axios.get(`/user/google?gtoken=${gtoken}`)
+    return data
+  } 
+
   // ----- Auxiliares de animacion del navBar
   const [colapsado, setColapsado] = useState(false)
   const colapseNavBar = useRef(null)
@@ -321,7 +327,7 @@ function App() {
                   GetUser={GetUser} SoftDelUser={SoftDelUser}
                   token={token} delToken={delToken} user={user}
                   setToken={setToken} DelUserSession={DelUserSession} 
-                  EditarUsuario={EditarUsuario}/>
+                  EditarUsuario={EditarUsuario} GoogleIn={GoogleIn} />
                 </Route>
 
                 <Route exact path='/'>

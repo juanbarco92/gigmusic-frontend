@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {Redirect} from 'react-router-dom'
+import { GoogleLogin } from 'react-google-login'
 import '../Static/CSS/User.css'
 import {isEmpty} from '../Utils/utils'
 import Login from './Users/Login'
@@ -8,11 +9,13 @@ import ChangeUser from './Users/ChangeUser'
 import DeleteUser from './Users/DeleteUser'
 
 let urlAnt = null
+const clienteIDGoogle = "693094359127-1sfd9rka41nih5buojvmfglgbcabvmb0.apps.googleusercontent.com"
 
 const User = (props) => {
 
   // ----- Obtencion de variables y funciones de entrada
-	const { GetUser, DelUserSession, SoftDelUser, LogUser, SignUpUser, setToken, token, user, EditarUsuario} = props
+	const { GetUser, DelUserSession, SoftDelUser, LogUser, 
+    SignUpUser, setToken, token, user, EditarUsuario, GoogleIn} = props
 
   let urlSearch = window.location.search
 
@@ -49,6 +52,27 @@ const User = (props) => {
     setDeleter(!deleter)
   }
 
+  const responseGoogle = async (res) => {
+    if(!res.error){
+      const data = await GoogleIn(res.tokenId)
+      if(data.error === null){
+        if(data.result === 1){
+          alert('El usuario fue creado con exito, su contraseña y username son su correo, le recomendamos que los cambie')
+        }else if(data.result === 0){
+          alert('Inicio de sesión satisfactorio')
+        }
+        setToken(data.token)
+        window.location.reload()
+      }else{
+        alert(data.error)
+      }
+    }
+    else{
+      alert('Error de Inicio')
+      console.log(res.error)
+    }
+  }
+
   if(deleter){
     return (
       <div id='delete'>
@@ -76,6 +100,13 @@ const User = (props) => {
             <SignUp SignUpUser={SignUpUser} />
           </div>
         </div>
+        <GoogleLogin
+          clientId={clienteIDGoogle}
+          buttonText="Inicia con Google"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+        />
       </div>
       )
 	}
