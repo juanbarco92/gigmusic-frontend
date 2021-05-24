@@ -35,7 +35,7 @@ const Login = (props) => {
 			window.location.reload()
 		}
 		else{
-			return alert(token.error)
+			alert(token.error)
 		}
 	}
 

@@ -69,9 +69,15 @@ const User = (props) => {
     }
     else{
       alert('Error de Inicio')
-      console.log(res.error)
     }
   }
+
+  if(!urlSearch.startsWith('?username=')){
+      return(<Redirect to={{
+        pathname: "/user",
+        search: "?username="+user.username
+      }} />)
+    }
 
   if(deleter){
     return (

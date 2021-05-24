@@ -70,7 +70,7 @@ const ChangeUser = (props) => {
 					EditUser()
 				}
 				else{
-					return alert(res.error)
+					alert(res.error)
 				}
 			}else{
 				alert('Las contraseñas no coinciden')

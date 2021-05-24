@@ -54,7 +54,7 @@ const SignUp = (props) => {
 				alert('Se registró con éxito')
 			}
 			else{
-				return alert(res.error)
+				alert(res.error)
 			}
 		}else{
 			alert('Las contraseñas no coinciden')
