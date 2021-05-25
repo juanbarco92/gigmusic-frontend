@@ -94,4 +94,4 @@ const NavExpand = (props) => {
   );
 }
 
-export default NavExpand;
+export default React.memo(NavExpand);

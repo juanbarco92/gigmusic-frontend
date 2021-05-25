@@ -73,4 +73,4 @@ const NavContract = (props) => {
   );
 }
 
-export default NavContract;
+export default React.memo(NavContract);

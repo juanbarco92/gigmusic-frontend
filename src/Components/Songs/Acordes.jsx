@@ -24,6 +24,9 @@ const Acordes = (props) => {
         }
     })
 
+    // ----- Que version
+    const acordeIndex = 0
+
     console.log(cualInstrumento)
 
   return (
@@ -32,7 +35,7 @@ const Acordes = (props) => {
             {
                 acordesUnicos.map( (item, index) => (
                     <div className='col' style={styles} key={index} >
-                        <GuitarChord chordName={item} frets={AcordeGuitarraAcustica(item)}/>
+                        <GuitarChord chordName={item} frets={AcordeGuitarraAcustica(item, acordeIndex)}/>
                     </div>
                 ))
             }
@@ -42,4 +45,4 @@ const Acordes = (props) => {
   );
 }
 
-export default Acordes;
+export default React.memo(Acordes);
