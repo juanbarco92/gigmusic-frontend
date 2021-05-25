@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../Static/CSS/Artists/ArtistNav.css'
+import Discografia from './Discografia'
 
 const ArtistNav = (props) => {
 	
@@ -7,27 +8,17 @@ const ArtistNav = (props) => {
     const {navNum, canciones} = props
 
   return (
-      <div className='container' id='ArtistNav-container'>
+      <div className='container-fluid' id='ArtistNav-container'>
           {
 	      		navNum === 0 &&
 	      		(
 	      			<div>
 	      			{
-	      				!canciones.length === 0 ?
+	      				!(canciones.length === 0) ?
 	      				(
-	      					<ul className='list-group'>
-	      					{
-	      						canciones.map((item, index) => (
-		      					<li key={index} className='list-group mt-2'>
-		      						<div className='row'>
-		      							<span className='col' >
-		      								{item.cancion}
-		      							</span>
-		      						</div>
-		      					</li>
-	      						))
-	      					}
-	      					</ul>
+	      					<div className='mt-2 text-center'>
+	      						<Discografia canciones={canciones} />
+	      					</div>
 	      				)
 	      				:
 	      				(
