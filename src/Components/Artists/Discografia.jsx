@@ -17,8 +17,8 @@ const Discografia = (props) => {
 	    	Header: 'Álbum',
 	    	accessor: 'album',
 	    },{
-	    	Header: 'Género',
-	    	accessor: 'genero',
+	    	Header: 'Visualizaciones',
+	    	accessor: 'views',
 	    }
     ], [])
 
@@ -69,9 +69,6 @@ const Discografia = (props) => {
 		      			return (
 		      				<td
 		      				{...cell.getCellProps()}
-		      				style={{
-		      					border: 'solid 1px gray',
-		      				}}
 		      				>
 		      				{cell.render('Cell')}
 		      				</td>
