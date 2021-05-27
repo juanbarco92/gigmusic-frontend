@@ -25,6 +25,14 @@
 	color: inherit;
 	box-shadow: 0 0 0 0;
 }
+.form-input-p:-webkit-autofill,
+.form-input-p:-webkit-autofill:hover, 
+.form-input-p:-webkit-autofill:focus
+{
+	-webkit-text-fill-color: #b3b3b3;
+	transition: background-color 5000s ease-in-out 0s;
+	caret-color: #b3b3b3;
+}
 #User-Container, #edit, #sign, #delete{
 	background-color: inherit;
 	color: inherit;
