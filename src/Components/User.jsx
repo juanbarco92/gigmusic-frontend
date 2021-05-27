@@ -73,11 +73,13 @@ const User = (props) => {
   }
 
   if(!urlSearch.startsWith('?username=')){
+    if(token){
       return(<Redirect to={{
         pathname: "/user",
         search: "?username="+user.username
       }} />)
     }
+  }
 
   if(deleter){
     return (
