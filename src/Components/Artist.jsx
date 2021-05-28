@@ -43,12 +43,16 @@ const Artist = (props) => {
 
 	// Obtencion de artista segun url
   	let artista
-
-  	if (elegida.id === urlSearch.slice(4)){
-  		artista = elegida
-  	}else{
-  		artista = {}
-  	}
+	if(elegida){
+		if (elegida.id === urlSearch.slice(4)){
+			artista = elegida
+		}else{
+			artista = {}
+		}
+	}else{
+		artista = {}
+	}
+  	
 
   	// ----- Peticiones al servidor y control de visualizacion
     useEffect(() => {

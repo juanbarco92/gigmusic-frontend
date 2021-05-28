@@ -1,6 +1,8 @@
 import React, {useMemo} from 'react'
 import { useTable, useSortBy } from 'react-table'
+import{NavLink} from 'react-router-dom'
 import '../../Static/CSS/Artists/Discografia.css'
+import { ReactComponent as Play } from '../../Static/Icons/Reproductor/play.svg'
 
 const Discografia = (props) => {
 	
@@ -10,7 +12,10 @@ const Discografia = (props) => {
     // ----- Memorizacion de parametros de la tabla
     const data = useMemo(() => canciones, [canciones])
     const columns = useMemo(() => [
-	    {
+		{
+			Header: 'Escuchar',
+			accessor: 'id'
+		},{
 	    	Header: 'Canción',
 	    	accessor: 'cancion',
 	    },{
@@ -26,10 +31,9 @@ const Discografia = (props) => {
     const { getTableProps, getTableBodyProps, headerGroups, rows,
     prepareRow } = useTable({columns, data}, useSortBy)
 
-
   return (
       <div className='container-fluid' id='Discografia-container'>
-	      <table {...getTableProps()} className='w-100 table-discography'>
+		  <table {...getTableProps()} className='w-100 table-discography'>
 		      <thead>
 		      {headerGroups.map(headerGroup => (
 		      	<tr {...headerGroup.getHeaderGroupProps()}>
@@ -61,14 +65,30 @@ const Discografia = (props) => {
 		      	return (
 		      		<tr {...row.getRowProps()}>
 		      		{row.cells.map(cell => {
-		      			return (
-		      				<td
-		      				{...cell.getCellProps()}
-							className='content-discography'
-		      				>
-		      				{cell.render('Cell')}
-		      				</td>
-		      				)
+						if(cell.column.Header === 'Escuchar'){
+							return (
+								<td
+								{...cell.getCellProps()}
+								className='content-discography'
+								>
+									<NavLink className='link-react-nav border-0' to={{
+									pathname: '/song/',
+									search: `id=${cell.row.original.id}`,
+									}}>
+										<Play className="play-an rep-btn"/>
+									</NavLink>
+								</td>
+							)
+						}else{
+							return (
+								<td
+								{...cell.getCellProps()}
+							  className='content-discography'
+								>
+								{cell.render('Cell')}
+								</td>
+							)
+						}
 		      		})}
 		      		</tr>
 		      		)

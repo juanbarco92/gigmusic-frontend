@@ -89,12 +89,15 @@ function Song(props) {
 
   	// Obtencion de cancion segun url
   	let can
-
-  	if (elegida.id === urlSearch.slice(4)){
-  		can = elegida
-  	}else{
-  		can = {}
-  	}
+	if(elegida){
+		if (elegida.id === urlSearch.slice(4)){
+			can = elegida
+		}else{
+			can = {}
+		}
+	}else{
+		can = {}
+	}
 
 	const {metadata, canción} = can
 
