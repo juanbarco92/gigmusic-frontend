@@ -22,8 +22,6 @@ const Discografia = (props) => {
 	    }
     ], [])
 
-    // ----- Declaracion de filtro
-
 	// ----- Declaracion de la tabla
     const { getTableProps, getTableBodyProps, headerGroups, rows,
     prepareRow } = useTable({columns, data}, useSortBy)
@@ -31,17 +29,14 @@ const Discografia = (props) => {
 
   return (
       <div className='container-fluid' id='Discografia-container'>
-	      <table {...getTableProps()} className='w-100'>
+	      <table {...getTableProps()} className='w-100 table-discography'>
 		      <thead>
 		      {headerGroups.map(headerGroup => (
 		      	<tr {...headerGroup.getHeaderGroupProps()}>
 		      	{headerGroup.headers.map(column => (
 		      		<th
 		      		{...column.getHeaderProps(column.getSortByToggleProps())}
-		      		style={{
-		      			fontWeight: 'bold',
-						cursor: 'pointer',
-		      		}}
+		      		className='header-discography'
 		      		>
 						<span>
 						  {column.render('Header')}
@@ -69,6 +64,7 @@ const Discografia = (props) => {
 		      			return (
 		      				<td
 		      				{...cell.getCellProps()}
+							className='content-discography'
 		      				>
 		      				{cell.render('Cell')}
 		      				</td>

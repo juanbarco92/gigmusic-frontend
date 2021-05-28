@@ -17,8 +17,10 @@
 	font-size: inherit !important;
 }
 .header-carousel{
+	background-color: inherit;
 }
 .body-carousel{
+	background-color: inherit;
 }
 .btn-carousel{
 	-webkit-appearance: inherit !important;
