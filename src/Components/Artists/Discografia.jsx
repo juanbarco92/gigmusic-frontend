@@ -37,25 +37,41 @@ const Discografia = (props) => {
 		      <thead>
 		      {headerGroups.map(headerGroup => (
 		      	<tr {...headerGroup.getHeaderGroupProps()}>
-		      	{headerGroup.headers.map(column => (
-		      		<th
-		      		{...column.getHeaderProps(column.getSortByToggleProps())}
-		      		className='header-discography'
-		      		>
-						<span>
-						  {column.render('Header')}
-						</span>
-						{
-							column.isSorted ? 
-								column.isSortedDesc ? 
-								(<span> &uarr; </span>) 
-								: 
-								(<span> &darr; </span>)
-							:
-							''
-						}
-		      		</th>
-		      		))}
+		      	{headerGroup.headers.map(column => {
+					if(column.Header==='Escuchar'){
+						return (
+							<th
+							{...column.getHeaderProps()}
+							className='header-discography'
+							style={{'cursor': 'inherit'}}
+							>
+							  <span>
+								{column.render('Header')}
+							  </span>
+							</th>
+							)
+					}else{
+						return (
+							<th
+							{...column.getHeaderProps(column.getSortByToggleProps())}
+							className='header-discography'
+							>
+							  <span>
+								{column.render('Header')}
+							  </span>
+							  {
+								  column.isSorted ? 
+									  column.isSortedDesc ? 
+									  (<span> &uarr; </span>) 
+									  : 
+									  (<span> &darr; </span>)
+								  :
+								  ''
+							  }
+							</th>
+							)
+					}
+				})}
 		      	</tr>
 		      	))}
 		      </thead>
