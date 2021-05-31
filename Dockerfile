@@ -1,7 +1,5 @@
 FROM node:16
 WORKDIR /home/node/app
-COPY ./frontend/gigmusic/package-lock.json /home/node/app
-RUN npm install
 COPY ./frontend/gigmusic/package.json /home/node/app
 COPY ./frontend/gigmusic/yarn.lock /home/node/app
 RUN yarn install
