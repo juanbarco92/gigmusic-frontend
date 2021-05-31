@@ -19,6 +19,7 @@ const User = (props) => {
 
   let urlSearch = window.location.search
 
+  // ----- Obtencion de usuario activo
   useEffect(() => {
     if(urlAnt !== urlSearch){
       if(token !== null){
@@ -52,6 +53,7 @@ const User = (props) => {
     setDeleter(!deleter)
   }
 
+  // ----- Inicio de session con google
   const responseGoogle = async (res) => {
     if(!res.error){
       const data = await GoogleIn(res.tokenId)
@@ -72,6 +74,7 @@ const User = (props) => {
     }
   }
 
+  // ----- Redireccion a user activo
   if(!urlSearch.startsWith('?username=')){
     if(token){
       return(<Redirect to={{

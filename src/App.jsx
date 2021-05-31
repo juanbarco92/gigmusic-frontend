@@ -57,7 +57,7 @@ function App() {
   // ----- Obtencion de canciones y artistas
   const [artistas, setArtistas] = useState([])
 
-  const getArtist = async (search?) => {
+  const getArtist = async (search) => {
       const {data} = await axios.get(`/artist/${search}&num_registros=5`)
       const nuevoArray = data.map(item => (item))
       setArtistas(nuevoArray)
@@ -65,13 +65,13 @@ function App() {
 
   const [canciones, setCanciones] = useState([])
 
-  const getSong = async (search?) => {
+  const getSong = async (search) => {
       const {data} = await axios.get(`/song/${search}&num_registros=5`)
       const nuevoArray = data.map(item => (item))
       setCanciones(nuevoArray)
   }
 
-  const getBusqueda = async (search?) => {
+  const getBusqueda = async (search) => {
       await getArtist(search)
       await getSong(search)
       await Logger(token, 'search', search)
@@ -81,7 +81,7 @@ function App() {
   const [cancionElegida, setCancionElegida] = useState({})
   const [artistaElegido, setArtistaElegido] = useState({})
 
-  const Eleccion = async (path, id?) => {
+  const Eleccion = async (path, id) => {
     if(path === '/song/'){
       const {data} = await axios.get(`/song/one${id}`)
       setCancionElegida(data)
