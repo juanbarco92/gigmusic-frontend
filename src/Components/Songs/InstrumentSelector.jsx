@@ -17,10 +17,20 @@ const InstrumentSelector = (props) => {
 
 	const next = () => {
 		setSlide(slide + 1)
+		if(slide+1 > lInstrumentos.length-1){
+			setInst(0)
+		}else{
+			setInst(slide + 1)
+		}
 	}
 
 	const prev = () => {
 		setSlide(slide - 1)
+		if(slide-1 < 0){
+			setInst(lInstrumentos.length-1)
+		}else{
+			setInst(slide - 1)
+		}
 	}
 
 	const updateSlide = (index) => {
@@ -30,6 +40,7 @@ const InstrumentSelector = (props) => {
 		}
 	}
 
+	// ----- Guarda el instrumento actual
 	useEffect(() => {
 		QInstrumento(lInstrumentos[inst].nombre)
 	}, [QInstrumento, inst])

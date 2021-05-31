@@ -178,4 +178,4 @@ const MusicNav = (props) => {
   );
 }
 
-export default MusicNav;
+export default React.memo(MusicNav);

@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, {useState, useRef, useEffect, useCallback} from 'react'
 import {Redirect} from 'react-router-dom'
 import {isEmpty} from '../Utils/utils'
 import Notas from './Songs/Notas'
@@ -37,7 +37,7 @@ function Song(props) {
 
 	const offTop = finCancion.current ? finCancion.current.offsetTop : 0
 
-	const logicScroll = React.useCallback(() => {
+	const logicScroll = useCallback(() => {
 		if(lineasRec + hOff <= offTop){
 			setLineasRec(yOff + (finCancion.current.offsetTop)/(lineas*50))
 			document.getElementById('Cancion-Container').scrollTo({ 

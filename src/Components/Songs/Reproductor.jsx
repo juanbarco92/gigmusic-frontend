@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import AudioControls from './AudioControls'
 import { ReactComponent as VolOn } from '../../Static/Icons/Reproductor/volume-on.svg'
 import { ReactComponent as VolOff } from '../../Static/Icons/Reproductor/volume-off.svg'
@@ -34,7 +34,7 @@ const Reproductor = (props) => {
     }
 
     // Funcion Next
-    const toNextTrack = React.useCallback(() => {
+    const toNextTrack = useCallback(() => {
       audioRef.current.currentTime = '0'
       if (trackIndex < tracks.length - 1) {
         setTrackIndex(trackIndex + 1)
@@ -79,7 +79,7 @@ const Reproductor = (props) => {
     -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #f24405), color-stop(${currentPercentage}, #404040))`
 
     // Timer para progreso de las barras
-    const startTimer = React.useCallback(() => {
+    const startTimer = useCallback(() => {
       // Clear any timers already running
       clearInterval(intervalRef.current)
       intervalRef.current = setInterval(() => {

@@ -35,5 +35,6 @@ export const SelTi = [{'value':'inherit', 'name': 'Default'},
 
 // Lista de instrumentos
 export const lInstrumentos = [
-	{'nombre': 'Guitarra Acustica', 'img': 'https://http2.mlstatic.com/D_NQ_NP_653834-MCO31121764137_062019-O.webp'}
+	{'nombre': 'Guitarra Acustica', 'img': 'https://http2.mlstatic.com/D_NQ_NP_653834-MCO31121764137_062019-O.webp'},
+  {'nombre': 'Guitarra', 'img': 'https://http2.mlstatic.com/D_NQ_NP_653834-MCO31121764137_062019-O.webp'}
 ]
