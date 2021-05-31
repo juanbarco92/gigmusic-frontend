@@ -3,7 +3,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
 import '../../Static/CSS/Inicio/Banner.css'
 
-const Banner = () => {
+const Banner = (props) => {
+
+    // ----- Obtencion de arreglo de entrada
+    const {delBanner} = props
 
     // ----- Modificaciones a libreria carousel para indicadores
     const indicatorStyles: CSSProperties = {
@@ -69,26 +72,20 @@ const Banner = () => {
           renderIndicator={renderIndicator}
           verticalSwipe='standard'
           >
-            <div>
-              <img className='accent img-fluid' src="https://okdiario.com/img/2020/06/09/la-flaca-jarabe-de-palo-655x368.jpg" alt='' />
-              <div className='legend'>
-                <span className='row ml-2 header-carousel h1'>Estreno Exclusivo</span>
-                <span className='row ml-2 mb-2 body-carousel'>Mira lo nuevo de:</span>
-                <button onClick={click} className='row ml-2 btn btn-carousel' type='button'>
-                  Escuchar ahora
-                </button>
+          {
+            delBanner.map((item, index) => (
+              <div key={index}>
+                <img className='accent img-fluid' src={item.src} alt='' />
+                <div className='legend'>
+                  <span className='row ml-2 header-carousel h1'>{item.header}</span>
+                  <span className='row ml-2 mb-2 body-carousel'>{item.body}</span>
+                  <button onClick={click} className='row ml-2 btn btn-carousel' type='button'>
+                    {item.boton}
+                  </button>
+                </div>
               </div>
-            </div>
-            <div>
-              <img className='accent img-fluid'  src="https://okdiario.com/img/2020/06/09/la-flaca-jarabe-de-palo-655x368.jpg" alt='' />
-              <div className='legend'>
-                <span className='row ml-2 header-carousel h1'>Top de la semana</span>
-                <span className='row ml-2 mb-2 body-carousel'>Mira lo mejor</span>
-                <button onClick={click} className='row ml-2 btn btn-carousel' type='button'>
-                  Escuchar ahora
-                </button>
-              </div>
-            </div>
+            ))
+          }
           </Carousel>
         </div>
       </div>
