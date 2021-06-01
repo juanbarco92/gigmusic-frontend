@@ -5,30 +5,30 @@
 	padding: 0px 1px 0px 1px !important;
 }
 .mn-btn:hover, .mn-btn:active{
-	color: #f24405;
-	border-color: #b3b3b3;
+	color: var(--gig-color);
+	border-color: var(--color-default);
 	border: 0.5px;
-	background-color: #f24405;
+	background-color: var(--gig-color);
 	box-shadow: 0 0 0 0;
 }
 .custom-control-input:checked ~ .custom-control-label::after {
-	border-color: #f24405 !important;
+	border-color: var(--gig-color) !important;
 	background-color: #181818 !important;
 }
 .custom-control-input:focus ~ .custom-control-label::before, 
 .custom-control-input:checked ~ .custom-control-label::before{
-	border-color: #f24405 !important;
-	background-color: #f24405 !important;
+	border-color: var(--gig-color) !important;
+	background-color: var(--gig-color) !important;
 	box-shadow:	0 0 0 0 rgba(0, 0, 0, 0) !important;
 }
 .custom-control-input:not(:checked) ~ .custom-control-label::after {
-	border-color: #b3b3b3 !important;
-	background-color: #b3b3b3 !important;
+	border-color: var(--color-default) !important;
+	background-color: var(--color-default) !important;
 }
 .custom-control-input:not(:checked) ~ .custom-control-label::before, 
 .custom-control-input:focus:not(:checked) ~ .custom-control-label::before{
-	border-color: #b3b3b3 !important;
-	background-color: #404040 !important;
+	border-color: var(--color-default) !important;
+	background-color: var(--background-app) !important;
 }
 #MusicNav-Container{
 	max-width: 210px;
@@ -42,9 +42,9 @@
 }
 #Restablecer{
     font-family: Verdana;
-    color: #4ed0e5;
+    color: var(--song-title);
     background-color: inherit;
-    border: solid 1px #4ed0e5;
+    border: solid 1px var(--song-title);
     border-radius: 100px;
     text-align: center;
 }

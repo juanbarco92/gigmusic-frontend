@@ -17,22 +17,24 @@
 	font-size: inherit !important;
 }
 .header-carousel{
+	color: var(--color-accent);
 	background-color: inherit;
 }
 .body-carousel{
+	color: var(--color-accent);
 	background-color: inherit;
 }
 .btn-carousel{
 	-webkit-appearance: inherit !important;
 	appearance: inherit !important;
-	color: inherit !important;
+	color: var(--color-accent) !important;
 	cursor: pointer !important;
 	display: inline-block !important;
 	border-radius: 16px !important;
-	background: #f24405 !important;
+	background: var(--gig-color) !important;
 }
 .p-dots:hover {
-	border: 1px solid #f24405 !important;
+	border: 1px solid var(--gig-color) !important;
 	border-radius: 100% !important;
 }
 #Banner-Container{

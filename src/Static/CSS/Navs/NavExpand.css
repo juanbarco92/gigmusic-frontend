@@ -10,12 +10,12 @@
 	text-decoration: none;
 }
 .link-react-nav:active, .link-react-nav:hover{
-	color: #f24405;
+	color: var(--gig-color);
 }
 .link-react-nav:hover{
 	background-color: #181818;
 	border-radius: 16px;
-	border: 0.5px solid #f24405;
+	border: 0.5px solid var(--gig-color);
 }
 #NavExpand-container{
 	max-width: 240px;
@@ -29,7 +29,7 @@
 #LogoExpand, #Inicio, #Descubrir, #Catalogo, #Ajustes, #Contraer{
 	object-fit: contain;
 	margin: 0px 10px 0px 10px;
-	color: #b3b3b3;
+	color: var(--color-default);
 }
 #LogoExpand{
 	width: 56px;
@@ -78,22 +78,22 @@
 	background: none;
 }
 #instagram:hover path{
-	fill: #dd2b7b;
+	fill: var(--instagram);
 }
 #facebook:hover path{
-	fill: #3b5998;
+	fill: var(--facebook);
 }
 #youtube:hover path{
-	fill: #c4302b;
+	fill: var(--youtube);
 }
 .link-react-nav:hover div #Descubrir g{
-	fill: #f24405;
+	fill: var(--gig-color);
 }
 .link-react-nav:hover div #Descubrir g, 
 .link-react-nav:hover div #Ajustes g:nth-of-type(1){
-	stroke: #f24405;
+	stroke: var(--gig-color);
 }
 .link-react-nav:hover div #Inicio path:nth-of-type(2), 
 .link-react-nav:hover div #Catalogo path:nth-of-type(1){
-	fill: #f24405;
+	fill: var(--gig-color);
 }

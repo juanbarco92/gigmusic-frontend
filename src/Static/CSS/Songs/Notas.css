@@ -13,7 +13,7 @@ pre{
 }
 #Acordes{
     font-size: 1rem;
-    color: #f24405;
+    color: var(--gig-color);
 }
 #Contenedor-Acordes{
     scrollbar-height: 10px;
@@ -22,9 +22,9 @@ pre{
     height: 10px;
 }
 #Contenedor-Acordes::-webkit-scrollbar-track {
-    background: #181818; 
-    border: 2.5px solid #121212;
+    background: var(--background-app); 
+    border: 2.5px solid var(--background-nav);
 }
 #Contenedor-Acordes::-webkit-scrollbar-thumb {
-    background: #121212; 
+    background: var(--background-nav); 
 }

@@ -1,24 +1,24 @@
 .gig-btn{
-	background: #f24405 !important;
-	color: #b3b3b3 !important;
-	border-color: #b3b3b3 !important;
+	background: var(--gig-color) !important;
+	color: var(--color-default) !important;
+	border-color: var(--color-default) !important;
 	box-shadow: 0 0 0 0 !important;
 }
 .form-input-p{
 	background-color: inherit !important;
 	color: inherit !important;
-	border-color: #b3b3b3 !important;
+	border-color: var(--color-default) !important;
 	box-shadow: 0 0 0 0 !important;
 }
 .gig-btn:hover, .gig-btn:active{
-	color: #b3b3b3;
-	border-color: #b3b3b3;
+	color: var(--color-default);
+	border-color: var(--color-default);
 	border: 0.5px;
-	background-color: #f24405;
+	background-color: var(--gig-color);
 	box-shadow: 0 0 0 0;
 }
 .form-input-p:focus{
-	border-color: #f24405 !important;
+	border-color: var(--gig-color) !important;
 }
 .form-input-p:active, .form-input-p:focus{
 	background-color: inherit;
@@ -29,9 +29,9 @@
 .form-input-p:-webkit-autofill:hover, 
 .form-input-p:-webkit-autofill:focus
 {
-	-webkit-text-fill-color: #b3b3b3;
+	-webkit-text-fill-color: var(--color-default);
 	transition: background-color 5000s ease-in-out 0s;
-	caret-color: #b3b3b3;
+	caret-color: var(--color-default);
 }
 #User-Container, #edit, #sign, #delete{
 	background-color: inherit;

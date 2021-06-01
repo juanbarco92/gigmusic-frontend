@@ -1,6 +1,6 @@
 #ArtistNav-container{
 	background-color: transparent;
-	color: #b3b3b3;
+	color: var(--color-default);
 	margin: 0 !important;
 	padding: 0 !important;
 }

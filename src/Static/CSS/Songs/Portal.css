@@ -4,11 +4,11 @@ select{
 }
 select option{
 	color : inherit !important;
-    background: black !important;
+    background: var(--selector) !important;
 }
 #Portal-container{
     color : inherit;
-    background-color : black;
+    background-color : var(--selector);
     position : absolute;
     z-index: 2;
 }

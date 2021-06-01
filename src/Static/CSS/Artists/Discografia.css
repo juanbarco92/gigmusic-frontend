@@ -11,5 +11,5 @@
 .play-an{
     height: 30px;
     width: 30px;
-    fill: #b3b3b3;
+    fill: var(--color-default);
 }

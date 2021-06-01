@@ -8,7 +8,7 @@
   padding: 24px;
   margin: auto;
   color: inherit;
-  background: #282828;
+  background: var(--inicio-color);
 }
 .track-info{
   text-align: center;
@@ -27,26 +27,26 @@
   height: 20px;
 }
 .vol path{
-  fill: #b3b3b3;
+  fill: var(--color-default);
 }
 .range-input {
   height: 5px !important;
   width: 100% !important;
   border-radius: 8px !important;
-  background: #f24405;
+  background: var(--gig-color);
   transition: background 0.2s ease;
   cursor: pointer !important;
 }
 .range-input, .range-input::-webkit-slider-runnable-track, 
 .range-input::-webkit-slider-thumb{
   -webkit-appearance: none !important;
-  color: #ffffff !important;
+  color: var(--color-accent) !important;
 }
 .range-input::-webkit-slider-thumb{
   width: 10px !important;
   border-radius: 100% !important;
   height: 10px !important;
-  background: #ffffff !important;
+  background: var(--color-accent) !important;
 }
 #Reproductor-musica {
   font-family: Arial, Helvetica, sans-serif;

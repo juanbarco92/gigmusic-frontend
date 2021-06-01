@@ -1,3 +1,16 @@
+:root{
+	--color-default: hsl(0, 0%, 70%);/*#b3b3b3*/
+	--background-app: hsl(0, 0%, 7%);/*#121212*/
+	--background-nav: hsl(0, 0%, 9%);/*#181818*/
+	--gig-color: hsl(16, 96%, 48%);/*#f24405*/
+	--inicio-color: hsl(0, 0%, 13%);/*#222222*/
+	--song-title: 	hsl(188, 74%, 60%);/*#4ed0e5*/
+	--color-accent: hsl(0, 0%, 100%);/*ffffff*/
+	--facebook: hsl(221, 44%, 41%);/*#3b5998*/
+	--instagram: hsl(333, 72%, 52%);/*#dd2b7b*/
+	--youtube: hsl(2, 64%, 47%);/*#c4302b*/
+	--selector: hsl(0, 0%, 0%);/*#000000*/
+}
 .expand-nav-enter{
 	transition: transform 200ms;
 	transform: scaleX(0.43);
@@ -12,9 +25,9 @@
 	transform-origin: left;
 }
 #App {
-	background-color: #181818;
+	background-color: var(--background-nav);
 	position: absolute;
-	color: #b3b3b3;
+	color: var(--color-default);
 }
 #MusicNav{
 	max-width: 210px;
@@ -29,6 +42,6 @@
 	float: left;
 }
 #NavExpand, #NavContract, #MusicNav {
-	color: #b3b3b3;
-	background-color: #121212;
+	color: 	var(--color-default);
+	background-color: var(--background-app);
 }

@@ -5,7 +5,7 @@
   margin: 0 auto 15px;
 }
 .audio-controls path{
-  fill: #f24405;
+  fill: var(--gig-color);
 }
 .prev svg, .next svg{
   width: 30px;

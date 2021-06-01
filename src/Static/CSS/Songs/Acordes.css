@@ -1,20 +1,20 @@
 .chord{
-	color: #f24405;
+	color: var(--gig-color);
 }
 .chord button{
-    color: #a9a9a9 !important;
+    color: var(--color-accent) !important;
     display: none;
     background: none;
     border: none;
     box-shadow: 0;
 }
 .chord svg line{
-    stroke: #a9a9a9 !important;
-    fill: #a9a9a9 !important;
+    stroke: var(--color-accent) !important;
+    fill: var(--color-accent) !important;
 }
 .chord svg circle{
     fill: currentColor !important;/*f24405*/
-    stroke: #a9a9a9 !important;
+    stroke: var(--color-accent) !important;
 }
 .chord svg text{
     fill: currentColor !important;/*f24405*/

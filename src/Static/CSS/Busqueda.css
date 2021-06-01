@@ -3,7 +3,7 @@
 	padding: 15px 0 10px 25px;
 	background-color: inherit;
 	color: inherit;
-	border-bottom: solid 1px #b3b3b3;
+	border-bottom: solid 1px var(--color-default);
 	z-index: 1;
 }
 #icon-search{
@@ -28,7 +28,7 @@
 #search-bar:-webkit-autofill:hover, 
 #search-bar:-webkit-autofill:focus
 {
-	-webkit-text-fill-color: #b3b3b3;
+	-webkit-text-fill-color: var(--color-default);
 	transition: background-color 5000s ease-in-out 0s;
-	caret-color: #b3b3b3;
+	caret-color: var(--color-default);
 }

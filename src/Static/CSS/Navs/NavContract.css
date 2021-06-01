@@ -2,8 +2,8 @@
 	height: 2em;
 }
 .con-exp:hover g, .con-exp:active g{
-	box-shadow: 2px 2px 5px #b3b3b3;
-	stroke: #b3b3b3;
+	box-shadow: 2px 2px 5px var(--color-default);
+	stroke: var(--color-default);
 }
 #NavContract-container{
 	max-width: 104px;

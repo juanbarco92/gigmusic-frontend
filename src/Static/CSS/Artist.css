@@ -1,5 +1,5 @@
 .accent{
-	background: #121212;
+	background: var(--background-app);
 	opacity: 0.5;
 }
 .artist-photo{
@@ -7,7 +7,7 @@
 	border-radius: 100px;
 }
 .artist-description, .btn-artist-sound{
-	color: #ffffff;
+	color: var(--color-accent);
 }
 .btn-artist-sound, .btn-artist-follow{
 	cursor: pointer;
@@ -16,24 +16,24 @@
 }
 .btn-artist-sound{
 	color: inherit !important;
-	background: #f24405 !important;
+	background: var(--gig-color) !important;
 }
 .btn-artist-follow{
-	color: #f24405 !important;
-	background: #121212 !important;
-	border: 1px solid #ffffff !important;
+	color: var(--gig-color) !important;
+	background: var(--background-app) !important;
+	border: 1px solid var(--color-accent) !important;
 }
 .navbar {
-	background: rgb(255,255,255);
+	background: var(--color-accent);
 	background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(24,24,24,1) 100%) !important;
 	margin-bottom: 0;
 }
 .nav-link{
-	color: #b3b3b3;
+	color: var(--color-default);
 }
 .activado {
-	color: #ffffff;
-	border-bottom: 1px solid #f24405 !important;
+	color: var(--color-accent);
+	border-bottom: 1px solid var(--gig-color) !important;
 }
 .nav-link, .nav-link:hover, .nav-link:focus{
 	background: none;
@@ -44,7 +44,7 @@
 	box-shadow:	0 0 0 0 rgba(0, 0, 0, 0) !important;
 }
 .nav-link:hover, .nav-link:focus {
-	color: #ffffff;
+	color: var(--color-accent);
 }
 #Artist-container{
 	background-color: inherit;

@@ -18,8 +18,8 @@
 }
 #Intro-title{
     font-size: 1.5rem;
-    color: #4ed0e5;
-    border: solid 1px #4ed0e5;
+    color: var(--song-title);
+    border: solid 1px var(--song-title);
     border-radius: 100px;
     text-align: center;
 }
