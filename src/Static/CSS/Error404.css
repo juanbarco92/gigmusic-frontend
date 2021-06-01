@@ -1,0 +1,10 @@
+.title-404{
+    color: var(--gig-color);
+}
+.header-404{
+    color: var(--color-accent);
+    text-shadow: 2px 5px 5px var(--background-nav);
+}
+.body-404{
+    color: var(--color-default);
+}
