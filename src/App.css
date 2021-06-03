@@ -9,7 +9,6 @@
 	--facebook: hsl(221, 44%, 41%);/*#3b5998*/
 	--instagram: hsl(333, 72%, 52%);/*#dd2b7b*/
 	--youtube: hsl(2, 64%, 47%);/*#c4302b*/
-	--selector: hsl(0, 0%, 0%);/*#000000*/
 }
 .expand-nav-enter{
 	transition: transform 200ms;

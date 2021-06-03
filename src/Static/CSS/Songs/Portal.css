@@ -1,14 +1,14 @@
 select{
-	color : inherit !important;
-    background-color : inherit !important;
+	color : var(--color-accent) !important;
+    background-color : var(--gig-color) !important;
 }
 select option{
 	color : inherit !important;
-    background: var(--selector) !important;
+    background: inherit !important;
 }
 #Portal-container{
     color : inherit;
-    background-color : var(--selector);
+    background-color : var(--gig-color);
     position : absolute;
     z-index: 2;
 }

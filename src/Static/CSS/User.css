@@ -1,8 +1,9 @@
 .gig-btn{
 	background: var(--gig-color) !important;
-	color: var(--color-default) !important;
+	color: var(--color-accent) !important;
 	border-color: var(--color-default) !important;
 	box-shadow: 0 0 0 0 !important;
+	width: 12em;
 }
 .form-input-p{
 	background-color: inherit !important;

@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect, useMemo} from 'react'
+import React, {useState, useRef, useEffect, useMemo, useCallback} from 'react'
 import{
     BrowserRouter as Router,
     Switch,
@@ -180,6 +180,27 @@ function App() {
     setCookie("tamano", String(1), cookieOptions)
   }
 
+  // Tema global de usuario
+  const [temaInterfaz, setTemaInterfaz] = useState('noche')
+
+  const cambiarTema = useCallback((e) => {
+    if(e === 'dia'){
+      document.documentElement.style.setProperty('--background-app', 'hsl(0, 0%, 91%)')
+      document.documentElement.style.setProperty('--background-nav', 'hsl(0, 0%, 93%)')
+      document.documentElement.style.setProperty('--inicio-color', 'hsl(0, 0%, 87%)')
+      document.documentElement.style.setProperty('--color-default', 'hsl(0, 0%, 30%)')
+    }else if(e === 'noche'){
+      document.documentElement.style.setProperty('--background-app', 'hsl(0, 0%, 9%)')
+      document.documentElement.style.setProperty('--background-nav', 'hsl(0, 0%, 7%)')
+      document.documentElement.style.setProperty('--inicio-color', 'hsl(0, 0%, 13%)')
+      document.documentElement.style.setProperty('--color-default', 'hsl(0, 0%, 70%)')
+    }else{
+      return alert('Error en el tema seleccionado')
+    }
+    setTemaInterfaz(e)
+    setCookie("tema", e, cookieOptions)
+  },[setCookie, cookieOptions])
+
   // --- Obtencion de cookies o set por default
   useEffect(() => {
     if(init){
@@ -193,6 +214,7 @@ function App() {
         'fontSize': ctam+'rem',
         'titleFontSize': ctam+0.5+'rem'
         })
+        cambiarTema(cookies.tema)
         setColapsar(cnav)
       }else{
         setCookie("colorAcorde", 'inherit', cookieOptions)
@@ -200,9 +222,10 @@ function App() {
         setCookie("tipografia", 'inherit', cookieOptions)
         setCookie("tamano", String(1), cookieOptions)
         setCookie("nav", String(false), cookieOptions)
+        setCookie("tema", 'noche', cookieOptions)
       }
     }
-  }, [cookies, setCookie, cookieOptions])
+  }, [cookies, setCookie, cookieOptions, cambiarTema])
 
   // ----- Login de usuario
   const LogUser = async (credentials) => {
@@ -327,7 +350,8 @@ function App() {
                   GetUser={GetUser} SoftDelUser={SoftDelUser}
                   token={token} delToken={delToken} user={user}
                   setToken={setToken} DelUserSession={DelUserSession} 
-                  EditarUsuario={EditarUsuario} GoogleIn={GoogleIn} />
+                  EditarUsuario={EditarUsuario} GoogleIn={GoogleIn} 
+                  cambiarTema={cambiarTema} temaInterfaz={temaInterfaz} />
                 </Route>
 
                 <Route exact path='/'>

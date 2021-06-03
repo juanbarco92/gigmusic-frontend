@@ -13,7 +13,7 @@
 	color: var(--gig-color);
 }
 .link-react-nav:hover{
-	background-color: #181818;
+	background-color: var(--background-nav);
 	border-radius: 16px;
 	border: 0.5px solid var(--gig-color);
 }
@@ -76,6 +76,26 @@
 	width: 100%;
 	height: 100%;
 	background: none;
+}
+#instagram path{
+	fill: var(--color-default);
+}
+#facebook path{
+	fill: var(--color-default);
+}
+#youtube path{
+	fill: var(--color-default);
+}
+.link-react-nav div #Descubrir g{
+	fill: var(--color-default);
+}
+.link-react-nav div #Descubrir g, 
+.link-react-nav div #Ajustes g:nth-of-type(1){
+	stroke: var(--color-default);
+}
+.link-react-nav div #Inicio path:nth-of-type(2), 
+.link-react-nav div #Catalogo path:nth-of-type(1){
+	fill: var(--color-default);
 }
 #instagram:hover path{
 	fill: var(--instagram);

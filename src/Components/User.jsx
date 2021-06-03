@@ -14,7 +14,7 @@ const clienteIDGoogle = "693094359127-1sfd9rka41nih5buojvmfglgbcabvmb0.apps.goog
 const User = (props) => {
 
   // ----- Obtencion de variables y funciones de entrada
-	const { GetUser, DelUserSession, SoftDelUser, LogUser, 
+	const { temaInterfaz, cambiarTema, GetUser, DelUserSession, SoftDelUser, LogUser, 
     SignUpUser, setToken, token, user, EditarUsuario, GoogleIn} = props
 
   let urlSearch = window.location.search
@@ -133,13 +133,21 @@ const User = (props) => {
   return (
     <div className="container-fluid" id='User-container'>
       <Redirect to={"/user?username="+user.username} />
-      <div className='row'>
-        <div className='col text-center'>
-          <button type='button' className='gig-btn mt-2 sticky-top btn' onClick={EditUser}>Editar cuenta</button>
-        	<button type="button" className="gig-btn mt-2 sticky-top mx-2 btn" onClick={LogOut} >Salir</button>
-          <button type="button" className="gig-btn mt-2 sticky-top btn" onClick={DeleteAccount} >Eliminar cuenta</button>
-          <h1>Bienvenido {user.nombre}</h1>
+      <div className='row mt-2'>
+        <div className='col text-center d-flex justify-content-around'>
+          <button type='button' className='gig-btn sticky-top btn' onClick={EditUser}>Editar cuenta</button>
+        	<button type="button" className="gig-btn sticky-top btn" onClick={LogOut} >Salir</button>
+          <button type="button" className="gig-btn sticky-top btn" onClick={DeleteAccount} >Eliminar cuenta</button>
+          <select className="gig-btn sticky-top btn" value={temaInterfaz} onChange={e => cambiarTema(e.target.value)}>
+            <option value='dia'>Día</option>
+            <option value='noche'>Noche</option>
+          </select>
         </div>
+      </div>
+      <div className='row mt-2'>
+        <div className='col text-center'>
+          <h1>Bienvenido {user.nombre}</h1>
+          </div>
       </div>
     </div>
   );

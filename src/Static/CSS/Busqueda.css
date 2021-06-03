@@ -15,6 +15,9 @@
 #search-button{
 	display: none;
 }
+#icon-search g{
+	fill: var(--color-default);
+}
 #search-bar::-webkit-search-cancel-button {
 	-webkit-appearance: none;
 }

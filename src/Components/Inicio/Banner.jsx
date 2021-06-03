@@ -9,7 +9,7 @@ const Banner = (props) => {
     const {delBanner} = props
 
     // ----- Modificaciones a libreria carousel para indicadores
-    const indicatorStyles: CSSProperties = {
+    const indicatorStyles = {
         background: '#181818',
         border: '1px solid #fafbfe',
         width: 12,
