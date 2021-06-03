@@ -185,9 +185,9 @@ function App() {
 
   const cambiarTema = useCallback((e) => {
     if(e === 'dia'){
-      document.documentElement.style.setProperty('--background-app', 'hsl(0, 0%, 91%)')
-      document.documentElement.style.setProperty('--background-nav', 'hsl(0, 0%, 93%)')
-      document.documentElement.style.setProperty('--inicio-color', 'hsl(0, 0%, 87%)')
+      document.documentElement.style.setProperty('--background-app', 'hsl(0, 0%, 86%)')
+      document.documentElement.style.setProperty('--background-nav', 'hsl(0, 0%, 94%)')
+      document.documentElement.style.setProperty('--inicio-color', 'hsl(0, 0%, 82%)')
       document.documentElement.style.setProperty('--color-default', 'hsl(0, 0%, 30%)')
     }else if(e === 'noche'){
       document.documentElement.style.setProperty('--background-app', 'hsl(0, 0%, 9%)')

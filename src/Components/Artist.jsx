@@ -84,12 +84,12 @@ const Artist = (props) => {
     	(
     		<div>
 	    		<div className="row justify-content-center align-items-center mt-2">
-		        	<div className='col-10'>
+		        	<div className='col-10 p-0'>
 			        	<img className='card-image accent img-fluid w-100' src='https://okdiario.com/img/2020/06/09/la-flaca-jarabe-de-palo-655x368.jpg' alt='' />
 			        	<div className='card-img-overlay d-flex p-0'>
 				        	<div className='row align-items-end w-100'>
 					        	<div className='col'>
-					        		<div className='row ml-5 mr-5'>
+					        		<div className='row ml-2'>
 					        			<div className='col-auto'>
 					        				<img className='img-fluid artist-photo' src='https://direct.rhapsody.com/imageserver/images/Art.8229/356x237.jpg' alt='artist' />
 					        			</div>
@@ -106,7 +106,7 @@ const Artist = (props) => {
 					        				</div>
 					        			</div>
 					        		</div>
-					        		<div className='row navbar mt-2'>
+					        		<div className='row navbar px-0 ml-1 mt-2'>
 					        			<div className='col'>
 					        				<ul className='nav nav-fill ml-5 mr-5' role="tablist">
 						        				<li className='nav-item' >
