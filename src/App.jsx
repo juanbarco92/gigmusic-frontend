@@ -31,7 +31,7 @@ function App() {
 // ----- Configuracion de axios
   axios.defaults.baseURL = "http://localhost:8080/api"
   axios.defaults.headers.common['Content-type'] = 'application/json; charset=utf-8'
-  axios.defaults.headers.common['Access-Control-Allow-Origin'] = 'localhost'
+  axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
   axios.defaults.headers.common['Access-Control-Allow-Methods'] = '*'
   axios.defaults.headers.common['Access-Control-Allow-Headers'] = '*'
   axios.defaults.headers.common['cache-control'] = 'no-cache'
