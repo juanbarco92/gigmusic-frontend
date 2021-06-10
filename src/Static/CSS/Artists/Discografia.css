@@ -1,9 +1,11 @@
 .header-discography{
     font-weight: bold;
     cursor: pointer;
+    text-transform: uppercase;
+    color: #454545;
 }
-.content-discography{
-    background-color: inherit;
+.escuchar-btn{
+    display: none;
 }
 .table-discography{
     background-color: inherit;
@@ -12,4 +14,11 @@
     height: 30px;
     width: 30px;
     fill: var(--color-default);
+}
+.content-all:hover {
+    background-color: #222222;
+}
+.content-all:hover .escuchar-btn{
+    display: block;
+    background-color: inherit;
 }

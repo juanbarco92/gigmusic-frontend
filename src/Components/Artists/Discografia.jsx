@@ -79,15 +79,15 @@ const Discografia = (props) => {
 		      {rows.map(row => {
 		      	prepareRow(row)
 		      	return (
-		      		<tr {...row.getRowProps()}>
+		      		<tr {...row.getRowProps()} className='content-all'>
 		      		{row.cells.map(cell => {
 						if(cell.column.Header === 'Escuchar'){
 							return (
 								<td
 								{...cell.getCellProps()}
-								className='content-discography'
+								className='py-3 content-discography'
 								>
-									<NavLink className='link-react-nav border-0' to={{
+									<NavLink className='link-react-nav border-0 escuchar-btn' to={{
 									pathname: '/song/',
 									search: `id=${cell.row.original.id}`,
 									}}>
@@ -99,7 +99,7 @@ const Discografia = (props) => {
 							return (
 								<td
 								{...cell.getCellProps()}
-							  className='content-discography'
+							  className='py-3 content-discography'
 								>
 								{cell.render('Cell')}
 								</td>
